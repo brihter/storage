@@ -1,6 +1,6 @@
 const providerList = [
   require('./local.js'),
-  //require('./s3.js'),
+  require('./s3.js'),
   //require('./r2.js')
 ]
 
