@@ -1,7 +1,7 @@
 {
-  "name": "storage",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@brighter/storage",
+  "version": "1.0.0-beta.1",
+  "description": "A JavaScript object storage library that enables local development.",
   "main": "index.js",
   "scripts": {
     "format": "./bin/format.sh",
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/brihter/storage.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Bostjan Rihter",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/brihter/storage/issues"
   },
@@ -38,5 +38,14 @@
     "bluebird": "^3.7.2",
     "iconv-lite": "^0.6.3",
     "mime-types": "^2.1.35"
-  }
+  },
+  "types": "./index.d.ts",
+  "keywords": [
+    "javascript",
+    "node",
+    "aws",
+    "aws-s3",
+    "cloudflare",
+    "cloudflare-r2"
+  ]
 }

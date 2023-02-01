@@ -1,0 +1,10 @@
+# env
+node_modules/
+
+# project
+bin/
+docs/
+env/
+src/**/*.test.js
+ops/
+test/
