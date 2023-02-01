@@ -1,5 +1,5 @@
 name: brighter/storage
-on: [push]
+on: [pull_request]
 jobs:
   build:
     env:
@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node: [ '18.x' ]
+        node: [ '16.x', '18.x' ]
     name: build
     steps:
       - name: environment
