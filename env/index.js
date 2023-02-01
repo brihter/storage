@@ -20,9 +20,9 @@ const getCredentials = async (provider) => {
     if (provider === 'cloudflare') prefix = 'cf'
     credentials = {
       [process.env[`${prefix.toUpperCase()}_PROFILE`]]: {
-        [`${prefix}_account_id`]: process.env[`${prefix}_ACCOUNT_ID`] || '',
-        [`${prefix}_access_key_id`]: process.env[`${prefix}_ACCESS_KEY_ID`] || '',
-        [`${prefix}_secret_access_key`]: process.env[`${prefix}_SECRET_ACCESS_KEY`] || '',
+        [`${prefix}_account_id`]: process.env[`${prefix.toUpperCase()}_ACCOUNT_ID`] || '',
+        [`${prefix}_access_key_id`]: process.env[`${prefix.toUpperCase()}_ACCESS_KEY_ID`] || '',
+        [`${prefix}_secret_access_key`]: process.env[`${prefix.toUpperCase()}_SECRET_ACCESS_KEY`] || '',
       }
     }
   }
@@ -32,9 +32,7 @@ const getCredentials = async (provider) => {
 const aws = async (cfg) => {
   let credentials
   credentials = await getCredentials('aws')
-  console.log(process.env.AWS_PROFILE, 'aws_profile')
   credentials = credentials[process.env.AWS_PROFILE]
-  console.log(credentials, 'xxx')
 
   cfg.aws.storageClient.credentials = {
     accessKeyId: credentials.aws_access_key_id,
