@@ -1,0 +1,26 @@
+{
+  "local": {
+    "storage": {
+      "type": "local",
+      "path": "/tmp/storage"
+    }
+  },
+  "s3": {
+    "storage": {
+      "type": "s3",
+      "path": "conjure-storage-test-3d8e8dd"
+    },
+    "storageClient": {
+      "region": "eu-central-1"
+    }
+  },
+  "r2": {
+    "storage": {
+      "type": "r2",
+      "path": "conjure-storage-test-4x1a7ff"
+    },
+    "storageClient": {
+      "region": "auto"
+    }
+  }
+}
