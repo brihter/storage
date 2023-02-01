@@ -32,7 +32,6 @@ const getCredentials = async (provider) => {
 const aws = async (cfg) => {
   let credentials
   credentials = await getCredentials('aws')
-  console.log(process.env.AWS_PROFILE)
   credentials = credentials[process.env.AWS_PROFILE]
 
   cfg.r2.storageClient.credentials = {
@@ -46,8 +45,9 @@ const aws = async (cfg) => {
 const cf = async (cfg) => {
   let credentials
   credentials = await getCredentials('cloudflare')
-  console.log(process.env.AWS_PROFILE)
   credentials = credentials[process.env.CF_PROFILE]
+
+  console.log(process.env.CF_ACCOUNT_ID, 'cf_acc_id')
 
   cfg.r2.storageClient.endpoint = `https://${credentials.cf_account_id}.r2.cloudflarestorage.com`
   cfg.r2.storageClient.credentials = {
