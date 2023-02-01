@@ -36,7 +36,7 @@ const aws = async (cfg) => {
   credentials = credentials[process.env.AWS_PROFILE]
   console.log(credentials, 'xxx')
 
-  cfg.r2.storageClient.credentials = {
+  cfg.aws.storageClient.credentials = {
     accessKeyId: credentials.aws_access_key_id,
     secretAccessKey: credentials.aws_secret_access_key
   }
