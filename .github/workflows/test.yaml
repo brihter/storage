@@ -1,0 +1,22 @@
+name: brighter/storage
+on: [push]
+jobs:
+  build:
+    env:
+      NODE_ENV: development
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node: [ '16.x', '18.x' ]
+    name: build
+    steps:
+      - name: environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install
+        run: ./bin/install.sh
+      - name: test
+        run: ./bin/test.sh
