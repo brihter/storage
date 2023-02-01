@@ -62,7 +62,7 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   cfg = JSON.parse(cfg)
   cfg = await aws(cfg)
   cfg = await cf(cfg)
-  console.log(cfg)
+  console.log(Buffer.from(JSON.stringify(cfg)).toString('base64'))
   process.exit()
   return cfg
 }
