@@ -47,8 +47,6 @@ const cf = async (cfg) => {
   credentials = await getCredentials('cloudflare')
   credentials = credentials[process.env.CF_PROFILE]
 
-  console.log(process.env.CF_ACCOUNT_ID, 'cf_acc_id')
-
   cfg.r2.storageClient.endpoint = `https://${credentials.cf_account_id}.r2.cloudflarestorage.com`
   cfg.r2.storageClient.credentials = {
     accessKeyId: credentials.cf_access_key_id,
@@ -64,7 +62,6 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   cfg = JSON.parse(cfg)
   cfg = await aws(cfg)
   cfg = await cf(cfg)
-  process.exit()
   return cfg
 }
 
