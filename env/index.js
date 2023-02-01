@@ -32,7 +32,9 @@ const getCredentials = async (provider) => {
 const aws = async (cfg) => {
   let credentials
   credentials = await getCredentials('aws')
+  console.log(process.env.AWS_PROFILE, 'aws_profile')
   credentials = credentials[process.env.AWS_PROFILE]
+  console.log(credentials, 'xxx')
 
   cfg.r2.storageClient.credentials = {
     accessKeyId: credentials.aws_access_key_id,
