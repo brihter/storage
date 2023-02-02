@@ -1,4 +1,4 @@
-name: brighter/storage
+name: on_push_main
 on:
   push:
     branches:
