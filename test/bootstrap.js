@@ -13,9 +13,11 @@ const createOne = async (runId, type) => {
   return Storage(cfgByType)
 }
 
-const createProviders = async (runId) => {
+const createProviders = async runId => {
   let providerList = Object.keys(providers)
-  providerList = await Promise.all(providerList.map((type) => createOne(runId, type)))
+  providerList = await Promise.all(
+    providerList.map(type => createOne(runId, type))
+  )
   return providerList.reduce((acc, provider) => {
     acc[provider.config.type] = provider
     return acc
@@ -33,7 +35,7 @@ before(async () => {
 
   global._conjure = {
     runId,
-    getStorage: (provider) => storageProviders[provider]
+    getStorage: provider => storageProviders[provider]
   }
 })
 
