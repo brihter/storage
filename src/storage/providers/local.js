@@ -28,7 +28,7 @@ const impl = config => {
   }
 
   const stat = async path => {
-    const md5 = (string) => crypto.createHash('md5').update(string).digest('hex')
+    const md5 = string => crypto.createHash('md5').update(string).digest('hex')
 
     const format = result => ({
       file: path,
@@ -65,7 +65,7 @@ const impl = config => {
     await writeFile(path, buffer, opts)
   }
 
-  const removeOne = async (path) => {
+  const removeOne = async path => {
     try {
       await rm(path, { recursive: true })
     } catch (err) {

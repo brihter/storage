@@ -1,7 +1,9 @@
-import { Definitions, TypeInfo, Parameter } from "./parser"
+import { Definitions, TypeInfo, Parameter } from './parser'
 
 const toParameterList = (parameters: Parameter[]): string => {
-  const list = parameters.map(p => `- \`${p.name}: ${p.returnType}\``).join('\n')
+  const list = parameters
+    .map(p => `- \`${p.name}: ${p.returnType}\``)
+    .join('\n')
   return `
 Parameters:
 
@@ -26,7 +28,7 @@ ${input}
 }
 
 // const flatten = () => {
-  
+
 // }
 
 const format = (definitions: Definitions): string => {
@@ -38,8 +40,10 @@ const format = (definitions: Definitions): string => {
     .filter(t => t.name === 'StorageProvider')
     .pop()
 
-  const types = definitions.types.reduce((acc, type) => acc.set(type.name, type), new Map<string, TypeInfo>())
-
+  const types = definitions.types.reduce(
+    (acc, type) => acc.set(type.name, type),
+    new Map<string, TypeInfo>()
+  )
 
   // console.log(constructor)
   // console.log(types.get('RemoveFunction'))
@@ -78,31 +82,38 @@ ${toExample(constructor.example)}
 
 ### Properties
 
-${contract.properties.map(p => `
+${contract.properties
+  .map(
+    p => `
 #### ${p.name}
 
 - \`${p.callSignature}\`
 
-`).join('\n')}
+`
+  )
+  .join('\n')}
 
 ### Methods
 
-${contract.methods.map(m => {
+${contract.methods
+  .map(m => {
     const type = types.get(m.returnType)
     if (!type) return ''
 
     return `#### ${m.name}
 
-${type?.callSignatures.map(signature => `- \`${m.name}${signature}\``).join('\n')}
+${type?.callSignatures
+  .map(signature => `- \`${m.name}${signature}\``)
+  .join('\n')}
 
 ${type.description}
 ${toParameterList(type.parameters)}
 ${toReturn(type.returnType)}
 ${toExample(type.example)}
-`}).join('\n')}
+`
+  })
+  .join('\n')}
 `
 }
 
-export {
-  format
-}
+export { format }

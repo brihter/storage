@@ -127,10 +127,13 @@ const impl = config => {
       return items
     }
 
-    return listAll({
-      ...opts,
-      ContinuationToken: NextContinuationToken
-    }, items)
+    return listAll(
+      {
+        ...opts,
+        ContinuationToken: NextContinuationToken
+      },
+      items
+    )
   }
 
   const list = async (path, opts) => {
@@ -142,9 +145,7 @@ const impl = config => {
       Delimiter: !opts.recursive ? '/' : ''
     })
 
-    return items
-      .map(i => i.Prefix || i.Key)
-      .map(i => join(Bucket, i))
+    return items.map(i => i.Prefix || i.Key).map(i => join(Bucket, i))
   }
 
   const copyOne = async (from, to) => {

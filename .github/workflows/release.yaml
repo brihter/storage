@@ -1,5 +1,8 @@
 name: brighter/storage
-on: [pull_request]
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
   build:
     env:

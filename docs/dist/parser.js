@@ -18,7 +18,7 @@ const renderDocNode = (docNode) => {
 };
 const getTypeName = (node) => {
     let type = node.getType().getText();
-    node.forEachDescendant((item) => {
+    node.forEachDescendant(item => {
         if (ts_morph_1.Node.isTypeReference(item)) {
             type = item.getText();
         }
@@ -60,7 +60,9 @@ const getDescription = (node) => {
 };
 const getExample = (node) => {
     const parserContext = tsdocParser.parseString(node.getFullText());
-    const block = parserContext.docComment.customBlocks.filter(b => b.blockTag.tagName === '@example').pop();
+    const block = parserContext.docComment.customBlocks
+        .filter(b => b.blockTag.tagName === '@example')
+        .pop();
     let output = '';
     if (block)
         output = renderDocNode(block.content);
@@ -76,7 +78,9 @@ const getType = (node) => {
         }
         const parameters = node.getParameters().map(getParametersSignature);
         const returnType = getTypeName(node);
-        const callSignature = `(${parameters.map(p => `${p.name}: ${p.returnType}`).join(', ')}): ${returnType}`;
+        const callSignature = `(${parameters
+            .map(p => `${p.name}: ${p.returnType}`)
+            .join(', ')}): ${returnType}`;
         return {
             name: 'anonymous',
             parameters,
@@ -94,14 +98,14 @@ const getType = (node) => {
     let properties = [];
     let methods = [];
     let returnType = 'unknown';
-    node.forEachDescendant((node) => {
+    node.forEachDescendant(node => {
         const kind = node.getKind();
         if (kind === ts_morph_1.SyntaxKind.CallSignature) {
             const method = getMember(node);
             if (method) {
                 // fill parameters
                 parameters = method.parameters.reduce((acc, curr) => {
-                    const hasParam = acc.find((el) => el.name === curr.name);
+                    const hasParam = acc.find(el => el.name === curr.name);
                     if (!hasParam)
                         acc.push(curr);
                     return acc;

@@ -2,31 +2,31 @@ type ConfigStorage = {
   /**
    * Storage type. For example 'local'.
    */
-  type: 'local' | 's3' | 'r2';
+  type: 'local' | 's3' | 'r2'
 
   /**
    * Storage root path. For example '/tmp/storage'.
    */
-  path: string;
+  path: string
 
   /**
    * File encoding. Default is `utf8`.
    * @default 'utf8'
    */
-  encoding?: string;
+  encoding?: string
 
   /**
    * The number of concurrent tasks running. Default is `32`.
    * @default 32
    */
-  concurrency?: number;
+  concurrency?: number
 }
 
 type Config = {
   /**
    * Storage configuration.
    */
-  storage: ConfigStorage;
+  storage: ConfigStorage
 
   /**
    * Storage client configuration is required for non-local storage types.
@@ -34,7 +34,7 @@ type Config = {
    * into the underlying provider. See the official documentation for more
    * information.
    */
-  storageClient?: object;
+  storageClient?: object
 }
 
 type CopyFunctionOpts = {
@@ -42,12 +42,12 @@ type CopyFunctionOpts = {
    * The number of concurrent tasks running. Default is `32`.
    * @default 32
    */
-  concurrency?: number;
+  concurrency?: number
 }
 
 /**
  * Recursively copies the contents from source (`pathFrom`) to destination (`pathTo`).
- * 
+ *
  * @example
  * ```js
  * await storage.copy('file', 'file_copy')
@@ -57,13 +57,13 @@ type CopyFunctionOpts = {
  * ```
  */
 type CopyFunction = {
-  (pathFrom: string, pathTo: string): Promise<void>;
-  (pathFrom: string, pathTo: string, opts: CopyFunctionOpts): Promise<void>;
+  (pathFrom: string, pathTo: string): Promise<void>
+  (pathFrom: string, pathTo: string, opts: CopyFunctionOpts): Promise<void>
 }
 
 /**
  * Checks if a file exists.
- * 
+ *
  * @example
  * ```js
  * let data = await storage.exists('file')
@@ -71,7 +71,7 @@ type CopyFunction = {
  * ```
  */
 type ExistsFunction = {
-  (path: string): Promise<boolean>;
+  (path: string): Promise<boolean>
 }
 
 type ListFunctionOpts = {
@@ -79,24 +79,24 @@ type ListFunctionOpts = {
    * Scan the input path recursively when `recursive` is `true`. Default is `false`.
    * @default false
    */
-  recursive?: boolean;
+  recursive?: boolean
 
   /**
    * Return absolute paths (relative to the configured storage path) when `absolute` is `true`. Default is `false`.
    * @default false
    */
-  absolute?: boolean;
+  absolute?: boolean
 
   /**
    * The number of concurrent tasks running. Default is `32`.
    * @default 32
    */
-  concurrency?: number;
+  concurrency?: number
 }
 
 /**
  * Reads the contents of a `path` and returns an array of paths included in the `path`.
- * 
+ *
  * @example
  * ```js
  * let data = await storage.list('/')
@@ -106,8 +106,8 @@ type ListFunctionOpts = {
  * ```
  */
 type ListFunction = {
-  (path: string): Promise<Array<string>>;
-  (path: string, opts: ListFunctionOpts): Promise<Array<string>>;
+  (path: string): Promise<Array<string>>
+  (path: string, opts: ListFunctionOpts): Promise<Array<string>>
 }
 
 type ReadFunctionOpts = {
@@ -115,12 +115,12 @@ type ReadFunctionOpts = {
    * File encoding. Default is `utf8`.
    * @default 'utf8'
    */
-  encoding?: string;
+  encoding?: string
 }
 
 /**
  * Reads the contents of a file.
- * 
+ *
  * @example
  * ```js
  * let data = await storage.read('file')
@@ -129,8 +129,8 @@ type ReadFunctionOpts = {
  * ```
  */
 type ReadFunction = {
-  (path: string): Promise<string | Buffer>;
-  (path: string, opts: ReadFunctionOpts): Promise<string | Buffer>;
+  (path: string): Promise<string | Buffer>
+  (path: string, opts: ReadFunctionOpts): Promise<string | Buffer>
 }
 
 type RemoveFunctionOpts = {
@@ -138,18 +138,18 @@ type RemoveFunctionOpts = {
    * Scan the input path recursively when `recursive` is `true`. Default is `false`.
    * @default false
    */
-  recursive?: boolean;
+  recursive?: boolean
 
   /**
    * The number of concurrent tasks running. Default is `32`.
    * @default 32
    */
-  concurrency?: number;
+  concurrency?: number
 }
 
 /**
  * Removes the file.
- * 
+ *
  * @example
  * ```js
  * await storage.remove('file')
@@ -158,28 +158,28 @@ type RemoveFunctionOpts = {
  * ```
  */
 type RemoveFunction = {
-  (path: string): Promise<void>;
-  (path: string, opts: RemoveFunctionOpts): Promise<void>;
+  (path: string): Promise<void>
+  (path: string, opts: RemoveFunctionOpts): Promise<void>
 }
 
 type StatFunctionReturn = {
-  file: String;
-  contentType: String;
-  etag: String,
-  size: Number;
-  modified: Date;
+  file: String
+  contentType: String
+  etag: String
+  size: Number
+  modified: Date
 }
 
 /**
  * Returns the file information.
- * 
+ *
  * @example
  * ```js
  * let data = await storage.stat('file')
  * ```
  */
 type StatFunction = {
-  (path: string): Promise<StatFunctionReturn>;
+  (path: string): Promise<StatFunctionReturn>
 }
 
 type WriteFunctionOpts = {
@@ -187,12 +187,12 @@ type WriteFunctionOpts = {
    * File encoding. Default is `utf8`.
    * @default 'utf8'
    */
-  encoding?: string;
+  encoding?: string
 }
 
 /**
  * Writes data to a file, replacing the file if it already exists.
- * 
+ *
  * @example
  * ```js
  * await storage.write('file', 'hello')
@@ -201,8 +201,8 @@ type WriteFunctionOpts = {
  * ```
  */
 type WriteFunction = {
-  (path: string, data: string | Buffer): Promise<void>;
-  (path: string, data: string | Buffer, opts: WriteFunctionOpts): Promise<void>;
+  (path: string, data: string | Buffer): Promise<void>
+  (path: string, data: string | Buffer, opts: WriteFunctionOpts): Promise<void>
 }
 
 /**
@@ -212,25 +212,25 @@ type WriteFunction = {
  * ```
  */
 type URIFunction = {
-  (path: string): Promise<string>;
+  (path: string): Promise<string>
 }
 
 type StorageProvider = {
-  readonly config: ConfigStorage;
-  
-  copy: CopyFunction;
-  exists: ExistsFunction;
-  list: ListFunction;
-  read: ReadFunction;
-  remove: RemoveFunction;
-  stat: StatFunction;
-  uri: URIFunction;
-  write: WriteFunction;
+  readonly config: ConfigStorage
+
+  copy: CopyFunction
+  exists: ExistsFunction
+  list: ListFunction
+  read: ReadFunction
+  remove: RemoveFunction
+  stat: StatFunction
+  uri: URIFunction
+  write: WriteFunction
 }
 
 /**
  * Creates the storage provider.
- * 
+ *
  * @example
  * ```js
  * const storage = Storage({
@@ -244,4 +244,4 @@ type StorageProvider = {
  * })
  * ```
  */
-export function Storage(config: Config): StorageProvider;
+export function Storage(config: Config): StorageProvider

@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.format = void 0;
 const toParameterList = (parameters) => {
-    const list = parameters.map(p => `- \`${p.name}: ${p.returnType}\``).join('\n');
+    const list = parameters
+        .map(p => `- \`${p.name}: ${p.returnType}\``)
+        .join('\n');
     return `
 Parameters:
 
@@ -70,16 +72,19 @@ ${toExample(constructor.example)}
 
 ### Properties
 
-${contract.properties.map(p => `
+${contract.properties
+        .map(p => `
 #### ${p.name}
 
 - \`${p.callSignature}\`
 
-`).join('\n')}
+`)
+        .join('\n')}
 
 ### Methods
 
-${contract.methods.map(m => {
+${contract.methods
+        .map(m => {
         const type = types.get(m.returnType);
         if (!type)
             return '';
@@ -92,7 +97,8 @@ ${toParameterList(type.parameters)}
 ${toReturn(type.returnType)}
 ${toExample(type.example)}
 `;
-    }).join('\n')}
+    })
+        .join('\n')}
 `;
 };
 exports.format = format;
