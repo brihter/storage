@@ -5,28 +5,28 @@ cd "$parent_path/.."
 
 version_current=$(cat package.json | jq -r .version)
 version_patch=$(echo $version_current | grep -Eo '[0-9]+$')
-version_patch_next=$((version_patch + 1))
-version_next=$(echo $version_current | sed 's/.$/'$version_patch_next'/')
-version_next_text="Release - ${version_next}"
+version_patch_next=$((version_patch+1))
+version_next=$(echo $version_current | sed -E 's/(.*)'$version_patch'/\1'$version_patch_next'/')
+version_next_text="Release - v${version_next}"
 
 echo "[*] Version (current) : $version_current"
 echo "[*] Version (next)    : $version_next"
 
-if [[ $(git status --porcelain) ]]; then
-  echo "[x] Error: Git working directory is dirty. Exiting."
-  exit 1
-fi
+# if [[ $(git status --porcelain) ]]; then
+#   echo "[x] Error: Git working directory is dirty. Exiting."
+#   exit 1
+# fi
 
-git checkout main
-git pull origin main
+# git checkout main
+# git pull origin main
 
-./bin/build.sh
-npm version $version_next
+#./bin/build-docs.sh
+./bin/build-version.sh $version_next
 
 git add .
-git commit -m $version_next_text
-git tag -a $version_next -m $version_next_text
-git push origin $version_next
-git push origin main
+git commit -m "$version_next_text"
+#git tag -a "v$version_next" -m $version_next_text
+# git push origin $version_next
+# git push origin main
 
 echo "[*] Done"
