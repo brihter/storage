@@ -64,7 +64,13 @@ const run = provider => {
       it('should return a uniform object', async () => {
         const result = await storage.stat('msg')
         expect(result).to.be.an('object')
-        expect(result).to.have.keys(['file', 'contentType', 'etag', 'size', 'modified'])
+        expect(result).to.have.keys([
+          'file',
+          'contentType',
+          'etag',
+          'size',
+          'modified'
+        ])
         expect(result.file).to.be.a('string')
         expect(result.contentType).to.be.a('string')
         expect(result.etag).to.be.a('string')

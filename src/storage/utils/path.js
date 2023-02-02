@@ -9,12 +9,12 @@ const Path = config => {
     return scopedPath.replace(config.path, '')
   }
 
-  const absolute = (fullPath) => {
-    const prefix = (path) => {
+  const absolute = fullPath => {
+    const prefix = path => {
       if (!path.startsWith('/')) path = `/${path}`
       return path
     }
-    
+
     let path = fullPath
     path = unscope(path)
     path = prefix(path)
@@ -22,7 +22,7 @@ const Path = config => {
   }
 
   const relative = (fullPath, rootPath) => {
-    const format = (path) => {
+    const format = path => {
       const prefix = join(config.path, rootPath)
       return path.replace(prefix, '')
     }
@@ -31,7 +31,7 @@ const Path = config => {
     path = format(path)
     return path
   }
-  
+
   return {
     scope,
     unscope,

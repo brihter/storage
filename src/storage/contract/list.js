@@ -20,14 +20,14 @@ const list = provider => {
   }
 
   return async (path, opts = {}) => {
-    const format = (items) => {
+    const format = items => {
       if (opts.absolute) {
         return items.map(absolute)
       }
 
       return items.map(item => relative(item, path))
     }
-    
+
     opts = defaults(opts)
     validatePath(path)
 

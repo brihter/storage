@@ -30,7 +30,6 @@ const remove = provider => {
 
     return toRemove
   }
-  
 
   return async (path, opts = {}) => {
     opts = defaults(opts)
@@ -39,7 +38,7 @@ const remove = provider => {
     let toRemove = []
     toRemove = await getItems(path, opts)
     toRemove = toRemove.map(scope)
-    
+
     await Bluebird.map(toRemove, provider.removeOne, opts)
   }
 }
