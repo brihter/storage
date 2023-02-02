@@ -1,10 +1,10 @@
-name: brighter/storage
+name: on_pull_request_owner
 on:
-  push:
-    branches:
-      - 'main'
+  pull_request:
+    types: [opened, reopened]
 jobs:
   build:
+    if: github.event.pull_request.user.login == 'brihter'
     env:
       NODE_ENV: test
     runs-on: ubuntu-20.04
@@ -29,8 +29,3 @@ jobs:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_ACCESS_KEY_ID: ${{ secrets.CF_ACCESS_KEY_ID }}
           CF_SECRET_ACCESS_KEY: ${{ secrets.CF_SECRET_ACCESS_KEY }}
-      - name: publish
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_ACCESS_TOKEN }}
-          access: public

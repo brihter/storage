@@ -1,0 +1,36 @@
+name: on_push_main
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    env:
+      NODE_ENV: test
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node: [ '16.x', '18.x' ]
+    name: build
+    steps:
+      - name: environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install
+        run: ./bin/install.sh
+      - name: test
+        run: ./bin/test.sh
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_ACCESS_KEY_ID: ${{ secrets.CF_ACCESS_KEY_ID }}
+          CF_SECRET_ACCESS_KEY: ${{ secrets.CF_SECRET_ACCESS_KEY }}
+      - name: publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
