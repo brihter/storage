@@ -25,7 +25,7 @@ echo "[*] Version (next)    : $version_next"
 
 git add .
 git commit -m "$version_next_text"
-#git tag -a "v$version_next" -m $version_next_text
+git tag -a "v$version_next" -m "$version_next_text"
 # git push origin $version_next
 # git push origin main
 
