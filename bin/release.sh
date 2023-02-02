@@ -12,7 +12,10 @@ version_next_text="Release - ${version_next}"
 echo "[*] Version (current) : $version_current"
 echo "[*] Version (next)    : $version_next"
 
-git diff --quiet || echo "[x] Error: Git working directory is dirty. Exiting." && exit 1
+if [[ $(git status --porcelain) ]]; then
+  echo "[x] Error: Git working directory is dirty. Exiting."
+  exit 1
+fi
 
 git checkout main
 git pull origin main
@@ -27,4 +30,3 @@ git push origin $version_next
 git push origin main
 
 echo "[*] Done"
-
