@@ -7,4 +7,5 @@ docs/
 env/
 src/**/*.test.js
 ops/
+etc/
 test/
