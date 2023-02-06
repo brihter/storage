@@ -6,9 +6,9 @@
 - has a simple, concise API and,
 - is tested against real infrastructure.
 
-Why is local development important? Most of today's software talks directly to the cloud, even in local environments. This [extends the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and creates a [cloud provider dependency](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/).
+Why is local development important? Most of today's software talks directly to the cloud, even in local environments. This extends the feedback loop and creates a storage provider dependency.
 
-This library offers a different approach. It introduces a common interface that enables seamless switching between providers and a local implementation that can be used during local development.
+This library offers a different approach. It introduces a unified interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) during development.
 
 A list of supported providers:
 
@@ -45,35 +45,4 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-For more information, see the [documentation](documentation.md).
-
-## API
-
-The library aims to provide a simple, concise API that's easy to use and remember. 
-
-Constructors:
-
-- [Storage](documentation.md##constructor)
-
-Properties:
-
-- [config](documentation.md##config)
-
-Methods:
-
-- [copy](documentation.md#copy)
-- [exists](#documentation.mdexists)
-- [list](#documentation.mdlist)
-- [read](#documentation.mdread)
-- [remove](#documentation.mdremove)
-- [stat](#documentation.mdstat)
-- [uri](#documentation.mduri)
-- [write](#documentation.mdwrite)
-
-It knows how to handle:
-
-- different content encodings (via `iconv-lite`),
-- recursive operations and
-- throttling of concurrent operations.
-
-For more information, see the [documentation](documentation.md).
+For more information, see the [documentation](docs/README.md).
