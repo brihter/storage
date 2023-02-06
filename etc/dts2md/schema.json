@@ -1,0 +1,853 @@
+[
+    {
+        "type": "TypeAlias",
+        "description": "Storage configuration object.",
+        "example": "```js\nconst cfg = {\n  type: 'local',\n  path: '/tmp/storage',\n  encoding: 'utf8',\n  concurrenct: 10\n}\n```",
+        "name": "ConfigStorage",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "Storage type.",
+                "example": "",
+                "name": "type",
+                "returnType": "string",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "Storage root path.",
+                "example": "",
+                "name": "path",
+                "returnType": "string",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "File encoding. Optional, default is `utf8`. The list of supported encodings can be found [here](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).",
+                "example": "",
+                "name": "encoding",
+                "returnType": "string",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "The number of concurrent tasks running. Optional, default is `32`.",
+                "example": "",
+                "name": "concurrency",
+                "returnType": "number",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Configuration.",
+        "example": "```js\nconst config = {\n  storage: {\n    type: 's3',\n    path: 'my-bucket'\n  },\n  storageClient: {\n    region: 'eu-central-1'\n  }\n}\n```",
+        "name": "Config",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "Storage configuration.",
+                "example": "",
+                "name": "storage",
+                "returnType": "ConfigStorage",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "Storage client configuration. The shape depends on the underlying provider. For S3 (or any other S3 compatible provider) see [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).",
+                "example": "",
+                "name": "storageClient",
+                "returnType": "any",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "",
+        "name": "CopyOpts",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "The number of concurrent tasks running. Default is `32`.",
+                "example": "",
+                "name": "concurrency",
+                "returnType": "number",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Recursively copies the contents from source to destination.",
+        "example": "```js\nawait storage.copy('file', 'file_copy')\nawait storage.copy('file', 'dir/')\nawait storage.copy('dir/', 'dir_copy/')\nawait storage.copy('dir/', 'dir_copy/', { concurrency: 10 })\n```",
+        "name": "Copy",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(pathFrom: string, pathTo: string)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "pathFrom",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "pathTo",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(pathFrom: string, pathTo: string, opts: CopyOpts)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "pathFrom",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "pathTo",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "opts",
+                        "returnType": "CopyOpts",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Checks if a file exists.",
+        "example": "```js\nlet data = await storage.exists('file')\nlet data = await storage.exists('dir/')\n```",
+        "name": "Exists",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<boolean>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "List options.",
+        "example": "```js\nconst opts = {\n  recursive: true,\n  absolute: true,\n  concurrency: 10\n}\n```",
+        "name": "ListOpts",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "Scan the input path recursively when `true`. Optional, default is `false`.",
+                "example": "",
+                "name": "recursive",
+                "returnType": "boolean",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "Return absolute paths (relative to the configured storage path) when `true`. Optional, default is `false`.",
+                "example": "",
+                "name": "absolute",
+                "returnType": "boolean",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "The number of concurrent tasks running. Optional, default is `32`.",
+                "example": "",
+                "name": "concurrency",
+                "returnType": "number",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Reads the contents of a `path` and returns an array of paths included in the `path`.",
+        "example": "```js\nlet data = await storage.list('/')\nlet data = await storage.list('/', { recursive: true })\nlet data = await storage.list('/', { recursive: true, absolute: true })\nlet data = await storage.list('/', { recursive: true, absolute: true, concurrency: 10 })\n```",
+        "name": "List",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<string[]>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string, opts: ListOpts)",
+                "returnType": "Promise<string[]>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "opts",
+                        "returnType": "ListOpts",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "",
+        "name": "ReadOpts",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "File encoding. Default is `utf8`.",
+                "example": "",
+                "name": "encoding",
+                "returnType": "string",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Reads the contents of a file.",
+        "example": "```js\nlet data = await storage.read('file')\nlet data = await storage.read('file', { encoding: 'ascii' })\nlet data = await storage.read('image.bin', { encoding: 'binary' })\n```",
+        "name": "Read",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<string | Buffer>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string, opts: ReadOpts)",
+                "returnType": "Promise<string | Buffer>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "opts",
+                        "returnType": "ReadOpts",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "",
+        "name": "RemoveOpts",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "Scan the input path recursively when `recursive` is `true`. Default is `false`.",
+                "example": "",
+                "name": "recursive",
+                "returnType": "boolean",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "The number of concurrent tasks running. Default is `32`.",
+                "example": "",
+                "name": "concurrency",
+                "returnType": "number",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Removes the file.",
+        "example": "```js\nawait storage.remove('file')\nawait storage.remove('dir/', { recursive: true })\nawait storage.remove('dir/', { recursive: true, concurrency: 10 })\n```",
+        "name": "Remove",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string, opts: RemoveOpts)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "opts",
+                        "returnType": "RemoveOpts",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "",
+        "name": "StatReturn",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "file",
+                "returnType": "String",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "contentType",
+                "returnType": "String",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "etag",
+                "returnType": "String",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "size",
+                "returnType": "Number",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "modified",
+                "returnType": "Date",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Returns the file information.",
+        "example": "```js\nlet data = await storage.stat('file')\n```",
+        "name": "Stat",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<StatReturn>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Write options.",
+        "example": "```js\nconst opts = {\n  encoding: 'ascii'\n}\n```",
+        "name": "WriteOpts",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "File encoding. Optional, default is `utf8`. The list of supported encodings can be found [here](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).",
+                "example": "",
+                "name": "encoding",
+                "returnType": "string",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "Writes data to a file, replacing the file if it already exists.",
+        "example": "```js\nawait storage.write('file', 'hello')\nawait storage.write('file', 'Ω', { encoding: 'utf8' })\nawait storage.write('file', Buffer.alloc(4), { encoding: 'binary' })\n```",
+        "name": "Write",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string, data: string | Buffer)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "data",
+                        "returnType": "string | Buffer",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string, data: string | Buffer, opts: WriteOpts)",
+                "returnType": "Promise<void>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "data",
+                        "returnType": "string | Buffer",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    },
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "opts",
+                        "returnType": "WriteOpts",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "```js\nlet data = await storage.uri('file')\n```",
+        "name": "URI",
+        "returnType": "",
+        "parameters": [
+            {
+                "type": "",
+                "description": "",
+                "example": "",
+                "name": "(path: string)",
+                "returnType": "Promise<string>",
+                "parameters": [
+                    {
+                        "type": "Parameter",
+                        "description": "",
+                        "example": "",
+                        "name": "path",
+                        "returnType": "string",
+                        "parameters": [],
+                        "properties": [],
+                        "methods": []
+                    }
+                ],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    },
+    {
+        "type": "TypeAlias",
+        "description": "",
+        "example": "",
+        "name": "StorageInterface",
+        "returnType": "",
+        "parameters": [],
+        "properties": [
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "config",
+                "returnType": "ConfigStorage",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "copy",
+                "returnType": "Copy",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "exists",
+                "returnType": "Exists",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "list",
+                "returnType": "List",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "read",
+                "returnType": "Read",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "remove",
+                "returnType": "Remove",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "stat",
+                "returnType": "Stat",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "uri",
+                "returnType": "URI",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            },
+            {
+                "type": "Property",
+                "description": "",
+                "example": "",
+                "name": "write",
+                "returnType": "Write",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "methods": []
+    },
+    {
+        "type": "Function",
+        "description": "Creates the storage.",
+        "example": "```js\nconst storage = Storage({\n  storage: {\n    type: 's3',\n    path: 'my-bucket'\n  },\n  storageClient: {\n    region: 'eu-central-1'\n  }\n})\n```",
+        "name": "Storage",
+        "returnType": "StorageInterface",
+        "parameters": [
+            {
+                "type": "Parameter",
+                "description": "",
+                "example": "",
+                "name": "config",
+                "returnType": "Config",
+                "parameters": [],
+                "properties": [],
+                "methods": []
+            }
+        ],
+        "properties": [],
+        "methods": []
+    }
+]

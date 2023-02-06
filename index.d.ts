@@ -46,7 +46,7 @@ type CopyFunctionOpts = {
 }
 
 /**
- * Recursively copies the contents from source (`pathFrom`) to destination (`pathTo`).
+ * Recursively copies the contents from source to destination.
  *
  * @example
  * ```js
@@ -162,7 +162,7 @@ type RemoveFunction = {
   (path: string, opts: RemoveFunctionOpts): Promise<void>
 }
 
-type StatFunctionReturn = {
+type StatFunctionOutput = {
   file: String
   contentType: String
   etag: String
@@ -179,9 +179,12 @@ type StatFunctionReturn = {
  * ```
  */
 type StatFunction = {
-  (path: string): Promise<StatFunctionReturn>
+  (path: string): Promise<StatFunctionOutput>
 }
 
+/**
+ * Write options.
+ */
 type WriteFunctionOpts = {
   /**
    * File encoding. Default is `utf8`.
@@ -215,7 +218,7 @@ type URIFunction = {
   (path: string): Promise<string>
 }
 
-type StorageProvider = {
+type StorageInterface = {
   readonly config: ConfigStorage
 
   copy: CopyFunction
@@ -244,4 +247,4 @@ type StorageProvider = {
  * })
  * ```
  */
-export function Storage(config: Config): StorageProvider
+export function Storage(config: Config): StorageInterface
