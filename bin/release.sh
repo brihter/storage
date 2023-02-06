@@ -25,8 +25,6 @@ echo ""
 echo "[*] Release (tag)     : $version_next_tag"
 echo "[*] Release (text)    : $version_next_text"
 
-exit 0
-
 if [[ $(git status --porcelain) ]]; then
   echo "[x] Error: Git working directory is dirty. Exiting."
   exit 1
