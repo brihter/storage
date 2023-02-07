@@ -46,3 +46,11 @@ main().catch(console.error)
 ```
 
 For more information, see the [documentation](docs/README.md).
+
+## Roadmap
+
+- `v1.0.0-beta.7` Make documentation more verbose.
+- `v1.0.0-beta.7` Fix documentation `README.md` index.
+- `v1.0.0-beta.8` Rename `uri()` to `url()` and implement `uri()`.
+- `v1.0.0` Move out of beta.
+- `v2.0.0` Detach the storage client from the library.
