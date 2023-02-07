@@ -127,7 +127,6 @@ await storage.remove('file-copy')
 
 let data
 data = await storage.stat('file')
-
 data = await storage.exists('file')
 data = await storage.list('/', { recursive: true })
 data = await storage.read('file')
