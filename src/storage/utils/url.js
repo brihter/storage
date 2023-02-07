@@ -1,7 +1,11 @@
 const Url = require('url')
 
 const url2parts = url => {
-  const parts = Url.parse(`https://${url}`)
+  if (!url.startsWith('http://') || !url.startsWith('https://')) {
+    url = `https://${url}`
+  }
+
+  const parts = Url.parse(url)
 
   let Bucket = parts.hostname
 

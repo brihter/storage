@@ -66,7 +66,6 @@ Methods:
 - [read](#read)
 - [remove](#remove)
 - [stat](#stat)
-- [uri](#uri)
 - [write](#write)
 
 
@@ -92,7 +91,6 @@ See: [ConfigStorage](ConfigStorage.md)
 - `read: ReadFunction`
 - `remove: RemoveFunction`
 - `stat: StatFunction`
-- `uri: URIFunction`
 - `write: WriteFunction`
 
 
@@ -150,15 +148,6 @@ See: [StatFunction](StatFunction.md)
 
 
 
-#### uri: URIFunction
-
-Returns the unique resource identifier (URI) of the file.
-
-See: [URIFunction](URIFunction.md)
-
-
-
-
 #### write: WriteFunction
 
 Writes data to a file, replacing the file if it already exists.
@@ -183,7 +172,6 @@ await storage.remove('file-copy')
 
 let data
 data = await storage.stat('file')
-data = await storage.uri('file')
 data = await storage.exists('file')
 data = await storage.list('/', { recursive: true })
 data = await storage.read('file')

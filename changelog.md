@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.0-beta.9
+
+- `v1.0.0-beta.9` Remove the `uri()` function from the storage interface.
+- `v1.0.0-beta.9` Add URI information to `stat()`.
+- `v1.0.0-beta.9` Add URL information to `stat()`.
+
 ## v1.0.0-beta.8
 
 - `v1.0.0-beta.8` Drop multiple node versions from the CI's release workflow.

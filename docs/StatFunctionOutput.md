@@ -15,6 +15,8 @@ Properties:
 - [etag](#etag-string)
 - [size](#size-number)
 - [modified](#modified-date)
+- [uri](#uri-string)
+- [url](#url-string)
 
 
 
@@ -25,6 +27,8 @@ Properties:
 - `etag: String`
 - `size: Number`
 - `modified: Date`
+- `uri: String`
+- `url: String`
 
 
 #### file: String
@@ -71,6 +75,24 @@ File last modified date.
 
 
 
+
+#### uri: String
+
+File uniform resource identifier (URI).
+
+
+
+
+
+
+#### url: String
+
+File uniform resource locator (URL).
+
+
+
+
+
 ## Examples
 
 ```js
@@ -79,6 +101,8 @@ let output = {
   contentType: 'application/octet-stream',
   etag: '49f68a5c8493ec2c0bf489821c21fc3b',
   size: 2,
-  modified: 2023-02-07T09:25:30.000Z
+  modified: 2023-02-07T09:25:30.000Z,
+  uri: 's3://bucket/msg',
+  url: 'https://s3.amazonaws.com/bucket/msg'
 }
 ```

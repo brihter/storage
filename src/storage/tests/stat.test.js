@@ -52,11 +52,14 @@ const run = provider => {
     })
 
     describe('implementation', () => {
+      // TODO make the uri and url tests more comprehensive
       it(`should stat`, async () => {
         const result = await storage.stat('msg')
         expect(result.file).to.eql('msg')
         expect(result.size).to.eql(2)
         expect(result.modified).to.not.be.undefined
+        expect(result.uri.endsWith('msg')).to.eql(true)
+        expect(result.url.endsWith('msg')).to.eql(true)
       })
     })
 
@@ -69,17 +72,21 @@ const run = provider => {
           'contentType',
           'etag',
           'size',
-          'modified'
+          'modified',
+          'uri',
+          'url'
         ])
         expect(result.file).to.be.a('string')
         expect(result.contentType).to.be.a('string')
         expect(result.etag).to.be.a('string')
         expect(result.size).to.be.a('number')
         expect(result.modified).to.be.a('date')
+        expect(result.uri).to.be.a('string')
+        expect(result.url).to.be.a('string')
       })
 
       it('should return undefined on no file', async () => {
-        const result = await storage.uri('wabaduba.mp3')
+        const result = await storage.stat('wabaduba.mp3')
         expect(result).to.be.undefined
       })
     })
