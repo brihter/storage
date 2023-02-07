@@ -10,7 +10,7 @@
 
 Properties:
 
-- [type](#type-"local"--"s3"--"r2")
+- [type](#type-string)
 - [path](#path-string)
 - [encoding](#encoding-string)
 - [concurrency](#concurrency-number)
@@ -19,13 +19,13 @@ Properties:
 
 ## Properties
 
-- `type: "local" | "s3" | "r2"`
+- `type: string`
 - `path: string`
 - `encoding: string`
 - `concurrency: number`
 
 
-#### type: "local" | "s3" | "r2"
+#### type: string
 
 Storage type. For example 'local'.
 

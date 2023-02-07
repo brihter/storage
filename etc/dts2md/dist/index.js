@@ -62,23 +62,23 @@ const storageInterfaceMethods = storageInterfaceDefinition[0].methods
     .map(methodType => typesLookup.get(methodType));
 const indexDocumentation = [
     formatter.typeFormatter.format(storageDefinition),
-    formatter.typeFormatter.formatIndex(storageInterfaceDefinition),
-    formatter.typeFormatter.formatProperties(storageInterfaceDefinition),
-    '## Methods\n',
-    storageInterfaceMethods
-        .map(methodType => {
-        if (!methodType)
-            return;
-        const methodName = methodType.reduce((_, curr) => curr.name, '');
-        let result = '';
-        result += formatter.typeFormatter.formatConstructors(methodType);
-        result += formatter.typeFormatter.formatExamples(methodType);
-        result = result.replace('## Constructors', `#### ${methodName}`);
-        result = result.replace('## Examples', `#### Examples`);
-        return result;
-    })
-        .join('\n'),
-    formatter.typeFormatter.formatExamples(storageInterfaceDefinition)
+    formatter.typeFormatter.format(storageInterfaceDefinition)
+    // formatter.typeFormatter.formatIndex(storageInterfaceDefinition),
+    // formatter.typeFormatter.formatProperties(storageInterfaceDefinition),
+    // '## Methods\n',
+    // storageInterfaceMethods
+    //   .map(methodType => {
+    //     if (!methodType) return
+    //     const methodName = methodType.reduce((_, curr) => curr.name, '')
+    //     let result = ''
+    //     result += formatter.typeFormatter.formatConstructors(methodType)
+    //     result += formatter.typeFormatter.formatExamples(methodType)
+    //     result = result.replace('## Constructors', `#### ${methodName}`)
+    //     result = result.replace('## Examples', `#### Examples`)
+    //     return result
+    //   })
+    //   .join('\n'),
+    // formatter.typeFormatter.formatExamples(storageInterfaceDefinition)
 ].join('\n');
 const filePath = path.resolve(`${__dirname}/../../../docs/README.md`);
 toFile(filePath, indexDocumentation);
