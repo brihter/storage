@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.0-beta.8
+
+- `v1.0.0-beta.8` Drop multiple node versions from the CI's release workflow.
+- `v1.0.0-beta.8` Drop tests from the CI's release workflow.
+
 ## v1.0.0-beta.7
 
 - `v1.0.0-beta.7` Added a public roadmap.

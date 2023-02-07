@@ -49,7 +49,7 @@ For more information, see the [documentation](docs/README.md).
 
 ## Roadmap
 
-- `v1.0.0-beta.8` Rename `uri()` to `url()` and implement `uri()`.
+- `v1.0.0-beta.9` Rename `uri()` to `url()` and implement `uri()`.
 - `v1.0.0-beta.9` Add examples.
 - `v1.0.0` Move out of beta.
 - `v1.1.0` Support for relative input paths.
