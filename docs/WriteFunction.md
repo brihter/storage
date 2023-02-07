@@ -25,8 +25,8 @@ Constructors:
 
 Parameters:
 
-- `path: string`
-- `data: Buffer`
+- `path: string` - File path.
+- `data: Buffer` - File contents.
 
 
 
@@ -41,9 +41,9 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `data: Buffer`
-- `opts: WriteFunctionOpts`
+- `path: string` - File path.
+- `data: Buffer` - File contents.
+- `opts: WriteFunctionOpts` - Write options.
 
 See: [WriteFunctionOpts](WriteFunctionOpts.md)
 

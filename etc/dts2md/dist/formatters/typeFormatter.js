@@ -58,6 +58,12 @@ const TypeFormatter = (typesLookup) => {
         return acc;
     }, false);
     const getIndex = (typeDefinitions) => {
+        const toAnchor = (input) => {
+            let anchor = input.toLowerCase();
+            anchor = anchor.replace(/\(|\)|\:|\,|\|/g, '');
+            anchor = anchor.replace(/\s/g, '-');
+            return anchor;
+        };
         const constructors = () => {
             if (!hasParameters(typeDefinitions))
                 return '';
@@ -69,9 +75,7 @@ const TypeFormatter = (typesLookup) => {
                 const nameAnchor = `${type.name}(${type.parameters
                     .map(p => `${p.name}: ${p.valueType}`)
                     .join(', ')})`;
-                let anchor = nameAnchor.toLowerCase();
-                anchor = anchor.replace(/\(|\)|\:|\,|\|/g, '');
-                anchor = anchor.replace(/\s/g, '-');
+                const anchor = toAnchor(nameAnchor);
                 return `- [${name}](#${anchor})`;
             })
                 .join('\n');
@@ -84,11 +88,18 @@ const TypeFormatter = (typesLookup) => {
         const properties = () => {
             if (!hasProperties(typeDefinitions))
                 return '';
-            const properties = typeDefinitions
+            const propertyLookup = typeDefinitions
                 .flatMap(t => t.properties)
-                .map(p => p.name);
-            const list = () => Array.from(new Set(properties))
-                .map(property => `- [${property}](#${property})`)
+                .reduce((acc, curr) => acc.set(curr.name, curr), new Map());
+            const list = () => Array.from(propertyLookup.keys())
+                .map(propertyName => {
+                const property = propertyLookup.get(propertyName);
+                if (!property) {
+                    return;
+                }
+                const anchor = toAnchor(`${property.name}: ${property.valueType}`);
+                return `- [${propertyName}](#${anchor})`;
+            })
                 .join('\n');
             return render(`
         Properties:
@@ -101,7 +112,7 @@ const TypeFormatter = (typesLookup) => {
                 return '';
             const methods = typeDefinitions.flatMap(t => t.methods).map(p => p.name);
             const list = () => Array.from(new Set(methods))
-                .map(v => `- [${v}](#Methods)`)
+                .map(v => `- [${v}](#${v})`)
                 .join('\n');
             return render(`
         Methods:
@@ -202,10 +213,12 @@ const TypeFormatter = (typesLookup) => {
             return output;
         };
         const describeOne = (type) => {
-            let returns = '';
-            returns += `- \`${type.valueType}\``;
+            let title = type.name;
+            if (type.type === 'Property') {
+                title = `${type.name}: ${type.valueType}`;
+            }
             return render(`
-        #### ${type.name}: ${type.valueType}
+        #### ${title}
   
         ${type.description}
   
@@ -215,14 +228,12 @@ const TypeFormatter = (typesLookup) => {
       `);
         };
         const describe = () => {
-            return typeDefinitions
-                .flatMap(t => members)
-                .map(describeOne)
-                .join('\n');
+            return members.map(describeOne).join('\n');
         };
-        if (!hasProperties(typeDefinitions) || !hasMethods(typeDefinitions)) {
+        if (!hasProperties(typeDefinitions) && sectionName === 'Properties')
             return '';
-        }
+        if (!hasMethods(typeDefinitions) && sectionName === 'Methods')
+            return '';
         return render(`
       ## ${sectionName}
   

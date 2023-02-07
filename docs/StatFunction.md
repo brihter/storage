@@ -23,7 +23,7 @@ Constructors:
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 

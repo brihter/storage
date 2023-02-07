@@ -10,6 +10,20 @@ Write options.
 
 Properties:
 
-- [encoding](#encoding)
+- [encoding](#encoding-string)
+
+
+
+## Properties
+
+- `encoding: string`
+
+
+#### encoding: string
+
+File encoding. Optional, default is `utf8`.
+
+
+
 
 
