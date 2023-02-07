@@ -335,13 +335,44 @@ type URIFunction = {
 type StorageInterface = {
   readonly config: ConfigStorage
 
+  /**
+   * Recursively copies the contents from source to destination.
+   */
   copy: CopyFunction
+
+  /**
+   * Checks if a file exists.
+   */
   exists: ExistsFunction
+
+  /**
+   * Reads the contents of a directory.
+   */
   list: ListFunction
+
+  /**
+   * Reads the contents of a file.
+   */
   read: ReadFunction
+
+  /**
+   * Removes the file.
+   */
   remove: RemoveFunction
+
+  /**
+   * Returns the file information.
+   */
   stat: StatFunction
+
+  /**
+   * Returns the unique resource identifier (URI) of the file.
+   */
   uri: URIFunction
+
+  /**
+   * Writes data to a file, replacing the file if it already exists.
+   */
   write: WriteFunction
 }
 

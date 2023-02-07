@@ -98,7 +98,7 @@ See: [ConfigStorage](ConfigStorage.md)
 
 #### copy: CopyFunction
 
-
+Recursively copies the contents from source to destination.
 
 See: [CopyFunction](CopyFunction.md)
 
@@ -107,7 +107,7 @@ See: [CopyFunction](CopyFunction.md)
 
 #### exists: ExistsFunction
 
-
+Checks if a file exists.
 
 See: [ExistsFunction](ExistsFunction.md)
 
@@ -116,7 +116,7 @@ See: [ExistsFunction](ExistsFunction.md)
 
 #### list: ListFunction
 
-
+Reads the contents of a directory.
 
 See: [ListFunction](ListFunction.md)
 
@@ -125,7 +125,7 @@ See: [ListFunction](ListFunction.md)
 
 #### read: ReadFunction
 
-
+Reads the contents of a file.
 
 See: [ReadFunction](ReadFunction.md)
 
@@ -134,7 +134,7 @@ See: [ReadFunction](ReadFunction.md)
 
 #### remove: RemoveFunction
 
-
+Removes the file.
 
 See: [RemoveFunction](RemoveFunction.md)
 
@@ -143,7 +143,7 @@ See: [RemoveFunction](RemoveFunction.md)
 
 #### stat: StatFunction
 
-
+Returns the file information.
 
 See: [StatFunction](StatFunction.md)
 
@@ -152,7 +152,7 @@ See: [StatFunction](StatFunction.md)
 
 #### uri: URIFunction
 
-
+Returns the unique resource identifier (URI) of the file.
 
 See: [URIFunction](URIFunction.md)
 
@@ -161,7 +161,7 @@ See: [URIFunction](URIFunction.md)
 
 #### write: WriteFunction
 
-
+Writes data to a file, replacing the file if it already exists.
 
 See: [WriteFunction](WriteFunction.md)
 
