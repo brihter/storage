@@ -212,7 +212,9 @@ type RemoveFunction = {
  *   contentType: 'application/octet-stream',
  *   etag: '49f68a5c8493ec2c0bf489821c21fc3b',
  *   size: 2,
- *   modified: 2023-02-07T09:25:30.000Z
+ *   modified: 2023-02-07T09:25:30.000Z,
+ *   uri: 's3://bucket/msg',
+ *   url: 'https://s3.amazonaws.com/bucket/msg'
  * }
  * ```
  */
@@ -241,6 +243,16 @@ type StatFunctionOutput = {
    * File last modified date.
    */
   modified: Date
+
+  /**
+   * File uniform resource identifier (URI).
+   */
+  uri: String
+
+  /**
+   * File uniform resource locator (URL).
+   */
+  url: String
 }
 
 /**
@@ -294,21 +306,6 @@ type WriteFunction = {
 }
 
 /**
- * Returns the unique resource identifier (URI) of the file.
- *
- * @example
- * ```js
- * let data = await storage.uri('file')
- * ```
- */
-type URIFunction = {
-  /**
-   * @param path File path.
-   */
-  (path: string): Promise<string>
-}
-
-/**
  * Storage interface returned by the `Storage()` function.
  *
  * @example
@@ -326,7 +323,7 @@ type URIFunction = {
  *
  * let data
  * data = await storage.stat('file')
- * data = await storage.uri('file')
+
  * data = await storage.exists('file')
  * data = await storage.list('/', { recursive: true })
  * data = await storage.read('file')
@@ -364,11 +361,6 @@ type StorageInterface = {
    * Returns the file information.
    */
   stat: StatFunction
-
-  /**
-   * Returns the unique resource identifier (URI) of the file.
-   */
-  uri: URIFunction
 
   /**
    * Writes data to a file, replacing the file if it already exists.
