@@ -38,11 +38,8 @@ See: [StorageInterface](StorageInterface.md)
 ```js
 const storage = Storage({
   storage: {
-    type: 's3',
-    path: 'my-bucket'
-  },
-  storageClient: {
-    region: 'eu-central-1'
+    type: 'local',
+    path: '/tmp/storage'
   }
 })
 ```

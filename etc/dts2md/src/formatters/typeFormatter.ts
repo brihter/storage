@@ -268,8 +268,6 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
         title = `${type.name}: ${type.valueType}`
       }
 
-      console.log(title)
-
       return render(`
         #### ${title}
   

@@ -217,7 +217,6 @@ const TypeFormatter = (typesLookup) => {
             if (type.type === 'Property') {
                 title = `${type.name}: ${type.valueType}`;
             }
-            console.log(title);
             return render(`
         #### ${title}
   

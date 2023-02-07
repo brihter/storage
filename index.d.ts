@@ -309,7 +309,28 @@ type URIFunction = {
 }
 
 /**
- * Storage interface.
+ * Storage interface returned by the `Storage()` function.
+ *
+ * @example
+ * ```js
+ * const storage = Storage({
+ *   storage: {
+ *     type: 'local',
+ *     path: '/tmp/storage'
+ *   }
+ * })
+ *
+ * await storage.write('file', 'hi')
+ * await storage.copy('file', 'file-copy')
+ * await storage.remove('file-copy')
+ *
+ * let data
+ * data = await storage.stat('file')
+ * data = await storage.uri('file')
+ * data = await storage.exists('file')
+ * data = await storage.list('/', { recursive: true })
+ * data = await storage.read('file')
+ * ```
  */
 type StorageInterface = {
   readonly config: ConfigStorage
@@ -331,11 +352,8 @@ type StorageInterface = {
  * ```js
  * const storage = Storage({
  *   storage: {
- *     type: 's3',
- *     path: 'my-bucket'
- *   },
- *   storageClient: {
- *     region: 'eu-central-1'
+ *     type: 'local',
+ *     path: '/tmp/storage'
  *   }
  * })
  * ```
