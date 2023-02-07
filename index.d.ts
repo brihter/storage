@@ -320,7 +320,27 @@ type StorageInterface = {
   read: ReadFunction
   remove: RemoveFunction
   stat: StatFunction
+
+  /**
+   * Returns the unique resource identifier (URI) of the file.
+   *
+   * @example
+   * ```js
+   * let data = await storage.uri('file')
+   * ```
+   */
   uri: URIFunction
+
+  /**
+   * Writes data to a file, replacing the file if it already exists.
+   *
+   * @example
+   * ```js
+   * await storage.write('file', 'hello')
+   * await storage.write('file', 'Ω', { encoding: 'utf8' })
+   * await storage.write('file', Buffer.alloc(4), { encoding: 'binary' })
+   * ```
+   */
   write: WriteFunction
 }
 
