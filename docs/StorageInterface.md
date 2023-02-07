@@ -30,7 +30,7 @@ Methods:
 - `config: ConfigStorage`
 
 
-#### config: ConfigStorage
+#### config
 
 
 
@@ -51,7 +51,7 @@ See: [ConfigStorage](ConfigStorage.md)
 - `write: WriteFunction`
 
 
-#### copy: CopyFunction
+#### copy
 
 
 
@@ -60,7 +60,7 @@ See: [CopyFunction](CopyFunction.md)
 
 
 
-#### exists: ExistsFunction
+#### exists
 
 
 
@@ -69,7 +69,7 @@ See: [ExistsFunction](ExistsFunction.md)
 
 
 
-#### list: ListFunction
+#### list
 
 
 
@@ -78,7 +78,7 @@ See: [ListFunction](ListFunction.md)
 
 
 
-#### read: ReadFunction
+#### read
 
 
 
@@ -87,7 +87,7 @@ See: [ReadFunction](ReadFunction.md)
 
 
 
-#### remove: RemoveFunction
+#### remove
 
 
 
@@ -96,7 +96,7 @@ See: [RemoveFunction](RemoveFunction.md)
 
 
 
-#### stat: StatFunction
+#### stat
 
 
 
@@ -105,7 +105,7 @@ See: [StatFunction](StatFunction.md)
 
 
 
-#### uri: URIFunction
+#### uri
 
 
 
@@ -114,7 +114,7 @@ See: [URIFunction](URIFunction.md)
 
 
 
-#### write: WriteFunction
+#### write
 
 
 

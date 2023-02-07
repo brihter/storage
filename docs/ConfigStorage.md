@@ -25,7 +25,7 @@ Properties:
 - `concurrency: number`
 
 
-#### type: "local" | "s3" | "r2"
+#### type
 
 Storage type. For example 'local'.
 
@@ -34,7 +34,7 @@ Storage type. For example 'local'.
 
 
 
-#### path: string
+#### path
 
 Storage root path. For example '/tmp/storage'.
 
@@ -43,7 +43,7 @@ Storage root path. For example '/tmp/storage'.
 
 
 
-#### encoding: string
+#### encoding
 
 File encoding. Optional, default is `utf8`.
 
@@ -52,7 +52,7 @@ File encoding. Optional, default is `utf8`.
 
 
 
-#### concurrency: number
+#### concurrency
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

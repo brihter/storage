@@ -79,7 +79,7 @@ Methods:
 - `config: ConfigStorage`
 
 
-#### config: ConfigStorage
+#### config
 
 
 

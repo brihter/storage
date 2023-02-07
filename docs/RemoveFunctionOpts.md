@@ -21,7 +21,7 @@ Properties:
 - `concurrency: number`
 
 
-#### recursive: boolean
+#### recursive
 
 Scan the input path recursively when `true`. Optional, default is `false`.
 
@@ -30,7 +30,7 @@ Scan the input path recursively when `true`. Optional, default is `false`.
 
 
 
-#### concurrency: number
+#### concurrency
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

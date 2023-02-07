@@ -23,7 +23,7 @@ Properties:
 - `concurrency: number`
 
 
-#### recursive: boolean
+#### recursive
 
 Scan the input path recursively when `true`. Optional, default is `false`.
 
@@ -32,7 +32,7 @@ Scan the input path recursively when `true`. Optional, default is `false`.
 
 
 
-#### absolute: boolean
+#### absolute
 
 Return absolute paths (relative to the configured storage path) when `true`. Optional, default is `false`.
 
@@ -41,7 +41,7 @@ Return absolute paths (relative to the configured storage path) when `true`. Opt
 
 
 
-#### concurrency: number
+#### concurrency
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

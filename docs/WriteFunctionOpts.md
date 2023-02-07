@@ -19,7 +19,7 @@ Properties:
 - `encoding: string`
 
 
-#### encoding: string
+#### encoding
 
 File encoding. Optional, default is `utf8`.
 

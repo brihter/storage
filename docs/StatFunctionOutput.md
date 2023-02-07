@@ -27,7 +27,7 @@ Properties:
 - `modified: Date`
 
 
-#### file: String
+#### file
 
 File path.
 
@@ -36,7 +36,7 @@ File path.
 
 
 
-#### contentType: String
+#### contentType
 
 File content type.
 
@@ -45,7 +45,7 @@ File content type.
 
 
 
-#### etag: String
+#### etag
 
 File entity tag (ETag). More on ETags [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
@@ -54,7 +54,7 @@ File entity tag (ETag). More on ETags [here](https://developer.mozilla.org/en-US
 
 
 
-#### size: Number
+#### size
 
 File size in bytes.
 
@@ -63,7 +63,7 @@ File size in bytes.
 
 
 
-#### modified: Date
+#### modified
 
 File last modified date.
 

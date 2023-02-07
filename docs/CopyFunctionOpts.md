@@ -19,7 +19,7 @@ Properties:
 - `concurrency: number`
 
 
-#### concurrency: number
+#### concurrency
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

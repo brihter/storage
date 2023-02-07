@@ -21,7 +21,7 @@ Properties:
 - `storageClient: object`
 
 
-#### storage: ConfigStorage
+#### storage
 
 Storage configuration.
 
@@ -30,7 +30,7 @@ See: [ConfigStorage](ConfigStorage.md)
 
 
 
-#### storageClient: object
+#### storageClient
 
 Storage client configuration is required for non-local storage types.
 For example `s3`, `r2`, ... The `storageClient` object is passed directly

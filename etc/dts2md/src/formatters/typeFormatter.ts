@@ -249,7 +249,7 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
 
     const describeOne = (type: TypeInfo): string => {
       return render(`
-        #### ${type.name}: ${type.valueType}
+        #### ${type.name}
   
         ${type.description}
   
@@ -260,10 +260,7 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
     }
 
     const describe = () => {
-      return typeDefinitions
-        .flatMap(t => members)
-        .map(describeOne)
-        .join('\n')
+      return members.map(describeOne).join('\n')
     }
 
     if (!hasProperties(typeDefinitions) && sectionName === 'Properties') {
