@@ -23,7 +23,7 @@ Properties:
 
 #### recursive: boolean
 
-Scan the input path recursively when `true`. Optioanl, default is `false`.
+Scan the input path recursively when `true`. Optional, default is `false`.
 
 
 

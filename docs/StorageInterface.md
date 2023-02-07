@@ -107,28 +107,18 @@ See: [StatFunction](StatFunction.md)
 
 #### uri: URIFunction
 
-Returns the unique resource identifier (URI) of the file.
+
 
 See: [URIFunction](URIFunction.md)
 
-Examples:
 
-```js
-let data = await storage.uri('file')
-```
 
 
 #### write: WriteFunction
 
-Writes data to a file, replacing the file if it already exists.
+
 
 See: [WriteFunction](WriteFunction.md)
 
-Examples:
 
-```js
-await storage.write('file', 'hello')
-await storage.write('file', 'Ω', { encoding: 'utf8' })
-await storage.write('file', Buffer.alloc(4), { encoding: 'binary' })
-```
 
