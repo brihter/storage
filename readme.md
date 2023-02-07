@@ -49,7 +49,8 @@ For more information, see the [documentation](docs/README.md).
 
 ## Roadmap
 
-- `v1.0.0-beta.9` Rename `uri()` to `url()` and implement `uri()`.
+- `v1.0.0-beta.9` Remove `uri()` and add URI information to `stat()`
+- `v1.0.0-beta.9` Add URL information to `stat()`
 - `v1.0.0-beta.10` Add examples.
 - `v1.0.0-beta.10` Add example links to the README.
 - `v1.0.0-beta.10` Add the CHANGELOG link to the README.

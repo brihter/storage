@@ -8,7 +8,6 @@ const {
   read,
   remove,
   stat,
-  uri,
   write
 } = require('./contract')
 
@@ -37,6 +36,7 @@ const Storage = config => {
 
   return {
     config: providerConfig.storage,
+    client: provider.client,
 
     copy: copy(provider),
     exists: exists(provider),
@@ -44,7 +44,6 @@ const Storage = config => {
     read: read(provider),
     remove: remove(provider),
     stat: stat(provider),
-    uri: uri(provider),
     write: write(provider)
   }
 }

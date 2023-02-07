@@ -137,6 +137,7 @@ const impl = config => {
 
   return {
     config: config.storage,
+    client: {},
 
     copyOne,
     read,

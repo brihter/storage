@@ -56,13 +56,19 @@ const impl = config => {
       modified: result.LastModified
     })
 
-    const result = await s3.send(
-      new HeadObjectCommand({
-        Bucket,
-        Key
-      })
-    )
+    let result
+    try {
+      result = await s3.send(
+        new HeadObjectCommand({
+          Bucket,
+          Key
+        })
+      )
+    } catch (err) {
+      // ...
+    }
 
+    if (!result) return
     return format(result)
   }
 
@@ -162,6 +168,7 @@ const impl = config => {
 
   return {
     config: config.storage,
+    client: s3,
 
     copyOne,
     read,

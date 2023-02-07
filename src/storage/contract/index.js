@@ -4,7 +4,6 @@ const { list } = require('./list.js')
 const { read } = require('./read.js')
 const { remove } = require('./remove.js')
 const { stat } = require('./stat.js')
-const { uri } = require('./uri.js')
 const { write } = require('./write.js')
 
 module.exports = {
@@ -14,6 +13,5 @@ module.exports = {
   read,
   remove,
   stat,
-  uri,
   write
 }
