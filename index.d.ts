@@ -10,14 +10,12 @@ type ConfigStorage = {
   path: string
 
   /**
-   * File encoding. Default is `utf8`.
-   * @default 'utf8'
+   * File encoding. Optional, default is `utf8`.
    */
   encoding?: string
 
   /**
-   * The number of concurrent tasks running. Default is `32`.
-   * @default 32
+   * The number of max concurrent tasks running. Optional, default is `32`.
    */
   concurrency?: number
 }
@@ -37,10 +35,12 @@ type Config = {
   storageClient?: object
 }
 
+/**
+ * Copy options.
+ */
 type CopyFunctionOpts = {
   /**
-   * The number of concurrent tasks running. Default is `32`.
-   * @default 32
+   * The number of max concurrent tasks running. Optional, default is `32`.
    */
   concurrency?: number
 }
@@ -74,28 +74,28 @@ type ExistsFunction = {
   (path: string): Promise<boolean>
 }
 
+/**
+ * List options.
+ */
 type ListFunctionOpts = {
   /**
-   * Scan the input path recursively when `recursive` is `true`. Default is `false`.
-   * @default false
+   * Scan the input path recursively when `true`. Optional, default is `false`.
    */
   recursive?: boolean
 
   /**
-   * Return absolute paths (relative to the configured storage path) when `absolute` is `true`. Default is `false`.
-   * @default false
+   * Return absolute paths (relative to the configured storage path) when `true`. Optional, default is `false`.
    */
   absolute?: boolean
 
   /**
-   * The number of concurrent tasks running. Default is `32`.
-   * @default 32
+   * The number of max concurrent tasks running. Optional, default is `32`.
    */
   concurrency?: number
 }
 
 /**
- * Reads the contents of a `path` and returns an array of paths included in the `path`.
+ * Reads the contents of a directory.
  *
  * @example
  * ```js
@@ -110,10 +110,12 @@ type ListFunction = {
   (path: string, opts: ListFunctionOpts): Promise<Array<string>>
 }
 
+/**
+ * Read options.
+ */
 type ReadFunctionOpts = {
   /**
-   * File encoding. Default is `utf8`.
-   * @default 'utf8'
+   * File encoding. Optional, default is `utf8`.
    */
   encoding?: string
 }
@@ -133,16 +135,17 @@ type ReadFunction = {
   (path: string, opts: ReadFunctionOpts): Promise<string | Buffer>
 }
 
+/**
+ * Remove options.
+ */
 type RemoveFunctionOpts = {
   /**
-   * Scan the input path recursively when `recursive` is `true`. Default is `false`.
-   * @default false
+   * Scan the input path recursively when `true`. Optioanl, default is `false`.
    */
   recursive?: boolean
 
   /**
-   * The number of concurrent tasks running. Default is `32`.
-   * @default 32
+   * The number of max concurrent tasks running. Optional, default is `32`.
    */
   concurrency?: number
 }
@@ -162,6 +165,9 @@ type RemoveFunction = {
   (path: string, opts: RemoveFunctionOpts): Promise<void>
 }
 
+/**
+ * Stat output.
+ */
 type StatFunctionOutput = {
   file: String
   contentType: String
@@ -187,8 +193,7 @@ type StatFunction = {
  */
 type WriteFunctionOpts = {
   /**
-   * File encoding. Default is `utf8`.
-   * @default 'utf8'
+   * File encoding. Optional, default is `utf8`.
    */
   encoding?: string
 }
@@ -209,6 +214,8 @@ type WriteFunction = {
 }
 
 /**
+ * Returns the unique resource identifier (URI).
+ *
  * @example
  * ```js
  * let data = await storage.uri('file')
@@ -218,6 +225,9 @@ type URIFunction = {
   (path: string): Promise<string>
 }
 
+/**
+ * Storage interface.
+ */
 type StorageInterface = {
   readonly config: ConfigStorage
 
@@ -232,7 +242,7 @@ type StorageInterface = {
 }
 
 /**
- * Creates the storage provider.
+ * Creates the storage.
  *
  * @example
  * ```js

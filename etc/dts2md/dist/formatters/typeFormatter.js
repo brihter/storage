@@ -202,8 +202,6 @@ const TypeFormatter = (typesLookup) => {
             return output;
         };
         const describeOne = (type) => {
-            let returns = '';
-            returns += `- \`${type.valueType}\``;
             return render(`
         #### ${type.name}: ${type.valueType}
   
@@ -220,7 +218,10 @@ const TypeFormatter = (typesLookup) => {
                 .map(describeOne)
                 .join('\n');
         };
-        if (!hasProperties(typeDefinitions) || !hasMethods(typeDefinitions)) {
+        if (!hasProperties(typeDefinitions) && sectionName === 'Properties') {
+            return '';
+        }
+        if (!hasMethods(typeDefinitions) && sectionName === 'Methods') {
             return '';
         }
         return render(`

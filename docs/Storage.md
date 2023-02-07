@@ -2,7 +2,7 @@
 # Storage
 
 
-Creates the storage provider.
+Creates the storage.
 
 ## Index
 

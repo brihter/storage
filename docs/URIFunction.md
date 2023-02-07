@@ -2,7 +2,7 @@
 # URIFunction
 
 
-
+Returns the unique resource identifier (URI).
 
 ## Index
 

@@ -2,7 +2,7 @@
 # StorageInterface
 
 
-
+Storage interface.
 
 ## Index
 

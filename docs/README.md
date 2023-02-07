@@ -2,7 +2,7 @@
 # Storage
 
 
-Creates the storage provider.
+Creates the storage.
 
 ## Index
 
@@ -50,7 +50,7 @@ const storage = Storage({
 # StorageInterface
 
 
-
+Storage interface.
 
 ## Index
 

@@ -2,7 +2,7 @@
 # ListFunction
 
 
-Reads the contents of a `path` and returns an array of paths included in the `path`.
+Reads the contents of a directory.
 
 ## Index
 
