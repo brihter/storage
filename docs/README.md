@@ -58,7 +58,7 @@ Storage interface.
 
 Properties:
 
-- [config](#config)
+- [config](#config-configstorage)
 
 
 Methods:
@@ -79,7 +79,7 @@ Methods:
 - `config: ConfigStorage`
 
 
-#### config
+#### config: ConfigStorage
 
 
 

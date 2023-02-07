@@ -10,8 +10,8 @@ Remove options.
 
 Properties:
 
-- [recursive](#recursive)
-- [concurrency](#concurrency)
+- [recursive](#recursive-boolean)
+- [concurrency](#concurrency-number)
 
 
 
@@ -21,7 +21,7 @@ Properties:
 - `concurrency: number`
 
 
-#### recursive
+#### recursive: boolean
 
 Scan the input path recursively when `true`. Optional, default is `false`.
 
@@ -30,7 +30,7 @@ Scan the input path recursively when `true`. Optional, default is `false`.
 
 
 
-#### concurrency
+#### concurrency: number
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

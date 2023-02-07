@@ -10,7 +10,7 @@ Copy options.
 
 Properties:
 
-- [concurrency](#concurrency)
+- [concurrency](#concurrency-number)
 
 
 
@@ -19,7 +19,7 @@ Properties:
 - `concurrency: number`
 
 
-#### concurrency
+#### concurrency: number
 
 The number of max concurrent tasks running. Optional, default is `32`.
 

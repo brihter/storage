@@ -50,10 +50,13 @@ For more information, see the [documentation](docs/README.md).
 ## Roadmap
 
 - `v1.0.0-beta.7` Make documentation more verbose.
+- `v1.0.0-beta.7` Add property type to the property description.
 - `v1.0.0-beta.7` Fix documentation `README.md` index.
-- `v1.0.0-beta.7` Add examples.
 - `v1.0.0-beta.8` Rename `uri()` to `url()` and implement `uri()`.
+- `v1.0.0-beta.9` Add examples.
 - `v1.0.0` Move out of beta.
+- `v1.1.0` Support for relative input paths.
+- `v1.1.0` Ensure input paths can't be out of the storage scope.
 - `v2.0.0` Detach the storage client from the library.
 - `v2.1.0` Azure Blob Storage implementation
 - `v2.2.0` Google Storage implementation

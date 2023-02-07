@@ -75,6 +75,13 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
     }, false)
 
   const getIndex = (typeDefinitions: TypeInfo[]): string => {
+    const toAnchor = (input: string): string => {
+      let anchor = input.toLowerCase()
+      anchor = anchor.replace(/\(|\)|\:|\,|\|/g, '')
+      anchor = anchor.replace(/\s/g, '-')
+      return anchor
+    }
+
     const constructors = (): string => {
       if (!hasParameters(typeDefinitions)) return ''
 
@@ -87,9 +94,7 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
             const nameAnchor = `${type.name}(${type.parameters
               .map(p => `${p.name}: ${p.valueType}`)
               .join(', ')})`
-            let anchor = nameAnchor.toLowerCase()
-            anchor = anchor.replace(/\(|\)|\:|\,|\|/g, '')
-            anchor = anchor.replace(/\s/g, '-')
+            const anchor = toAnchor(nameAnchor)
             return `- [${name}](#${anchor})`
           })
           .join('\n')
@@ -104,13 +109,23 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
     const properties = (): string => {
       if (!hasProperties(typeDefinitions)) return ''
 
-      const properties = typeDefinitions
+      const propertyLookup = typeDefinitions
         .flatMap(t => t.properties)
-        .map(p => p.name)
+        .reduce(
+          (acc, curr) => acc.set(curr.name, curr),
+          new Map<string, TypeInfo>()
+        )
 
       const list = () =>
-        Array.from(new Set(properties))
-          .map(v => `- [${v}](#${v})`)
+        Array.from(propertyLookup.keys())
+          .map(propertyName => {
+            const property = propertyLookup.get(propertyName)
+            if (!property) {
+              return
+            }
+            const anchor = toAnchor(`${property.name}: ${property.valueType}`)
+            return `- [${propertyName}](#${anchor})`
+          })
           .join('\n')
 
       return render(`
@@ -248,8 +263,15 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
     }
 
     const describeOne = (type: TypeInfo): string => {
+      let title = type.name
+      if (type.type === 'Property') {
+        title = `${type.name}: ${type.valueType}`
+      }
+
+      console.log(title)
+
       return render(`
-        #### ${type.name}
+        #### ${title}
   
         ${type.description}
   
@@ -263,13 +285,9 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
       return members.map(describeOne).join('\n')
     }
 
-    if (!hasProperties(typeDefinitions) && sectionName === 'Properties') {
+    if (!hasProperties(typeDefinitions) && sectionName === 'Properties')
       return ''
-    }
-
-    if (!hasMethods(typeDefinitions) && sectionName === 'Methods') {
-      return ''
-    }
+    if (!hasMethods(typeDefinitions) && sectionName === 'Methods') return ''
 
     return render(`
       ## ${sectionName}

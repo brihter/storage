@@ -2,7 +2,7 @@ type ConfigStorage = {
   /**
    * Storage type. For example 'local'.
    */
-  type: 'local' | 's3' | 'r2'
+  type: string
 
   /**
    * Storage root path. For example '/tmp/storage'.

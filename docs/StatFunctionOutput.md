@@ -10,11 +10,11 @@ Stat output.
 
 Properties:
 
-- [file](#file)
-- [contentType](#contentType)
-- [etag](#etag)
-- [size](#size)
-- [modified](#modified)
+- [file](#file-string)
+- [contentType](#contenttype-string)
+- [etag](#etag-string)
+- [size](#size-number)
+- [modified](#modified-date)
 
 
 
@@ -27,7 +27,7 @@ Properties:
 - `modified: Date`
 
 
-#### file
+#### file: String
 
 File path.
 
@@ -36,7 +36,7 @@ File path.
 
 
 
-#### contentType
+#### contentType: String
 
 File content type.
 
@@ -45,7 +45,7 @@ File content type.
 
 
 
-#### etag
+#### etag: String
 
 File entity tag (ETag). More on ETags [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 
@@ -54,7 +54,7 @@ File entity tag (ETag). More on ETags [here](https://developer.mozilla.org/en-US
 
 
 
-#### size
+#### size: Number
 
 File size in bytes.
 
@@ -63,7 +63,7 @@ File size in bytes.
 
 
 
-#### modified
+#### modified: Date
 
 File last modified date.
 

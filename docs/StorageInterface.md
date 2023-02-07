@@ -10,7 +10,7 @@ Storage interface.
 
 Properties:
 
-- [config](#config)
+- [config](#config-configstorage)
 
 
 Methods:
@@ -30,7 +30,7 @@ Methods:
 - `config: ConfigStorage`
 
 
-#### config
+#### config: ConfigStorage
 
 
 
@@ -51,7 +51,7 @@ See: [ConfigStorage](ConfigStorage.md)
 - `write: WriteFunction`
 
 
-#### copy
+#### copy: CopyFunction
 
 
 
@@ -60,7 +60,7 @@ See: [CopyFunction](CopyFunction.md)
 
 
 
-#### exists
+#### exists: ExistsFunction
 
 
 
@@ -69,7 +69,7 @@ See: [ExistsFunction](ExistsFunction.md)
 
 
 
-#### list
+#### list: ListFunction
 
 
 
@@ -78,7 +78,7 @@ See: [ListFunction](ListFunction.md)
 
 
 
-#### read
+#### read: ReadFunction
 
 
 
@@ -87,7 +87,7 @@ See: [ReadFunction](ReadFunction.md)
 
 
 
-#### remove
+#### remove: RemoveFunction
 
 
 
@@ -96,7 +96,7 @@ See: [RemoveFunction](RemoveFunction.md)
 
 
 
-#### stat
+#### stat: StatFunction
 
 
 
@@ -105,7 +105,7 @@ See: [StatFunction](StatFunction.md)
 
 
 
-#### uri
+#### uri: URIFunction
 
 
 
@@ -114,7 +114,7 @@ See: [URIFunction](URIFunction.md)
 
 
 
-#### write
+#### write: WriteFunction
 
 
 
