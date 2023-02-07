@@ -15,14 +15,14 @@ Properties:
 
 Methods:
 
-- [copy](#Methods)
-- [exists](#Methods)
-- [list](#Methods)
-- [read](#Methods)
-- [remove](#Methods)
-- [stat](#Methods)
-- [uri](#Methods)
-- [write](#Methods)
+- [copy](#copy)
+- [exists](#exists)
+- [list](#list)
+- [read](#read)
+- [remove](#remove)
+- [stat](#stat)
+- [uri](#uri)
+- [write](#write)
 
 
 ## Properties

@@ -110,7 +110,7 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
 
       const list = () =>
         Array.from(new Set(properties))
-          .map(property => `- [${property}](#${property})`)
+          .map(v => `- [${v}](#${v})`)
           .join('\n')
 
       return render(`
@@ -127,7 +127,7 @@ const TypeFormatter = (typesLookup: Map<string, TypeInfo[]>) => {
 
       const list = () =>
         Array.from(new Set(methods))
-          .map(v => `- [${v}](#Methods)`)
+          .map(v => `- [${v}](#${v})`)
           .join('\n')
 
       return render(`

@@ -88,7 +88,7 @@ const TypeFormatter = (typesLookup) => {
                 .flatMap(t => t.properties)
                 .map(p => p.name);
             const list = () => Array.from(new Set(properties))
-                .map(property => `- [${property}](#${property})`)
+                .map(v => `- [${v}](#${v})`)
                 .join('\n');
             return render(`
         Properties:
@@ -101,7 +101,7 @@ const TypeFormatter = (typesLookup) => {
                 return '';
             const methods = typeDefinitions.flatMap(t => t.methods).map(p => p.name);
             const list = () => Array.from(new Set(methods))
-                .map(v => `- [${v}](#Methods)`)
+                .map(v => `- [${v}](#${v})`)
                 .join('\n');
             return render(`
         Methods:
