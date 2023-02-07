@@ -25,8 +25,8 @@ Constructors:
 
 Parameters:
 
-- `pathFrom: string`
-- `pathTo: string`
+- `pathFrom: string` - Path to copy from, the source path.
+- `pathTo: string` - Path to copy to, the target path.
 
 
 
@@ -41,9 +41,9 @@ Returns:
 
 Parameters:
 
-- `pathFrom: string`
-- `pathTo: string`
-- `opts: CopyFunctionOpts`
+- `pathFrom: string` - Path to copy from, the source path.
+- `pathTo: string` - Path to copy to, the target path.
+- `opts: CopyFunctionOpts` - Copy options.
 
 See: [CopyFunctionOpts](CopyFunctionOpts.md)
 

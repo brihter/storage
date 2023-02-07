@@ -25,7 +25,7 @@ Constructors:
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -40,8 +40,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: ReadFunctionOpts`
+- `path: string` - File path.
+- `opts: ReadFunctionOpts` - Read options.
 
 See: [ReadFunctionOpts](ReadFunctionOpts.md)
 

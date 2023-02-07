@@ -101,8 +101,8 @@ See: [ConfigStorage](ConfigStorage.md)
 
 Parameters:
 
-- `pathFrom: string`
-- `pathTo: string`
+- `pathFrom: string` - Path to copy from, the source path.
+- `pathTo: string` - Path to copy to, the target path.
 
 
 
@@ -117,9 +117,9 @@ Returns:
 
 Parameters:
 
-- `pathFrom: string`
-- `pathTo: string`
-- `opts: CopyFunctionOpts`
+- `pathFrom: string` - Path to copy from, the source path.
+- `pathTo: string` - Path to copy to, the target path.
+- `opts: CopyFunctionOpts` - Copy options.
 
 See: [CopyFunctionOpts](CopyFunctionOpts.md)
 
@@ -147,7 +147,7 @@ await storage.copy('dir/', 'dir_copy/', { concurrency: 10 })
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -174,7 +174,7 @@ let data = await storage.exists('dir/')
 
 Parameters:
 
-- `path: string`
+- `path: string` - Directory path.
 
 
 
@@ -189,8 +189,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: ListFunctionOpts`
+- `path: string` - Directory path.
+- `opts: ListFunctionOpts` - List options.
 
 See: [ListFunctionOpts](ListFunctionOpts.md)
 
@@ -219,7 +219,7 @@ let data = await storage.list('/', { recursive: true, absolute: true, concurrenc
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -234,8 +234,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: ReadFunctionOpts`
+- `path: string` - File path.
+- `opts: ReadFunctionOpts` - Read options.
 
 See: [ReadFunctionOpts](ReadFunctionOpts.md)
 
@@ -263,7 +263,7 @@ let data = await storage.read('image.bin', { encoding: 'binary' })
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -278,8 +278,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: RemoveFunctionOpts`
+- `path: string` - File path.
+- `opts: RemoveFunctionOpts` - Remove options.
 
 See: [RemoveFunctionOpts](RemoveFunctionOpts.md)
 
@@ -306,7 +306,7 @@ await storage.remove('dir/', { recursive: true, concurrency: 10 })
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -331,7 +331,7 @@ let data = await storage.stat('file')
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -357,8 +357,8 @@ let data = await storage.uri('file')
 
 Parameters:
 
-- `path: string`
-- `data: Buffer`
+- `path: string` - File path.
+- `data: Buffer` - File contents.
 
 
 
@@ -373,9 +373,9 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `data: Buffer`
-- `opts: WriteFunctionOpts`
+- `path: string` - File path.
+- `data: Buffer` - File contents.
+- `opts: WriteFunctionOpts` - Write options.
 
 See: [WriteFunctionOpts](WriteFunctionOpts.md)
 

@@ -2,7 +2,7 @@
 # URIFunction
 
 
-Returns the unique resource identifier (URI).
+Returns the unique resource identifier (URI) of the file.
 
 ## Index
 
@@ -23,7 +23,7 @@ Constructors:
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 

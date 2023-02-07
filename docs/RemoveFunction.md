@@ -25,7 +25,7 @@ Constructors:
 
 Parameters:
 
-- `path: string`
+- `path: string` - File path.
 
 
 
@@ -40,8 +40,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: RemoveFunctionOpts`
+- `path: string` - File path.
+- `opts: RemoveFunctionOpts` - Remove options.
 
 See: [RemoveFunctionOpts](RemoveFunctionOpts.md)
 

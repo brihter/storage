@@ -25,7 +25,7 @@ Constructors:
 
 Parameters:
 
-- `path: string`
+- `path: string` - Directory path.
 
 
 
@@ -40,8 +40,8 @@ Returns:
 
 Parameters:
 
-- `path: string`
-- `opts: ListFunctionOpts`
+- `path: string` - Directory path.
+- `opts: ListFunctionOpts` - List options.
 
 See: [ListFunctionOpts](ListFunctionOpts.md)
 

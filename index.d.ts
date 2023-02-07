@@ -57,7 +57,17 @@ type CopyFunctionOpts = {
  * ```
  */
 type CopyFunction = {
+  /**
+   * @param pathFrom Path to copy from, the source path.
+   * @param pathTo Path to copy to, the target path.
+   */
   (pathFrom: string, pathTo: string): Promise<void>
+
+  /**
+   * @param pathFrom Path to copy from, the source path.
+   * @param pathTo Path to copy to, the target path.
+   * @param opts Copy options.
+   */
   (pathFrom: string, pathTo: string, opts: CopyFunctionOpts): Promise<void>
 }
 
@@ -71,6 +81,9 @@ type CopyFunction = {
  * ```
  */
 type ExistsFunction = {
+  /**
+   * @param path File path.
+   */
   (path: string): Promise<boolean>
 }
 
@@ -106,7 +119,15 @@ type ListFunctionOpts = {
  * ```
  */
 type ListFunction = {
+  /**
+   * @param path Directory path.
+   */
   (path: string): Promise<Array<string>>
+
+  /**
+   * @param path Directory path.
+   * @param opts List options.
+   */
   (path: string, opts: ListFunctionOpts): Promise<Array<string>>
 }
 
@@ -131,7 +152,15 @@ type ReadFunctionOpts = {
  * ```
  */
 type ReadFunction = {
+  /**
+   * @param path File path.
+   */
   (path: string): Promise<string | Buffer>
+
+  /**
+   * @param path File path.
+   * @param opts Read options.
+   */
   (path: string, opts: ReadFunctionOpts): Promise<string | Buffer>
 }
 
@@ -161,18 +190,56 @@ type RemoveFunctionOpts = {
  * ```
  */
 type RemoveFunction = {
+  /**
+   * @param path File path.
+   */
   (path: string): Promise<void>
+
+  /**
+   * @param path File path.
+   * @param opts Remove options.
+   */
   (path: string, opts: RemoveFunctionOpts): Promise<void>
 }
 
 /**
  * Stat output.
+ *
+ * @example
+ * ```js
+ * let output = {
+ *   file: 'msg',
+ *   contentType: 'application/octet-stream',
+ *   etag: '49f68a5c8493ec2c0bf489821c21fc3b',
+ *   size: 2,
+ *   modified: 2023-02-07T09:25:30.000Z
+ * }
+ * ```
  */
 type StatFunctionOutput = {
+  /**
+   * File path.
+   */
   file: String
+
+  /**
+   * File content type.
+   */
   contentType: String
+
+  /**
+   * File entity tag (ETag). More on ETags [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
+   */
   etag: String
+
+  /**
+   * File size in bytes.
+   */
   size: Number
+
+  /**
+   * File last modified date.
+   */
   modified: Date
 }
 
@@ -185,6 +252,9 @@ type StatFunctionOutput = {
  * ```
  */
 type StatFunction = {
+  /**
+   * @param path File path.
+   */
   (path: string): Promise<StatFunctionOutput>
 }
 
@@ -209,12 +279,22 @@ type WriteFunctionOpts = {
  * ```
  */
 type WriteFunction = {
+  /**
+   * @param path File path.
+   * @param data File contents.
+   */
   (path: string, data: string | Buffer): Promise<void>
+
+  /**
+   * @param path File path.
+   * @param data File contents.
+   * @param opts Write options.
+   */
   (path: string, data: string | Buffer, opts: WriteFunctionOpts): Promise<void>
 }
 
 /**
- * Returns the unique resource identifier (URI).
+ * Returns the unique resource identifier (URI) of the file.
  *
  * @example
  * ```js
@@ -222,6 +302,9 @@ type WriteFunction = {
  * ```
  */
 type URIFunction = {
+  /**
+   * @param path File path.
+   */
   (path: string): Promise<string>
 }
 
