@@ -1,14 +1,22 @@
 /**
  * Storage configuration.
+ *
+ * @example
+ * ```js
+ * const config = {
+ *   type: 'local',
+ *   path: '/tmp/storage'
+ * }
+ * ```
  */
 type Config = {
   /**
-   * Storage type. For example 'local'.
+   * Storage type. For example `local`.
    */
   type: string
 
   /**
-   * Storage root path. For example '/tmp/storage'.
+   * Storage root path. For example `/tmp/storage`.
    */
   path: string
 
@@ -25,35 +33,25 @@ type Config = {
 
 /**
  * Storage dependencies.
+ *
+ * @example
+ * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ *
+ * const dependencies = {
+ *   client: S3,
+ *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
+ * }
+ * ```
  */
 type Dependencies = {
   /**
    * Storage client.
-   *
-   * @example
-   * ```js
-   * const S3 = require('@aws-sdk/client-s3')
-   *
-   * const dependencies = {
-   *   client: S3,
-   *   // ...
-   * }
-   * ```
    */
   client: any
 
   /**
    * Storage client instance.
-   *
-   * @example
-   * ```js
-   * const S3 = require('@aws-sdk/client-s3')
-   *
-   * const dependencies = {
-   *   // ...
-   *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
-   * }
-   * ```
    */
   clientInstance: any
 }

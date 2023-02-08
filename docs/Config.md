@@ -27,7 +27,7 @@ Properties:
 
 #### type: string
 
-Storage type. For example 'local'.
+Storage type. For example `local`.
 
 
 
@@ -36,7 +36,7 @@ Storage type. For example 'local'.
 
 #### path: string
 
-Storage root path. For example '/tmp/storage'.
+Storage root path. For example `/tmp/storage`.
 
 
 
@@ -60,3 +60,11 @@ The number of max concurrent tasks running. Optional, default is `32`.
 
 
 
+## Examples
+
+```js
+const config = {
+  type: 'local',
+  path: '/tmp/storage'
+}
+```

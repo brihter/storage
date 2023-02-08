@@ -27,16 +27,7 @@ Storage client.
 
 
 
-Examples:
 
-```js
-const S3 = require('@aws-sdk/client-s3')
-
-const dependencies = {
-client: S3,
-// ...
-}
-```
 
 
 #### clientInstance: any
@@ -45,14 +36,15 @@ Storage client instance.
 
 
 
-Examples:
+
+
+## Examples
 
 ```js
 const S3 = require('@aws-sdk/client-s3')
 
 const dependencies = {
-// ...
-clientInstance: new S3.S3Client({ region: 'eu-central-1' })
+  client: S3,
+  clientInstance: new S3.S3Client({ region: 'eu-central-1' })
 }
 ```
-
