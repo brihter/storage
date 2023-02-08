@@ -44,7 +44,7 @@ main().catch(console.error)
 
 For more information:
 
-- see [examples](examples/README.md),
+- see the [examples](examples/README.md),
 - track changes in the [changelog](changelog.md) or
 - dive straight into the [documentation](docs/README.md).
 
