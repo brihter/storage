@@ -42,13 +42,14 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-For more information, see the [documentation](docs/README.md).
+For more information:
+
+- see [examples](examples/README.md),
+- track changes in the [changelog](changelog.md) or
+- dive straight into the [documentation](docs/README.md).
 
 ## Roadmap
 
-- `v1.0.0` Add examples.
-- `v1.0.0` Add example links to the README.
-- `v1.0.0` Add the CHANGELOG link to the README.
 - `v1.1.0` Support for relative input paths.
 - `v1.1.0` Ensure input paths can't be out of the storage scope.
 - `v1.2.0` Azure Blob Storage implementation
