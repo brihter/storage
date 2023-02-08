@@ -1,11 +1,15 @@
-const { providers } = require('../providers')
+describe('Storage().remove()', () => {
+  let providers
+  before(() => (providers = global._storage.listProviders()))
+  it('run', () => providers.forEach(run))
+})
 
 const run = provider => {
   describe(`Storage({ provider: '${provider}' }).remove()`, () => {
     let storage
 
     before(async () => {
-      storage = global._conjure.getStorage(provider)
+      storage = global._storage.getStorage(provider)
 
       await storage.remove('/', { recursive: true })
       await Promise.all([
@@ -75,5 +79,3 @@ const run = provider => {
     })
   })
 }
-
-Object.keys(providers).forEach(run)

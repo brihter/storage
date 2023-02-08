@@ -3,10 +3,11 @@ const { validateObjectPath } = require('../utils/validators.js')
 const { url2parts } = require('../utils/url.js')
 
 const stat = provider => {
+  const { type } = provider.config
   const { scope, unscope } = Path(provider.config)
 
   const getEndpoint = async () => {
-    if (provider.config.type === 'local') {
+    if (type === 'local') {
       return ''
     }
 
@@ -19,7 +20,7 @@ const stat = provider => {
   }
 
   const url = (path, endpoint) => {
-    if (provider.config.type === 'local') {
+    if (type === 'local') {
       return `file://${path}`
     }
 
@@ -28,14 +29,11 @@ const stat = provider => {
   }
 
   const uri = (path, endpoint) => {
-    if (provider.config.type === 'local') {
+    if (type === 'local') {
       return `file://${path}`
     }
 
-    return url(path, endpoint).replace(
-      `${endpoint}/`,
-      `${provider.config.type}://`
-    )
+    return url(path, endpoint).replace(`${endpoint}/`, `${type}://`)
   }
 
   return async path => {

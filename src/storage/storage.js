@@ -11,32 +11,27 @@ const {
   write
 } = require('./contract')
 
-const createConfig = (config = {}) => ({
-  storage: Object.assign(
-    {
-      encoding: 'utf8',
-      concurrency: 32
-    },
-    config.storage
-  ),
-  storageClient: config.storageClient || {}
-})
+// prettier-ignore
+const createConfig = (config = {}) => Object.assign({
+  encoding: 'utf8',
+  concurrency: 32
+}, config)
 
-const createProvider = (config = {}) => {
-  if (!providers[config.storage.type]) {
-    throw new Error(`Unknown provider '${config.storage.type}'`)
+const createProvider = (config, dependencies = {}) => {
+  if (!providers[config.type]) {
+    throw new Error(`Unknown provider type '${config.type}'.`)
   }
 
-  return providers[config.storage.type](config)
+  return providers[config.type](config, dependencies)
 }
 
-const Storage = config => {
+const Storage = (config, dependencies) => {
   const providerConfig = createConfig(config)
-  const provider = createProvider(providerConfig)
+  const provider = createProvider(providerConfig, dependencies)
 
   return {
-    config: providerConfig.storage,
-    client: provider.client,
+    config: providerConfig,
+    client: dependencies.clientInstance || {},
 
     copy: copy(provider),
     exists: exists(provider),

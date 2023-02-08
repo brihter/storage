@@ -2,6 +2,8 @@ const chai = require('chai')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
+const S3 = require('@aws-sdk/client-s3')
+
 const { Storage } = require('../src/storage/storage.js')
 const { providers } = require('../src/storage/providers')
 const { loadConfig } = require('../env')
@@ -10,16 +12,33 @@ const createOne = async (runId, type) => {
   const cfg = await loadConfig()
   const cfgByType = cfg[type]
   cfgByType.storage.path += `/${runId}/`
-  return Storage(cfgByType)
+
+  const config = cfgByType.storage
+
+  let dependencies = {}
+  if (config.type === 's3') {
+    dependencies = {
+      client: S3,
+      clientInstance: new S3.S3Client(cfgByType.storageClient)
+    }
+  }
+
+  return {
+    provider: type,
+    storage: Storage(config, dependencies)
+  }
 }
 
 const createProviders = async runId => {
-  let providerList = Object.keys(providers)
+  const cfg = await loadConfig()
+
+  let providerList = Object.keys(cfg)
   providerList = await Promise.all(
     providerList.map(type => createOne(runId, type))
   )
-  return providerList.reduce((acc, provider) => {
-    acc[provider.config.type] = provider
+
+  return providerList.reduce((acc, curr) => {
+    acc[curr.provider] = curr.storage
     return acc
   }, {})
 }
@@ -33,8 +52,9 @@ before(async () => {
   const runId = Math.floor(new Date().getTime() / 1000)
   const storageProviders = await createProviders(runId)
 
-  global._conjure = {
+  global._storage = {
     runId,
+    listProviders: () => Object.keys(storageProviders),
     getStorage: provider => storageProviders[provider]
   }
 })
@@ -42,5 +62,5 @@ before(async () => {
 after(async () => {
   delete global.sinon
   delete global.expect
-  delete global._conjure
+  delete global._storage
 })

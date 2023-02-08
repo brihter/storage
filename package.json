@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/brihter/storage#readme",
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.266.1",
     "chai": "^4.3.7",
     "esbuild": "^0.17.3",
     "ini": "^3.0.1",
@@ -35,7 +36,6 @@
     "arrowParens": "avoid"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.254.0",
     "bluebird": "^3.7.2",
     "iconv-lite": "^0.6.3",
     "mime-types": "^2.1.35"
@@ -44,9 +44,12 @@
   "keywords": [
     "javascript",
     "node",
+    "amazon",
+    "s3",
     "aws",
     "aws-s3",
     "cloudflare",
-    "cloudflare-r2"
+    "cloudflare-r2",
+    "r2"
   ]
 }

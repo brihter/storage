@@ -1,11 +1,15 @@
-const { providers } = require('../providers')
+describe('Storage().stat()', () => {
+  let providers
+  before(() => (providers = global._storage.listProviders()))
+  it('run', () => providers.forEach(run))
+})
 
 const run = provider => {
   describe(`Storage({ provider: '${provider}' }).stat()`, () => {
     let storage
 
     before(async () => {
-      storage = global._conjure.getStorage(provider)
+      storage = global._storage.getStorage(provider)
       await storage.remove('/')
       await Promise.all([
         storage.write('msg', 'hi'),
@@ -92,5 +96,3 @@ const run = provider => {
     })
   })
 }
-
-Object.keys(providers).forEach(run)

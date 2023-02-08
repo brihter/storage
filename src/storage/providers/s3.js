@@ -1,16 +1,5 @@
 const mime = require('mime-types')
 const { url2parts } = require('../utils/url.js')
-
-const {
-  S3Client,
-  GetObjectCommand,
-  HeadObjectCommand,
-  PutObjectCommand,
-  ListObjectsV2Command,
-  DeleteObjectCommand,
-  CopyObjectCommand
-} = require('@aws-sdk/client-s3')
-
 const { join } = require('path')
 
 const stream2Buffer = stream =>
@@ -21,8 +10,17 @@ const stream2Buffer = stream =>
     stream.once('error', reject)
   })
 
-const impl = config => {
-  const s3 = new S3Client(config.storageClient || {})
+const impl = (config, dependencies) => {
+  const {
+    GetObjectCommand,
+    HeadObjectCommand,
+    PutObjectCommand,
+    ListObjectsV2Command,
+    DeleteObjectCommand,
+    CopyObjectCommand
+  } = dependencies.client
+
+  const s3 = dependencies.clientInstance
 
   const read = async path => {
     const { Bucket, Key } = url2parts(path)
@@ -167,7 +165,7 @@ const impl = config => {
   }
 
   return {
-    config: config.storage,
+    config,
     client: s3,
 
     copyOne,
