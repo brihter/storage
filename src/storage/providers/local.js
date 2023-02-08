@@ -14,7 +14,7 @@ const {
   copyFile
 } = require('fs').promises
 
-const impl = config => {
+const impl = (config, dependencies) => {
   const read = async path => {
     let file
     try {
@@ -136,7 +136,7 @@ const impl = config => {
   }
 
   return {
-    config: config.storage,
+    config,
     client: {},
 
     copyOne,

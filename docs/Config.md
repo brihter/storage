@@ -2,7 +2,7 @@
 # Config
 
 
-
+Storage configuration.
 
 ## Index
 
@@ -10,34 +10,61 @@
 
 Properties:
 
-- [storage](#storage-configstorage)
-- [storageClient](#storageclient-object)
+- [type](#type-string)
+- [path](#path-string)
+- [encoding](#encoding-string)
+- [concurrency](#concurrency-number)
 
 
 
 ## Properties
 
-- `storage: ConfigStorage`
-- `storageClient: object`
+- `type: string`
+- `path: string`
+- `encoding: string`
+- `concurrency: number`
 
 
-#### storage: ConfigStorage
+#### type: string
 
-Storage configuration.
-
-See: [ConfigStorage](ConfigStorage.md)
-
-
-
-
-#### storageClient: object
-
-Storage client configuration is required for non-local storage types.
-For example `s3`, `r2`, ... The `storageClient` object is passed directly
-into the underlying provider. See the official documentation for more
-information.
+Storage type. For example `local`.
 
 
 
 
 
+
+#### path: string
+
+Storage root path. For example `/tmp/storage`.
+
+
+
+
+
+
+#### encoding: string
+
+File encoding. Optional, default is `utf8`.
+
+
+
+
+
+
+#### concurrency: number
+
+The number of max concurrent tasks running. Optional, default is `32`.
+
+
+
+
+
+## Examples
+
+```js
+const config = {
+  type: 'local',
+  path: '/tmp/storage'
+}
+```

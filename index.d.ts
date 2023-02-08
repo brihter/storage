@@ -1,11 +1,22 @@
-type ConfigStorage = {
+/**
+ * Storage configuration.
+ *
+ * @example
+ * ```js
+ * const config = {
+ *   type: 'local',
+ *   path: '/tmp/storage'
+ * }
+ * ```
+ */
+type Config = {
   /**
-   * Storage type. For example 'local'.
+   * Storage type. For example `local`.
    */
   type: string
 
   /**
-   * Storage root path. For example '/tmp/storage'.
+   * Storage root path. For example `/tmp/storage`.
    */
   path: string
 
@@ -20,19 +31,29 @@ type ConfigStorage = {
   concurrency?: number
 }
 
-type Config = {
+/**
+ * Storage dependencies.
+ *
+ * @example
+ * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ *
+ * const dependencies = {
+ *   client: S3,
+ *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
+ * }
+ * ```
+ */
+type Dependencies = {
   /**
-   * Storage configuration.
+   * Storage client.
    */
-  storage: ConfigStorage
+  client: any
 
   /**
-   * Storage client configuration is required for non-local storage types.
-   * For example `s3`, `r2`, ... The `storageClient` object is passed directly
-   * into the underlying provider. See the official documentation for more
-   * information.
+   * Storage client instance.
    */
-  storageClient?: object
+  clientInstance: any
 }
 
 /**
@@ -310,12 +331,17 @@ type WriteFunction = {
  *
  * @example
  * ```js
- * const storage = Storage({
- *   storage: {
- *     type: 'local',
- *     path: '/tmp/storage'
- *   }
- * })
+ * const config = {
+ *   type: 's3',
+ *   path: 'bucket-3d8e8dd/path/to/data'
+ * }
+ *
+ * const dependencies = {
+ *   client: S3,
+ *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
+ * }
+ *
+ * const storage = Storage(config, dependencies)
  *
  * await storage.write('file', 'hi')
  * await storage.copy('file', 'file-copy')
@@ -329,7 +355,7 @@ type WriteFunction = {
  * ```
  */
 type StorageInterface = {
-  readonly config: ConfigStorage
+  config: Config
 
   /**
    * Recursively copies the contents from source to destination.
@@ -372,12 +398,20 @@ type StorageInterface = {
  *
  * @example
  * ```js
- * const storage = Storage({
- *   storage: {
- *     type: 'local',
- *     path: '/tmp/storage'
- *   }
- * })
+ * const config = {
+ *   type: 's3',
+ *   path: 'bucket-3d8e8dd/path/to/data'
+ * }
+ *
+ * const dependencies = {
+ *   client: S3,
+ *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
+ * }
+ *
+ * const storage = Storage(config, dependencies)
  * ```
  */
-export function Storage(config: Config): StorageInterface
+export function Storage(
+  config: Config,
+  dependencies: Dependencies
+): StorageInterface

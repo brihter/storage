@@ -1,11 +1,15 @@
-const { providers } = require('../providers')
+describe('Storage().write()', () => {
+  let providers
+  before(() => (providers = global._storage.listProviders()))
+  it('run', () => providers.forEach(run))
+})
 
 const run = provider => {
   describe(`Storage({ provider: '${provider}' }).write()`, () => {
     let storage
 
     before(() => {
-      storage = global._conjure.getStorage(provider)
+      storage = global._storage.getStorage(provider)
     })
 
     after(async () => {
@@ -95,5 +99,3 @@ const run = provider => {
     })
   })
 }
-
-Object.keys(providers).forEach(run)

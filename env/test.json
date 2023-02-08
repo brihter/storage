@@ -16,7 +16,7 @@
   },
   "r2": {
     "storage": {
-      "type": "r2",
+      "type": "s3",
       "path": "conjure-storage-test-4x1a7ff"
     },
     "storageClient": {
