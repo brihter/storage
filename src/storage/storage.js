@@ -31,7 +31,7 @@ const Storage = (config, dependencies) => {
 
   return {
     config: providerConfig,
-    client: dependencies.clientInstance || {},
+    client: provider.client,
 
     copy: copy(provider),
     exists: exists(provider),
