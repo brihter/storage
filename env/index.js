@@ -33,7 +33,11 @@ const getCredentials = async provider => {
   return credentials
 }
 
-const aws = async cfg => {
+const s3 = async cfg => {
+  if (!cfg.s3) {
+    return cfg
+  }
+
   let credentials
   credentials = await getCredentials('aws')
   credentials = credentials[process.env.AWS_PROFILE]
@@ -46,7 +50,11 @@ const aws = async cfg => {
   return cfg
 }
 
-const cf = async cfg => {
+const r2 = async cfg => {
+  if (!cfg.r2) {
+    return cfg
+  }
+
   let credentials
   credentials = await getCredentials('cloudflare')
   credentials = credentials[process.env.CF_PROFILE]
@@ -66,8 +74,8 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
     encoding: 'ascii'
   })
   cfg = JSON.parse(cfg)
-  cfg = await aws(cfg)
-  cfg = await cf(cfg)
+  cfg = await s3(cfg)
+  cfg = await r2(cfg)
   return cfg
 }
 

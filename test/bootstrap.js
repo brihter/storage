@@ -5,7 +5,6 @@ const sinonChai = require('sinon-chai')
 const S3 = require('@aws-sdk/client-s3')
 
 const { Storage } = require('../src/storage/storage.js')
-const { providers } = require('../src/storage/providers')
 const { loadConfig } = require('../env')
 
 const createOne = async (runId, type) => {
@@ -52,9 +51,20 @@ before(async () => {
   const runId = Math.floor(new Date().getTime() / 1000)
   const storageProviders = await createProviders(runId)
 
+  const specifiedProviders = process.argv
+    .filter(p => p.startsWith('--provider'))
+    .map(p => p.split('=')[1])
+
   global._storage = {
     runId,
-    listProviders: () => Object.keys(storageProviders),
+    listProviders: () => {
+      const list = Object.keys(storageProviders)
+      if (specifiedProviders.length === 0) {
+        return list
+      }
+
+      return list.filter(i => specifiedProviders.includes(i))
+    },
     getStorage: provider => storageProviders[provider]
   }
 })
