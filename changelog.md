@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+- `v1.0.2` Removed "examples/", "readme.md" and "changelog.md" from the published package.
+
 ## v1.0.1
 
 - `v1.0.1` Added the ability to isolate a provider when running tests.
