@@ -15,6 +15,12 @@ A list of supported object storage providers:
 - `local` and
 - any `s3` compatible provider (AWS S3, Cloudflare R2, ...).
 
+For more information:
+
+- see the [examples](examples/README.md),
+- track changes in the [changelog](changelog.md) or
+- dive straight into the [documentation](docs/README.md).
+
 ## Quick Start
 
 Installation, using npm:
@@ -42,15 +48,23 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-For more information:
-
-- see the [examples](examples/README.md),
-- track changes in the [changelog](changelog.md) or
-- dive straight into the [documentation](docs/README.md).
-
 ## Roadmap
 
 - `v1.1.0` Support for relative input paths.
 - `v1.1.0` Ensure input paths can't be out of the storage scope.
 - `v1.2.0` Azure Blob Storage implementation
 - `v1.3.0` Google Storage implementation
+
+## Testing
+
+```
+npm run test                      # run tests
+npm run test -- --provider=local  # run tests for a specific provider
+```
+
+## Releasing
+
+```
+npm run release           # set version by bumping the patch number and tag the commit
+npm run release -- 1.0.0  # set specific version and tag the commit
+```
