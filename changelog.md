@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.1
+
+- `v1.0.1` Added the ability to isolate a provider when running tests.
+- `v1.0.1` Added the "API overview" section to the documentation.
+- `v1.0.1` Added the "Testing" section to the documentation.
+- `v1.0.1` Added the "Releasing" section to the documentation.
+
 ## v1.0.0
 
 - `v1.0.0` Added examples.
