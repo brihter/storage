@@ -5,7 +5,10 @@ node_modules/
 bin/
 docs/
 env/
+etc/
+examples/
 src/**/*.test.js
 ops/
-etc/
 test/
+readme.md
+changelog.md
