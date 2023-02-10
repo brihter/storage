@@ -4,10 +4,10 @@ const { validatePath } = require('../utils/validators.js')
 
 const { list } = require('./list.js')
 
-const remove = provider => {
+const remove = ({ provider, util }) => {
   const { scope } = Path(provider.config)
 
-  const doList = list(provider)
+  const doList = list({ provider, util })
 
   // prettier-ignore
   const defaults = opts => Object.assign({

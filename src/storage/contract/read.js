@@ -3,7 +3,7 @@ const iconv = require('iconv-lite')
 const { Path } = require('../utils/path.js')
 const { validateObjectPath } = require('../utils/validators.js')
 
-const read = provider => {
+const read = ({ provider, util }) => {
   const { scope } = Path(provider.config)
 
   // prettier-ignore

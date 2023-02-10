@@ -3,10 +3,10 @@ const { validatePath } = require('../utils/validators.js')
 
 const { exists } = require('./exists.js')
 
-const list = provider => {
+const list = ({ provider, util }) => {
   const { scope, absolute, relative } = Path(provider.config)
 
-  const doExists = exists(provider)
+  const doExists = exists({ provider, util })
 
   const defaults = opts => {
     return Object.assign(

@@ -6,11 +6,11 @@ const { validatePath } = require('../utils/validators.js')
 const { exists } = require('./exists.js')
 const { list } = require('./list.js')
 
-const copy = provider => {
+const copy = ({ provider, util }) => {
   const { scope } = Path(provider.config)
 
-  const doExists = exists(provider)
-  const doList = list(provider)
+  const doExists = exists({ provider, util })
+  const doList = list({ provider, util })
 
   return async (pathFrom, pathTo, opts) => {
     opts = Object.assign(

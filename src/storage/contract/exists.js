@@ -1,12 +1,8 @@
-const { Path } = require('../utils/path.js')
-const { validatePath } = require('../utils/validators.js')
-
-const exists = provider => {
-  const { scope } = Path(provider.config)
-
+const exists = ({ provider, util }) => {
   return async path => {
-    validatePath(path)
-    return await provider.exists(scope(path))
+    util.path.validate(path)
+    const scopedPath = util.path.scope(path)
+    return await provider.exists(scopedPath)
   }
 }
 

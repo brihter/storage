@@ -1,4 +1,5 @@
 const { providers } = require('./providers')
+const { Util } = require('./util')
 
 // prettier-ignore
 const {
@@ -29,17 +30,22 @@ const Storage = (config, dependencies) => {
   const providerConfig = createConfig(config)
   const provider = createProvider(providerConfig, dependencies)
 
+  const context = {
+    provider,
+    util: Util({ config: providerConfig })
+  }
+
   return {
-    config: providerConfig,
+    config,
     client: provider.client,
 
-    copy: copy(provider),
-    exists: exists(provider),
-    list: list(provider),
-    read: read(provider),
-    remove: remove(provider),
-    stat: stat(provider),
-    write: write(provider)
+    copy: copy(context),
+    exists: exists(context),
+    list: list(context),
+    read: read(context),
+    remove: remove(context),
+    stat: stat(context),
+    write: write(context)
   }
 }
 
