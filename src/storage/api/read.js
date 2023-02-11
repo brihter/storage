@@ -1,23 +1,21 @@
 const iconv = require('iconv-lite')
 
-const { Path } = require('../utils/path.js')
-const { validateObjectPath } = require('../utils/validators.js')
-
 const readApi = ({ provider, util }) => {
-  const { scope } = Path(provider.config)
-
   // prettier-ignore
   const defaults = opts => Object.assign({
     encoding: provider.config.encoding
   }, opts)
 
+  const validate = path => {
+    util.path.validateObjectPath(path)
+  }
+
   return async (path, opts = {}) => {
     opts = defaults(opts)
-    validateObjectPath(path)
-    path = scope(path)
+    validate(path)
 
-    const buffer = await provider.read(path)
-
+    const pathScoped = util.path.scope(path)
+    const buffer = await provider.read(pathScoped)
     if (!buffer) {
       return
     }
