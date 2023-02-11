@@ -2,7 +2,7 @@ const { Path } = require('../utils/path.js')
 const { validateObjectPath } = require('../utils/validators.js')
 const { url2parts } = require('../utils/url.js')
 
-const stat = ({ provider, util }) => {
+const statApi = ({ provider, util }) => {
   const { type } = provider.config
   const { scope, unscope } = Path(provider.config)
 
@@ -52,5 +52,5 @@ const stat = ({ provider, util }) => {
 }
 
 module.exports = {
-  stat
+  statApi
 }

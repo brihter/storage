@@ -40,7 +40,6 @@ const run = provider => {
 
       it(`should throw on empty 'path'`, async () => {
         const err = await storage.exists('').catch(err => err)
-
         expect(err).to.be.an('error')
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should contain a string`)

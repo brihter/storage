@@ -3,7 +3,7 @@ const iconv = require('iconv-lite')
 const { Path } = require('../utils/path.js')
 const { validateObjectPath } = require('../utils/validators.js')
 
-const read = ({ provider, util }) => {
+const readApi = ({ provider, util }) => {
   const { scope } = Path(provider.config)
 
   // prettier-ignore
@@ -18,12 +18,18 @@ const read = ({ provider, util }) => {
 
     const buffer = await provider.read(path)
 
-    if (!buffer) return
-    if (opts.encoding === 'binary') return buffer
+    if (!buffer) {
+      return
+    }
+
+    if (opts.encoding === 'binary') {
+      return buffer
+    }
+
     return iconv.decode(buffer, opts.encoding)
   }
 }
 
 module.exports = {
-  read
+  readApi
 }

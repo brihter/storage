@@ -3,14 +3,8 @@ const Bluebird = require('bluebird')
 const { Path } = require('../utils/path.js')
 const { validatePath } = require('../utils/validators.js')
 
-const { exists } = require('./exists.js')
-const { list } = require('./list.js')
-
-const copy = ({ provider, util }) => {
+const copyApi = ({ provider, util, exists, list }) => {
   const { scope } = Path(provider.config)
-
-  const doExists = exists({ provider, util })
-  const doList = list({ provider, util })
 
   return async (pathFrom, pathTo, opts) => {
     opts = Object.assign(
@@ -33,7 +27,7 @@ const copy = ({ provider, util }) => {
       )
     }
 
-    const pathFromExists = await doExists(pathFrom)
+    const pathFromExists = await exists(pathFrom)
     if (!pathFromExists) {
       throw new Error(`'pathFrom' doesn't exist`)
     }
@@ -56,7 +50,7 @@ const copy = ({ provider, util }) => {
 
     // folder to folder
     if (fromFolder && toFolder) {
-      toCopy = await doList(pathFrom, { recursive: true, absolute: true })
+      toCopy = await list(pathFrom, { recursive: true, absolute: true })
       toCopy = toCopy.map(path => scope(path))
       toCopy = toCopy.map(path => {
         const to = path.replace(pathFrom, pathTo)
@@ -72,5 +66,5 @@ const copy = ({ provider, util }) => {
 }
 
 module.exports = {
-  copy
+  copyApi
 }

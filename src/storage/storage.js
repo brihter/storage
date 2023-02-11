@@ -3,14 +3,14 @@ const { Util } = require('./util')
 
 // prettier-ignore
 const {
-  copy,
-  exists,
-  list,
-  read,
-  remove,
-  stat,
-  write
-} = require('./contract')
+  copyApi,
+  existsApi,
+  listApi,
+  readApi,
+  removeApi,
+  statApi,
+  writeApi
+} = require('./api')
 
 // prettier-ignore
 const createConfig = (config = {}) => Object.assign({
@@ -30,22 +30,30 @@ const Storage = (config, dependencies) => {
   const providerConfig = createConfig(config)
   const provider = createProvider(providerConfig, dependencies)
 
-  const context = {
+  const ctx = {
     provider,
     util: Util({ config: providerConfig })
   }
+
+  const exists = existsApi(ctx)
+  const stat = statApi(ctx)
+  const write = writeApi(ctx)
+  const read = readApi(ctx)
+  const list = listApi({ ...ctx, exists })
+  const copy = copyApi({ ...ctx, exists, list })
+  const remove = removeApi({ ...ctx, list })
 
   return {
     config,
     client: provider.client,
 
-    copy: copy(context),
-    exists: exists(context),
-    list: list(context),
-    read: read(context),
-    remove: remove(context),
-    stat: stat(context),
-    write: write(context)
+    exists,
+    copy,
+    list,
+    read,
+    remove,
+    stat,
+    write
   }
 }
 

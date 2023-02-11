@@ -1,4 +1,4 @@
-const exists = ({ provider, util }) => {
+const existsApi = ({ provider, util }) => {
   return async path => {
     util.path.validate(path)
     const scopedPath = util.path.scope(path)
@@ -7,5 +7,5 @@ const exists = ({ provider, util }) => {
 }
 
 module.exports = {
-  exists
+  existsApi
 }

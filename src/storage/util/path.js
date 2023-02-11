@@ -21,6 +21,17 @@ const Path = ({ config }) => {
     }
   }
 
+  // TODO
+  const validateObjectPath = (path, variableName = 'path') => {
+    validate(path)
+
+    if (path.endsWith('/')) {
+      throw new TypeError('Invalid argument', {
+        cause: `object 'path' should not end with a '/'`
+      })
+    }
+  }
+
   const scope = (path = '/') => {
     return join(config.path, path)
   }
@@ -54,6 +65,8 @@ const Path = ({ config }) => {
 
   return {
     validate,
+    validateObjectPath,
+
     scope,
     unscope,
     absolute,
