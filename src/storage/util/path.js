@@ -1,7 +1,7 @@
 const { join } = require('path')
 
 const Path = ({ config }) => {
-  const validate = (path, variableName = 'path') => {
+  const validate = (path, variableName = 'path', opts = {}) => {
     if (typeof path === 'undefined') {
       throw new TypeError('Invalid argument', {
         cause: `'${variableName}' missing`
@@ -19,15 +19,14 @@ const Path = ({ config }) => {
         cause: `'${variableName}' should contain a string`
       })
     }
-  }
 
-  // TODO better name or consolidate both dir and object path
-  const validateObjectPath = (path, variableName = 'path') => {
-    validate(path)
+    if (!opts.isObjectPath) {
+      return
+    }
 
     if (path.endsWith('/')) {
       throw new TypeError('Invalid argument', {
-        cause: `object 'path' should not end with a '/'`
+        cause: `'${variableName}' should not end with a '/'`
       })
     }
   }
@@ -65,8 +64,6 @@ const Path = ({ config }) => {
 
   return {
     validate,
-    validateObjectPath,
-
     scope,
     unscope,
     absolute,

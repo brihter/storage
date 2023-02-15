@@ -1,27 +1,23 @@
 const iconv = require('iconv-lite')
 
-// TODO tidy readApi
 const readApi = ({ provider, util }) => {
+  // prettier-ignore
+  const {
+    validate,
+    scope
+  } = util.path
+
   // prettier-ignore
   const defaults = opts => Object.assign({
     encoding: provider.config.encoding
   }, opts)
 
-  const validate = path => {
-    util.path.validateObjectPath(path)
-  }
-
   return async (path, opts = {}) => {
     opts = defaults(opts)
-    validate(path)
+    validate(path, 'path', { isObjectPath: true })
 
-    const pathScoped = util.path.scope(path)
-    const buffer = await provider.read(pathScoped)
-    if (!buffer) {
-      return
-    }
-
-    if (opts.encoding === 'binary') {
+    const buffer = await provider.read(scope(path))
+    if (!buffer || opts.encoding === 'binary') {
       return buffer
     }
 
