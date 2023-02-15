@@ -15,6 +15,10 @@ const {
 } = require('fs').promises
 
 const impl = (config, dependencies) => {
+  const getEndpoint = async () => {
+    return ''
+  }
+
   const read = async path => {
     let file
     try {
@@ -88,7 +92,7 @@ const impl = (config, dependencies) => {
     return result
   }
 
-  const uri = async path => {
+  const url = (path, endpoint) => {
     return `file://${path}`
   }
 
@@ -139,13 +143,14 @@ const impl = (config, dependencies) => {
     config,
     client: {},
 
+    getEndpoint,
     copyOne,
     read,
     stat,
     write,
     removeOne,
     exists,
-    uri,
+    url,
     list
   }
 }

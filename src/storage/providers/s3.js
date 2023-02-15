@@ -22,6 +22,15 @@ const impl = (config, dependencies) => {
 
   const s3 = dependencies.clientInstance
 
+  const getEndpoint = async () => {
+    if (!s3.config.endpoint) {
+      return 'https://s3.amazonaws.com'
+    }
+
+    const { hostname } = await s3.config.endpoint()
+    return `https://${hostname}`
+  }
+
   const read = async path => {
     const { Bucket, Key } = url2parts(path)
 
@@ -108,10 +117,9 @@ const impl = (config, dependencies) => {
     return result.KeyCount > 0
   }
 
-  const uri = async path => {
+  const url = (path, endpoint) => {
     const { Bucket, Key } = url2parts(path)
-    const region = await s3.config.region()
-    return `https://${Bucket}.s3.${region}.amazonaws.com/${Key}`
+    return `${endpoint}/${Bucket}/${Key}`
   }
 
   const listAll = async (opts = {}, items = []) => {
@@ -168,13 +176,14 @@ const impl = (config, dependencies) => {
     config,
     client: s3,
 
+    getEndpoint,
     copyOne,
     read,
     stat,
     write,
     removeOne,
     exists,
-    uri,
+    url,
     list
   }
 }

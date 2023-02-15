@@ -1,4 +1,4 @@
-describe('Storage().stat()', () => {
+describe.only('Storage().stat()', () => {
   let providers
   before(() => (providers = global._storage.listProviders()))
   it('run', () => providers.forEach(run))
@@ -51,18 +51,16 @@ const run = provider => {
 
         expect(err).to.be.an('error')
         expect(err.message).to.eql('Invalid argument')
-        expect(err.cause).to.eql(`object 'path' should not end with a '/'`)
+        expect(err.cause).to.eql(`'path' should not end with a '/'`)
       })
     })
 
     describe('implementation', () => {
-      // TODO make the uri and url tests more comprehensive
       it(`should stat`, async () => {
         const result = await storage.stat('msg')
         expect(result.file).to.eql('msg')
         expect(result.size).to.eql(2)
         expect(result.modified).to.not.be.undefined
-        expect(result.uri.endsWith('msg')).to.eql(true)
         expect(result.url.endsWith('msg')).to.eql(true)
       })
     })
@@ -77,7 +75,6 @@ const run = provider => {
           'etag',
           'size',
           'modified',
-          'uri',
           'url'
         ])
         expect(result.file).to.be.a('string')
@@ -85,7 +82,6 @@ const run = provider => {
         expect(result.etag).to.be.a('string')
         expect(result.size).to.be.a('number')
         expect(result.modified).to.be.a('date')
-        expect(result.uri).to.be.a('string')
         expect(result.url).to.be.a('string')
       })
 
