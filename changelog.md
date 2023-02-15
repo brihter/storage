@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.4
+
+- `v1.0.4` Implemented promise throttling.
+- `v1.0.4` Removed the `bluebird` dependency.
+
+This release implements promise throttling and removes the `bluebird` dependency. This further reduces the package size.
+
 ## v1.0.3
 
 - `v1.0.3` Tidying up.

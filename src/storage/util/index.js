@@ -1,6 +1,7 @@
 const { Path } = require('./path.js')
 const { data } = require('./data.js')
 const { url } = require('./url.js')
+const { promise } = require('./promise.js')
 
 const Util = ({ config }) => {
   const path = Path({ config })
@@ -8,7 +9,8 @@ const Util = ({ config }) => {
   return {
     path,
     data,
-    url
+    url,
+    promise
   }
 }
 

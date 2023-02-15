@@ -1,5 +1,4 @@
 const { parse } = require('path')
-const Bluebird = require('bluebird')
 
 const copyApi = ({ provider, util, exists, list }) => {
   // prettier-ignore
@@ -65,7 +64,7 @@ const copyApi = ({ provider, util, exists, list }) => {
     }
 
     const doCopy = ([from, to]) => provider.copyOne(from, to)
-    await Bluebird.map(toCopy, doCopy, opts)
+    await util.promise.map(toCopy, doCopy, opts)
   }
 }
 
