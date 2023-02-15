@@ -1,10 +1,11 @@
 const Bluebird = require('bluebird')
-const { Path } = require('../utils/path.js')
-const { validatePath } = require('../utils/validators.js')
 
-// TODO tidy removeApi
 const removeApi = ({ provider, util, list }) => {
-  const { scope } = Path(provider.config)
+  // prettier-ignore
+  const {
+    validate,
+    scope
+  } = util.path
 
   // prettier-ignore
   const defaults = opts => Object.assign({
@@ -30,13 +31,11 @@ const removeApi = ({ provider, util, list }) => {
 
   return async (path, opts = {}) => {
     opts = defaults(opts)
-    validatePath(path)
+    validate(path)
 
-    let toRemove = []
-    toRemove = await getItems(path, opts)
-    toRemove = toRemove.map(scope)
-
-    await Bluebird.map(toRemove, provider.removeOne, opts)
+    let items = await getItems(path, opts)
+    items = items.map(scope)
+    await Bluebird.map(items, provider.removeOne, opts)
   }
 }
 
