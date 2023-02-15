@@ -46,7 +46,7 @@ const run = provider => {
 
         expect(err).to.be.an('error')
         expect(err.message).to.eql('Invalid argument')
-        expect(err.cause).to.eql(`object 'path' should not end with a '/'`)
+        expect(err.cause).to.eql(`'path' should not end with a '/'`)
       })
 
       it('should throw on missing data', async () => {
