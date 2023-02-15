@@ -1,7 +1,13 @@
 const existsApi = ({ provider, util }) => {
+  // prettier-ignore
+  const {
+    validate,
+    scope
+  } = util.path
+
   return async path => {
-    util.path.validate(path)
-    const pathScoped = util.path.scope(path)
+    validate(path)
+    const pathScoped = scope(path)
     return await provider.exists(pathScoped)
   }
 }

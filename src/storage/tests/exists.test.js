@@ -1,4 +1,4 @@
-describe('Storage().exists()', () => {
+describe.only('Storage().exists()', () => {
   let providers
   before(() => (providers = global._storage.listProviders()))
   it('run', () => providers.forEach(run))
