@@ -1,5 +1,7 @@
 const mime = require('mime-types')
-const { url2parts } = require('../utils/url.js')
+const {
+  url: { url2parts }
+} = require('../util/url.js')
 const { join } = require('path')
 
 const stream2Buffer = stream =>
