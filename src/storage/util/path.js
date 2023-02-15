@@ -62,12 +62,15 @@ const Path = ({ config }) => {
     return path
   }
 
+  const isFolder = path => path.endsWith('/')
+
   return {
     validate,
     scope,
     unscope,
     absolute,
-    relative
+    relative,
+    isFolder
   }
 }
 

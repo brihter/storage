@@ -1,28 +1,26 @@
 const { parse } = require('path')
 const Bluebird = require('bluebird')
-const { Path } = require('../utils/path.js')
-const { validatePath } = require('../utils/validators.js')
 
-// TODO tidy copyApi
 const copyApi = ({ provider, util, exists, list }) => {
-  const { scope } = Path(provider.config)
+  // prettier-ignore
+  const {
+    validate: validatePath,
+    scope,
+    isFolder
+  } = util.path
 
-  return async (pathFrom, pathTo, opts) => {
-    opts = Object.assign(
-      {
-        concurrency: provider.config.concurrency
-      },
-      opts
-    )
+  // prettier-ignore
+  const defaults = opts => Object.assign({
+    concurrency: provider.config.concurrency
+  }, opts)
 
-    const isFolder = path => path.endsWith('/')
-
+  const validate = async (pathFrom, pathTo) => {
     validatePath(pathFrom, 'pathFrom')
     validatePath(pathTo, 'pathTo')
 
-    const fromFolder = isFolder(pathFrom)
-    const toFolder = isFolder(pathTo)
-    if (fromFolder && !toFolder) {
+    const pathFromIsFolder = isFolder(pathFrom)
+    const pathToIsFolder = isFolder(pathTo)
+    if (pathFromIsFolder && !pathToIsFolder) {
       throw new Error(
         `Unable to copy, 'pathFrom' is a directory and 'pathTo' a file`
       )
@@ -32,25 +30,32 @@ const copyApi = ({ provider, util, exists, list }) => {
     if (!pathFromExists) {
       throw new Error(`'pathFrom' doesn't exist`)
     }
+  }
 
-    const scopedPathFrom = scope(pathFrom)
-    const scopedPathTo = scope(pathTo)
+  return async (pathFrom, pathTo, opts) => {
+    opts = defaults(opts)
+    await validate(pathFrom, pathTo)
+
+    const pathFromScoped = scope(pathFrom)
+    const pathFromIsFolder = isFolder(pathFrom)
+    const pathToScoped = scope(pathTo)
+    const pathToIsFolder = isFolder(pathTo)
 
     let toCopy = []
 
     // file to file
-    if (!fromFolder && !toFolder) {
-      toCopy.push([scopedPathFrom, scopedPathTo])
+    if (!pathFromIsFolder && !pathToIsFolder) {
+      toCopy.push([pathFromScoped, pathToScoped])
     }
 
     // file to folder
-    if (!fromFolder && toFolder) {
-      const target = scopedPathTo + parse(scopedPathFrom).base
-      toCopy.push([scopedPathFrom, target])
+    if (!pathFromIsFolder && pathToIsFolder) {
+      const target = pathToScoped + parse(pathFromScoped).base
+      toCopy.push([pathFromScoped, target])
     }
 
     // folder to folder
-    if (fromFolder && toFolder) {
+    if (pathFromIsFolder && pathToIsFolder) {
       toCopy = await list(pathFrom, { recursive: true, absolute: true })
       toCopy = toCopy.map(path => scope(path))
       toCopy = toCopy.map(path => {
@@ -60,9 +65,7 @@ const copyApi = ({ provider, util, exists, list }) => {
     }
 
     const doCopy = ([from, to]) => provider.copyOne(from, to)
-    await Bluebird.map(toCopy, doCopy, {
-      concurrency: opts.concurrency
-    })
+    await Bluebird.map(toCopy, doCopy, opts)
   }
 }
 
