@@ -1,5 +1,3 @@
-const Bluebird = require('bluebird')
-
 const removeApi = ({ provider, util, list }) => {
   // prettier-ignore
   const {
@@ -35,7 +33,7 @@ const removeApi = ({ provider, util, list }) => {
 
     let items = await getItems(path, opts)
     items = items.map(scope)
-    await Bluebird.map(items, provider.removeOne, opts)
+    await util.promise.map(items, provider.removeOne, opts)
   }
 }
 

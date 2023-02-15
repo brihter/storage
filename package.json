@@ -37,7 +37,6 @@
     "arrowParens": "avoid"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
     "iconv-lite": "^0.6.3",
     "mime-types": "^2.1.35"
   },

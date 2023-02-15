@@ -1,7 +1,7 @@
 const { parse, join } = require('path')
 const crypto = require('crypto')
-const Bluebird = require('bluebird')
 const mime = require('mime-types')
+const { promise } = require('../util/promise.js')
 
 // prettier-ignore
 const {
@@ -118,7 +118,7 @@ const impl = (config, dependencies) => {
     const results = [entries.map(format)]
     if (opts.recursive) {
       const doList = path => scan(path, opts)
-      const items = await Bluebird.map(directories, doList, {
+      const items = await promise.map(directories, doList, {
         concurrency: opts.concurrency
       })
       results.push(items)
