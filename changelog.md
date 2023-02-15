@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.3
+
+- `v1.0.3` Tidying up.
+- `v1.0.3` Added scoped utils.
+- `v1.0.3` Removed `uri` from the `stat()` function output.
+- `v1.0.3` Removed obsolete documentation bits.
+
 ## v1.0.2
 
 - `v1.0.2` Removed "examples/", "readme.md" and "changelog.md" from the published package.
