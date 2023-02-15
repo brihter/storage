@@ -19,6 +19,10 @@ const url2parts = url => {
   }
 }
 
-module.exports = {
+const url = {
   url2parts
+}
+
+module.exports = {
+  url
 }

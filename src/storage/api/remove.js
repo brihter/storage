@@ -1,13 +1,11 @@
 const Bluebird = require('bluebird')
-const { Path } = require('../utils/path.js')
-const { validatePath } = require('../utils/validators.js')
 
-const { list } = require('./list.js')
-
-const remove = provider => {
-  const { scope } = Path(provider.config)
-
-  const doList = list(provider)
+const removeApi = ({ provider, util, list }) => {
+  // prettier-ignore
+  const {
+    validate,
+    scope
+  } = util.path
 
   // prettier-ignore
   const defaults = opts => Object.assign({
@@ -19,7 +17,7 @@ const remove = provider => {
     let toRemove = [path]
 
     if (opts.recursive) {
-      const items = await doList(path, {
+      const items = await list(path, {
         recursive: true,
         absolute: true,
         concurrency: opts.concurrency
@@ -33,16 +31,14 @@ const remove = provider => {
 
   return async (path, opts = {}) => {
     opts = defaults(opts)
-    validatePath(path)
+    validate(path)
 
-    let toRemove = []
-    toRemove = await getItems(path, opts)
-    toRemove = toRemove.map(scope)
-
-    await Bluebird.map(toRemove, provider.removeOne, opts)
+    let items = await getItems(path, opts)
+    items = items.map(scope)
+    await Bluebird.map(items, provider.removeOne, opts)
   }
 }
 
 module.exports = {
-  remove
+  removeApi
 }
