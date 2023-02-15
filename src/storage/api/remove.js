@@ -2,6 +2,7 @@ const Bluebird = require('bluebird')
 const { Path } = require('../utils/path.js')
 const { validatePath } = require('../utils/validators.js')
 
+// TODO tidy removeApi
 const removeApi = ({ provider, util, list }) => {
   const { scope } = Path(provider.config)
 

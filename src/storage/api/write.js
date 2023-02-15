@@ -3,6 +3,7 @@ const iconv = require('iconv-lite')
 const { Path } = require('../utils/path.js')
 const { validateObjectPath, validateData } = require('../utils/validators.js')
 
+// TODO tidy writeApi
 const writeApi = ({ provider, util }) => {
   const { scope } = Path(provider.config)
 

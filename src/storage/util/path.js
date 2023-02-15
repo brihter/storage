@@ -21,7 +21,7 @@ const Path = ({ config }) => {
     }
   }
 
-  // TODO
+  // TODO better name or consolidate both dir and object path
   const validateObjectPath = (path, variableName = 'path') => {
     validate(path)
 

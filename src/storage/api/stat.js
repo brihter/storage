@@ -2,6 +2,7 @@ const { Path } = require('../utils/path.js')
 const { validateObjectPath } = require('../utils/validators.js')
 const { url2parts } = require('../utils/url.js')
 
+// TODO tidy statApi
 const statApi = ({ provider, util }) => {
   const { type } = provider.config
   const { scope, unscope } = Path(provider.config)

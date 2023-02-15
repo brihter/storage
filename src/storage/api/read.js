@@ -1,5 +1,6 @@
 const iconv = require('iconv-lite')
 
+// TODO tidy readApi
 const readApi = ({ provider, util }) => {
   // prettier-ignore
   const defaults = opts => Object.assign({

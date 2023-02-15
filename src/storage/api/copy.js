@@ -3,6 +3,7 @@ const Bluebird = require('bluebird')
 const { Path } = require('../utils/path.js')
 const { validatePath } = require('../utils/validators.js')
 
+// TODO tidy copyApi
 const copyApi = ({ provider, util, exists, list }) => {
   const { scope } = Path(provider.config)
 

@@ -1,34 +1,34 @@
 const listApi = ({ provider, util, exists }) => {
   // prettier-ignore
+  const {
+    validate,
+    scope,
+    absolute,
+    relative
+  } = util.path
+
+  // prettier-ignore
   const defaults = opts => Object.assign({
     recursive: false,
     absolute: false,
     concurrency: provider.config.concurrency
   }, opts)
 
-  const format = (items, path, opts) => {
-    if (opts.absolute) {
-      return items.map(util.path.absolute)
+  return async (path, opts = {}) => {
+    const format = item => {
+      return opts.absolute ? absolute(item) : relative(item, path)
     }
 
-    return items.map(item => util.path.relative(item, path))
-  }
-
-  return async (path, opts = {}) => {
     opts = defaults(opts)
-    util.path.validate(path)
+    validate(path)
 
     const pathExists = await exists(path)
     if (!pathExists) {
       return []
     }
 
-    const pathScoped = util.path.scope(path)
-
-    let items = []
-    items = await provider.list(pathScoped, opts)
-    items = format(items, path, opts)
-    return items
+    const items = await provider.list(scope(path), opts)
+    return items.map(format)
   }
 }
 
