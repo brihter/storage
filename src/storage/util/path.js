@@ -64,13 +64,23 @@ const Path = ({ config }) => {
 
   const isFolder = path => path.endsWith('/')
 
+  const resolve = path => {
+    const resolved = join(config.path, path)
+    if (!resolved.startsWith(config.path)) {
+      throw new Error('Input path out of storage scope.')
+    }
+
+    return resolved
+  }
+
   return {
     validate,
     scope,
     unscope,
     absolute,
     relative,
-    isFolder
+    isFolder,
+    resolve
   }
 }
 

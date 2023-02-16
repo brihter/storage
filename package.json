@@ -6,6 +6,8 @@
   "scripts": {
     "format": "./bin/format.sh",
     "test": "./bin/test.sh",
+    "test-unit": "./bin/test-unit.sh",
+    "test-integration": "./bin/test-integration.sh",
     "release": "./bin/release.sh"
   },
   "repository": {
