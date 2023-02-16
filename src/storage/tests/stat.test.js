@@ -53,11 +53,27 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should not end with a '/'`)
       })
+
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.stat('../../msg').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
       it(`should stat`, async () => {
         const result = await storage.stat('msg')
+        expect(result.file).to.eql('msg')
+        expect(result.size).to.eql(2)
+        expect(result.modified).to.not.be.undefined
+        expect(result.url.endsWith('msg')).to.eql(true)
+      })
+
+      it(`should resolve and stat`, async () => {
+        const result = await storage.stat('foo/../msg')
         expect(result.file).to.eql('msg')
         expect(result.size).to.eql(2)
         expect(result.modified).to.not.be.undefined
