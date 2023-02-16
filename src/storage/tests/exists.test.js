@@ -44,11 +44,24 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should contain a string`)
       })
+
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.exists('../../msg').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
       it('should return true when file exists', async () => {
         const be = await storage.exists('iam')
+        expect(be).to.eql(true)
+      })
+
+      it('should resolve and return true when file exists', async () => {
+        const be = await storage.exists('foo/../iam')
         expect(be).to.eql(true)
       })
 
