@@ -7,31 +7,29 @@ describe('storage.util.path', () => {
     }
   })
 
-  describe('resolve()', () => {
+  describe('scope()', () => {
     it('should resolve #1', () => {
-      const resolved = path.resolve('foo/../file')
+      const resolved = path.scope('foo/../file')
       expect(resolved).to.eql('/tmp/test/file')
     })
 
     it('should resolve #2', () => {
-      const resolved = path.resolve('foo/../foo/file')
+      const resolved = path.scope('foo/../foo/file')
       expect(resolved).to.eql('/tmp/test/foo/file')
     })
 
     it('should resolve #3', () => {
-      const resolved = path.resolve('foo1/foo2/../../file')
+      const resolved = path.scope('foo1/foo2/../../file')
       expect(resolved).to.eql('/tmp/test/file')
     })
 
     it('should throw when path out of scope #1', () => {
-      expect(path.resolve.bind(path, '../file')).to.throw(
-        'Input path out of storage scope.'
-      )
+      expect(path.scope.bind(path, '../file')).to.throw('Invalid argument')
     })
 
     it('should throw when path out of scope #2', () => {
-      expect(path.resolve.bind(path, 'foo/bar/../../../../file')).to.throw(
-        'Input path out of storage scope.'
+      expect(path.scope.bind(path, 'foo/bar/../../../../file')).to.throw(
+        'Invalid argument'
       )
     })
   })
