@@ -70,6 +70,26 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'pathTo' should contain a string`)
       })
+
+      it(`should throw when pathFrom is out of scope`, async () => {
+        const err = await storage
+          .copy('../../msg.txt', 'msg_copy.txt')
+          .catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
+
+      it(`should throw when pathTo is out of scope`, async () => {
+        const err = await storage
+          .copy('msg.txt', '../../msg_copy.txt')
+          .catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
@@ -90,6 +110,18 @@ const run = provider => {
       it('should copy, file to file', async () => {
         await storage.copy('msg.txt', 'msg_copy.txt')
         const result = await storage.read('msg_copy.txt')
+        expect(result).to.eql('hi')
+      })
+
+      it('should resolve and copy, file to file #1', async () => {
+        await storage.copy('foo/../msg.txt', 'msg_copy1.txt')
+        const result = await storage.read('msg_copy1.txt')
+        expect(result).to.eql('hi')
+      })
+
+      it('should resolve and copy, file to file #2', async () => {
+        await storage.copy('msg.txt', 'foo/../msg_copy2.txt')
+        const result = await storage.read('msg_copy2.txt')
         expect(result).to.eql('hi')
       })
 
