@@ -127,8 +127,6 @@ See [StatFunction](docs/StatFunction.md) for more information.
 
 ## Roadmap
 
-- `v1.1.0` Support for relative input paths.
-- `v1.1.0` Ensure input paths can't be out of the storage scope.
 - `v1.2.0` Azure Blob Storage implementation
 - `v1.3.0` Google Storage implementation
 

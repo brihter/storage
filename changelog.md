@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.0
+
+- `v1.1.0` Added support for relative input paths.
+
+This release adds support for relative input paths. Storage now resolves the actual input path and throw an error when the resolved path is out of storage scope.
+
 ## v1.0.4
 
 - `v1.0.4` Implemented promise throttling.
