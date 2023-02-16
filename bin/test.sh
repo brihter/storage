@@ -1,20 +1,15 @@
 #!/bin/bash
 
-provider=$1
+./bin/test-unit.sh
+exit_code=$?
 
-CF_PROFILE=conjure-usr-ops \
-AWS_PROFILE=conjure-usr-ops \
-AWS_NODEJS_CONNECTION_REUSE_ENABLED=1 \
-NODE_ENV=test \
-npx mocha \
-  --exit \
-  --file test/bootstrap.js \
-  --recursive \
-  --bail \
-  --timeout 30000 \
-  --reporter spec \
-  "src/**/*.test.js" \
-  $provider
+if [ "$exit_code" -ne "0" ]; then
+  exit $exit_code;
+fi
 
-mocha_exit=$?
-exit $mocha_exit
+./bin/test-integration.sh
+exit_code=$?
+
+if [ "$exit_code" -ne "0" ]; then
+  exit $exit_code;
+fi

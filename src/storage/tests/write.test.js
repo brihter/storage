@@ -49,6 +49,14 @@ const run = provider => {
         expect(err.cause).to.eql(`'path' should not end with a '/'`)
       })
 
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.write('../../msg', 'hi').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
+
       it('should throw on missing data', async () => {
         const err = await storage.write('msg').catch(err => err)
 
@@ -68,6 +76,12 @@ const run = provider => {
       it('should write to nested paths', async () => {
         await storage.write('dir1/dir2/msg', 'hello2')
         const data = await storage.read('dir1/dir2/msg')
+        expect(data).to.eql('hello2')
+      })
+
+      it('should resolve and write', async () => {
+        await storage.write('foo/../msg2', 'hello2')
+        const data = await storage.read('msg2')
         expect(data).to.eql('hello2')
       })
 

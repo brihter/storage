@@ -56,6 +56,14 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should not end with a '/'`)
       })
+
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.read('../../msg').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
@@ -67,6 +75,11 @@ const run = provider => {
       it('should read from nested paths', async () => {
         const data = await storage.read('sub/msg')
         expect(data).to.eql('readsub')
+      })
+
+      it('should read from relative paths', async () => {
+        const data = await storage.read('sub/../msg')
+        expect(data).to.eql('read')
       })
 
       it('should decode', async () => {

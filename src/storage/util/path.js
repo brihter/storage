@@ -32,7 +32,14 @@ const Path = ({ config }) => {
   }
 
   const scope = (path = '/') => {
-    return join(config.path, path)
+    const resolved = join(config.path, path)
+    if (!resolved.startsWith(config.path)) {
+      throw new TypeError('Invalid argument', {
+        cause: 'Input path is out of storage scope.'
+      })
+    }
+
+    return resolved
   }
 
   const unscope = (scopedPath = '') => {

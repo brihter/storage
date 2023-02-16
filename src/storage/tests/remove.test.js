@@ -50,6 +50,14 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should contain a string`)
       })
+
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.remove('../../msg').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
@@ -57,6 +65,12 @@ const run = provider => {
         await storage.remove('msg1')
         const items = await storage.list('/')
         expect(items).to.not.have.members(['msg1'])
+      })
+
+      it('should resolve and remove', async () => {
+        await storage.remove('foo/../msg2')
+        const items = await storage.list('/')
+        expect(items).to.not.have.members(['msg2'])
       })
 
       it('should remove recursively', async () => {

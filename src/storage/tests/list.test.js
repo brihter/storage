@@ -46,11 +46,24 @@ const run = provider => {
         expect(err.message).to.eql('Invalid argument')
         expect(err.cause).to.eql(`'path' should contain a string`)
       })
+
+      it(`should throw when path is out of scope`, async () => {
+        const err = await storage.list('../../msg/').catch(err => err)
+
+        expect(err).to.be.an('error')
+        expect(err.message).to.eql('Invalid argument')
+        expect(err.cause).to.eql('Input path is out of storage scope.')
+      })
     })
 
     describe('implementation', () => {
       it('should list items and prefixes', async () => {
         const items = await storage.list('/')
+        expect(items).to.have.members(['msg', 'sub/'])
+      })
+
+      it('should resolve and list items and prefixes', async () => {
+        const items = await storage.list('foo/../')
         expect(items).to.have.members(['msg', 'sub/'])
       })
 
