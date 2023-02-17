@@ -153,6 +153,38 @@ type ListFunction = {
 }
 
 /**
+ * Pre-sign options.
+ */
+type PreSignFunctionOpts = {
+  /**
+   * Expiry time in seconds. Optional, default is `3600`.
+   */
+  expiresIn?: number
+}
+
+/**
+ * Creates a presigned URL that allows public access to the file.
+ *
+ * @example
+ * ```js
+ * let data = await storage.presign('file')
+ * let data = await storage.presign('file', { expiresIn: 3600 })
+ * ```
+ */
+type PreSignFunction = {
+  /**
+   * @param path File path.
+   */
+  (path: string): Promise<string>
+
+  /**
+   * @param path File path.
+   * @param opts Pre-sign options.
+   */
+  (path: string, opts: PreSignFunctionOpts): Promise<string>
+}
+
+/**
  * Read options.
  */
 type ReadFunctionOpts = {
@@ -346,6 +378,7 @@ type WriteFunction = {
  * data = await storage.exists('file')
  * data = await storage.list('/', { recursive: true })
  * data = await storage.read('file')
+ * data = await storage.presign('file')
  * ```
  */
 type StorageInterface = {
@@ -365,6 +398,11 @@ type StorageInterface = {
    * Reads the contents of a directory.
    */
   list: ListFunction
+
+  /**
+   * Creates a presigned URL that allows public access to the file.
+   */
+  presign: PreSignFunction
 
   /**
    * Reads the contents of a file.

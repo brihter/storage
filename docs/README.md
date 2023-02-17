@@ -69,6 +69,7 @@ Methods:
 - [copy](#copy)
 - [exists](#exists)
 - [list](#list)
+- [presign](#presign)
 - [read](#read)
 - [remove](#remove)
 - [stat](#stat)
@@ -94,6 +95,7 @@ See: [Config](Config.md)
 - `copy: CopyFunction`
 - `exists: ExistsFunction`
 - `list: ListFunction`
+- `presign: PreSignFunction`
 - `read: ReadFunction`
 - `remove: RemoveFunction`
 - `stat: StatFunction`
@@ -123,6 +125,15 @@ See: [ExistsFunction](ExistsFunction.md)
 Reads the contents of a directory.
 
 See: [ListFunction](ListFunction.md)
+
+
+
+
+#### presign: PreSignFunction
+
+Creates a presigned URL that allows public access to the file.
+
+See: [PreSignFunction](PreSignFunction.md)
 
 
 
@@ -186,4 +197,5 @@ data = await storage.stat('file')
 data = await storage.exists('file')
 data = await storage.list('/', { recursive: true })
 data = await storage.read('file')
+data = await storage.presign('file')
 ```
