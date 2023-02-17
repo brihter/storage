@@ -20,7 +20,6 @@ const impl = (config, dependencies) => {
     ListObjectsV2Command,
     DeleteObjectCommand,
     CopyObjectCommand
-    // SignatureV4
   } = dependencies.client
 
   const s3 = dependencies.clientInstance
@@ -177,7 +176,21 @@ const impl = (config, dependencies) => {
   }
 
   const presign = async (path, opts) => {
-    // TODO
+    const [region, credentials] = await Promise.all([
+      s3.config.region(),
+      s3.config.credentials()
+    ])
+
+    // const signer = new SignatureV4({
+    //   applyChecksum: false,
+    //   credentials,
+    //   region,
+    //   service: 's3',
+    //   //sha256: Sha256
+    // })
+
+    //console.log(signer)
+
     return ''
   }
 
