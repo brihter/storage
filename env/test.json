@@ -11,7 +11,8 @@
       "path": "conjure-storage-test-3d8e8dd"
     },
     "storageClient": {
-      "region": "eu-central-1"
+      "region": "eu-central-1",
+      "signatureVersion": "v4"
     }
   },
   "r2": {
@@ -20,7 +21,8 @@
       "path": "conjure-storage-test-4x1a7ff"
     },
     "storageClient": {
-      "region": "auto"
+      "region": "auto",
+      "signatureVersion": "v4"
     }
   }
 }

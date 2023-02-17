@@ -9,7 +9,8 @@ const {
   readApi,
   removeApi,
   statApi,
-  writeApi
+  writeApi,
+  presignApi
 } = require('./api')
 
 // prettier-ignore
@@ -39,6 +40,7 @@ const Storage = (config, dependencies) => {
   const stat = statApi(ctx)
   const write = writeApi(ctx)
   const read = readApi(ctx)
+  const presign = presignApi(ctx)
   const list = listApi({ ...ctx, exists })
   const copy = copyApi({ ...ctx, exists, list })
   const remove = removeApi({ ...ctx, list })
@@ -53,7 +55,8 @@ const Storage = (config, dependencies) => {
     read,
     remove,
     stat,
-    write
+    write,
+    presign
   }
 }
 

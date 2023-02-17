@@ -127,8 +127,9 @@ See [StatFunction](docs/StatFunction.md) for more information.
 
 ## Roadmap
 
-- `v1.2.0` Azure Blob Storage implementation
-- `v1.3.0` Google Storage implementation
+- `v1.2.0` Presigned URLs.
+- `v2.0.0` Azure Blob Storage implementation.
+- `v3.0.0` Google Storage implementation.
 
 ## Testing
 

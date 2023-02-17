@@ -5,6 +5,7 @@ const { readApi } = require('./read.js')
 const { removeApi } = require('./remove.js')
 const { statApi } = require('./stat.js')
 const { writeApi } = require('./write.js')
+const { presignApi } = require('./presign.js')
 
 module.exports = {
   existsApi,
@@ -13,5 +14,6 @@ module.exports = {
   readApi,
   removeApi,
   statApi,
-  writeApi
+  writeApi,
+  presignApi
 }

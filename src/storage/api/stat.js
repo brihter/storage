@@ -14,8 +14,7 @@ const statApi = ({ provider, util }) => {
       return
     }
 
-    const endpoint = await provider.getEndpoint()
-    result.url = provider.url(result.file, endpoint)
+    result.url = await provider.url(result.file)
     result.file = unscope(result.file)
     return result
   }

@@ -20,6 +20,7 @@ const impl = (config, dependencies) => {
     ListObjectsV2Command,
     DeleteObjectCommand,
     CopyObjectCommand
+    // SignatureV4
   } = dependencies.client
 
   const s3 = dependencies.clientInstance
@@ -119,7 +120,8 @@ const impl = (config, dependencies) => {
     return result.KeyCount > 0
   }
 
-  const url = (path, endpoint) => {
+  const url = async path => {
+    const endpoint = await getEndpoint()
     const { Bucket, Key } = url2parts(path)
     return `${endpoint}/${Bucket}/${Key}`
   }
@@ -174,11 +176,15 @@ const impl = (config, dependencies) => {
     )
   }
 
+  const presign = async (path, opts) => {
+    // TODO
+    return ''
+  }
+
   return {
     config,
     client: s3,
 
-    getEndpoint,
     copyOne,
     read,
     stat,
@@ -186,7 +192,8 @@ const impl = (config, dependencies) => {
     removeOne,
     exists,
     url,
-    list
+    list,
+    presign
   }
 }
 
