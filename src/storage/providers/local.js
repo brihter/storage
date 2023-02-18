@@ -92,7 +92,7 @@ const impl = (config, dependencies) => {
     return result
   }
 
-  const url = (path, endpoint) => {
+  const url = async path => {
     return `file://${path}`
   }
 
@@ -139,11 +139,14 @@ const impl = (config, dependencies) => {
     await copyFile(from, to)
   }
 
+  const presign = async (path, opts) => {
+    return await url(path)
+  }
+
   return {
     config,
     client: {},
 
-    getEndpoint,
     copyOne,
     read,
     stat,
@@ -151,7 +154,8 @@ const impl = (config, dependencies) => {
     removeOne,
     exists,
     url,
-    list
+    list,
+    presign
   }
 }
 

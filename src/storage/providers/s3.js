@@ -119,7 +119,8 @@ const impl = (config, dependencies) => {
     return result.KeyCount > 0
   }
 
-  const url = (path, endpoint) => {
+  const url = async path => {
+    const endpoint = await getEndpoint()
     const { Bucket, Key } = url2parts(path)
     return `${endpoint}/${Bucket}/${Key}`
   }
@@ -174,11 +175,16 @@ const impl = (config, dependencies) => {
     )
   }
 
+  const presign = async (path, opts) => {
+    const { Bucket, Key } = url2parts(path)
+    const command = new GetObjectCommand({ Bucket, Key })
+    return await dependencies.clientPresign.getSignedUrl(s3, command, opts)
+  }
+
   return {
     config,
     client: s3,
 
-    getEndpoint,
     copyOne,
     read,
     stat,
@@ -186,7 +192,8 @@ const impl = (config, dependencies) => {
     removeOne,
     exists,
     url,
-    list
+    list,
+    presign
   }
 }
 

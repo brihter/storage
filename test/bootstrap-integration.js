@@ -3,6 +3,7 @@ const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
 const S3 = require('@aws-sdk/client-s3')
+const S3Presign = require('@aws-sdk/s3-request-presigner')
 
 const { Storage } = require('../src/storage/storage.js')
 const { loadConfig } = require('../env')
@@ -18,6 +19,7 @@ const createOne = async (runId, type) => {
   if (config.type === 's3') {
     dependencies = {
       client: S3,
+      clientPresign: S3Presign,
       clientInstance: new S3.S3Client(cfgByType.storageClient)
     }
   }

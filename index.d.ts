@@ -37,9 +37,11 @@ type Config = {
  * @example
  * ```js
  * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  * ```
@@ -150,6 +152,38 @@ type ListFunction = {
    * @param opts List options.
    */
   (path: string, opts: ListFunctionOpts): Promise<Array<string>>
+}
+
+/**
+ * Pre-sign options.
+ */
+type PreSignFunctionOpts = {
+  /**
+   * Expiry time in seconds. Optional, default is `3600`.
+   */
+  expiresIn?: number
+}
+
+/**
+ * Creates a presigned URL that allows public access to the file.
+ *
+ * @example
+ * ```js
+ * let data = await storage.presign('file')
+ * let data = await storage.presign('file', { expiresIn: 3600 })
+ * ```
+ */
+type PreSignFunction = {
+  /**
+   * @param path File path.
+   */
+  (path: string): Promise<string>
+
+  /**
+   * @param path File path.
+   * @param opts Pre-sign options.
+   */
+  (path: string, opts: PreSignFunctionOpts): Promise<string>
 }
 
 /**
@@ -325,6 +359,9 @@ type WriteFunction = {
  *
  * @example
  * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ *
  * const config = {
  *   type: 's3',
  *   path: 'bucket-3d8e8dd/path/to/data'
@@ -332,6 +369,7 @@ type WriteFunction = {
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  *
@@ -346,6 +384,7 @@ type WriteFunction = {
  * data = await storage.exists('file')
  * data = await storage.list('/', { recursive: true })
  * data = await storage.read('file')
+ * data = await storage.presign('file')
  * ```
  */
 type StorageInterface = {
@@ -365,6 +404,11 @@ type StorageInterface = {
    * Reads the contents of a directory.
    */
   list: ListFunction
+
+  /**
+   * Creates a presigned URL that allows public access to the file.
+   */
+  presign: PreSignFunction
 
   /**
    * Reads the contents of a file.
@@ -392,6 +436,9 @@ type StorageInterface = {
  *
  * @example
  * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ *
  * const config = {
  *   type: 's3',
  *   path: 'bucket-3d8e8dd/path/to/data'
@@ -399,6 +446,7 @@ type StorageInterface = {
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  *

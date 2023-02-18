@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0
+
+- `v1.2.0` Added presigned URLs.
+
+This release adds support for [presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html).
+
 ## v1.1.0
 
 - `v1.1.0` Added support for relative input paths.

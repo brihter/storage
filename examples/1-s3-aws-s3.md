@@ -11,6 +11,8 @@ npm i @brighter/storage
 
 ```js
 const S3 = require('@aws-sdk/client-s3')
+const S3Presign = require('@aws-sdk/s3-request-presigner')
+
 const { Storage } = require('@brighter/storage')
 
 const config = {
@@ -20,6 +22,7 @@ const config = {
 
 const dependencies = {
   client: S3,
+  clientPresign: S3Presign,
   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
 }
 

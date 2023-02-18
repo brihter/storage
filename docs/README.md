@@ -37,6 +37,9 @@ See: [StorageInterface](StorageInterface.md)
 ## Examples
 
 ```js
+const S3 = require('@aws-sdk/client-s3')
+const S3Presign = require('@aws-sdk/s3-request-presigner')
+
 const config = {
   type: 's3',
   path: 'bucket-3d8e8dd/path/to/data'
@@ -44,6 +47,7 @@ const config = {
 
 const dependencies = {
   client: S3,
+  clientPresign: S3Presign,
   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
 }
 
@@ -69,6 +73,7 @@ Methods:
 - [copy](#copy)
 - [exists](#exists)
 - [list](#list)
+- [presign](#presign)
 - [read](#read)
 - [remove](#remove)
 - [stat](#stat)
@@ -94,6 +99,7 @@ See: [Config](Config.md)
 - `copy: CopyFunction`
 - `exists: ExistsFunction`
 - `list: ListFunction`
+- `presign: PreSignFunction`
 - `read: ReadFunction`
 - `remove: RemoveFunction`
 - `stat: StatFunction`
@@ -123,6 +129,15 @@ See: [ExistsFunction](ExistsFunction.md)
 Reads the contents of a directory.
 
 See: [ListFunction](ListFunction.md)
+
+
+
+
+#### presign: PreSignFunction
+
+Creates a presigned URL that allows public access to the file.
+
+See: [PreSignFunction](PreSignFunction.md)
 
 
 
@@ -165,6 +180,9 @@ See: [WriteFunction](WriteFunction.md)
 ## Examples
 
 ```js
+const S3 = require('@aws-sdk/client-s3')
+const S3Presign = require('@aws-sdk/s3-request-presigner')
+
 const config = {
   type: 's3',
   path: 'bucket-3d8e8dd/path/to/data'
@@ -172,6 +190,7 @@ const config = {
 
 const dependencies = {
   client: S3,
+  clientPresign: S3Presign,
   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
 }
 
@@ -186,4 +205,5 @@ data = await storage.stat('file')
 data = await storage.exists('file')
 data = await storage.list('/', { recursive: true })
 data = await storage.read('file')
+data = await storage.presign('file')
 ```
