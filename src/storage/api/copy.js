@@ -1,4 +1,4 @@
-const { parse } = require('path')
+import { parse } from 'node:path'
 
 const copyApi = ({ provider, util, exists, list }) => {
   // prettier-ignore
@@ -68,6 +68,4 @@ const copyApi = ({ provider, util, exists, list }) => {
   }
 }
 
-module.exports = {
-  copyApi
-}
+export { copyApi }

@@ -1,5 +1,5 @@
-const { Storage } = require('./src/storage')
+const { Storage } = import S3 from '@aws-sdk/client-s3'./src/storage')
 
-module.exports = {
+export {
   Storage
 }

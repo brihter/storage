@@ -1,6 +1,6 @@
-const homedir = require('os').homedir()
-const { readFile } = require('fs').promises
-const ini = require('ini')
+const homedir = import S3 from '@aws-sdk/client-s3'os').homedir()
+const { readFile } = import S3 from '@aws-sdk/client-s3'fs').promises
+const ini = import S3 from '@aws-sdk/client-s3'ini')
 
 const getCredentials = async provider => {
   let credentials
@@ -79,6 +79,6 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   return cfg
 }
 
-module.exports = {
+export {
   loadConfig
 }

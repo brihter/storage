@@ -1,4 +1,4 @@
-const aws = require('@pulumi/aws')
+import aws from '@pulumi/aws'
 
 const bucketAWS = new aws.s3.Bucket('conjure-storage-test')
 

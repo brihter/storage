@@ -37,6 +37,4 @@ const removeApi = ({ provider, util, list }) => {
   }
 }
 
-module.exports = {
-  removeApi
-}
+export { removeApi }

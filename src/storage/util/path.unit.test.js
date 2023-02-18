@@ -1,4 +1,4 @@
-const { Path } = require('./path')
+import { Path } from './path.js'
 
 describe('storage.util.path', () => {
   let path = Path({

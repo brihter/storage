@@ -1,13 +1,13 @@
-const { existsApi } = require('./exists.js')
-const { copyApi } = require('./copy.js')
-const { listApi } = require('./list.js')
-const { readApi } = require('./read.js')
-const { removeApi } = require('./remove.js')
-const { statApi } = require('./stat.js')
-const { writeApi } = require('./write.js')
-const { presignApi } = require('./presign.js')
+import { existsApi } from './exists.js'
+import { copyApi } from './copy.js'
+import { listApi } from './list.js'
+import { readApi } from './read.js'
+import { removeApi } from './remove.js'
+import { statApi } from './stat.js'
+import { writeApi } from './write.js'
+import { presignApi } from './presign.js'
 
-module.exports = {
+export {
   existsApi,
   copyApi,
   listApi,

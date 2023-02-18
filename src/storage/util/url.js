@@ -1,11 +1,11 @@
-const Url = require('url')
+import URL from 'node:url'
 
 const url2parts = url => {
   if (!url.startsWith('http://') || !url.startsWith('https://')) {
     url = `https://${url}`
   }
 
-  const parts = Url.parse(url)
+  const parts = URL.parse(url)
 
   let Bucket = parts.hostname
 
@@ -23,6 +23,4 @@ const url = {
   url2parts
 }
 
-module.exports = {
-  url
-}
+export { url }

@@ -10,6 +10,4 @@ const data = {
   validate
 }
 
-module.exports = {
-  data
-}
+export { data }
