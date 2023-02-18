@@ -1,6 +1,6 @@
 const { expect } = require('chai')
 
-describe.only('Storage().presign()', () => {
+describe('Storage().presign()', () => {
   let providers
   before(() => (providers = global._storage.listProviders()))
   it('run', () => providers.forEach(run))
@@ -62,9 +62,15 @@ const run = provider => {
       })
     })
 
+    // TODO make tests more comprehensive
     describe('implementation', () => {
       it('should presign', async () => {
         const url = await storage.presign('msg')
+        expect(url).to.be.a('string')
+      })
+
+      it('should presign and assign an expiration time', async () => {
+        const url = await storage.presign('msg', { expiresIn: 60 })
         expect(url).to.be.a('string')
       })
     })
