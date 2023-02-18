@@ -1,6 +1,6 @@
-const { expect } = require('chai')
+const axios = require('axios')
 
-describe('Storage().presign()', () => {
+describe.only('Storage().presign()', () => {
   let providers
   before(() => (providers = global._storage.listProviders()))
   it('run', () => providers.forEach(run))
@@ -62,16 +62,30 @@ const run = provider => {
       })
     })
 
-    // TODO make tests more comprehensive
     describe('implementation', () => {
       it('should presign', async () => {
         const url = await storage.presign('msg')
-        expect(url).to.be.a('string')
+        if (url.startsWith('file://')) return
+        const { data } = await axios.get(url)
+        expect(data).to.eql('hi')
       })
 
-      it('should presign and assign an expiration time', async () => {
-        const url = await storage.presign('msg', { expiresIn: 60 })
-        expect(url).to.be.a('string')
+      it('should presign and assign an expiration time that expires', async () => {
+        const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+        const url = await storage.presign('msg', { expiresIn: 1 })
+        if (url.startsWith('file://')) return
+
+        await delay(1001)
+
+        let error
+        try {
+          await axios.get(url)
+        } catch (err) {
+          error = err
+        }
+
+        expect(error.response.status).to.eql(403)
       })
     })
 
