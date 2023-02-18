@@ -197,9 +197,9 @@ const impl = (config, dependencies) => {
   }
 }
 
-const provider = {
+const s3provider = {
   type: 's3',
   impl
 }
 
-export { provider }
+export { s3provider }

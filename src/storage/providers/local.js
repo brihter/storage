@@ -156,9 +156,9 @@ const impl = (config, dependencies) => {
   }
 }
 
-const provider = {
+const localProvider = {
   type: 'local',
   impl
 }
 
-export { provider }
+export { localProvider }
