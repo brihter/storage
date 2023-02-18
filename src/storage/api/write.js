@@ -1,4 +1,4 @@
-import * as iconv from 'iconv-lite'
+import iconv from 'iconv-lite'
 
 const writeApi = ({ provider, util }) => {
   // prettier-ignore

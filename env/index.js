@@ -1,6 +1,9 @@
 import { homedir } from 'node:os'
 import { readFile } from 'node:fs/promises'
+import { URL } from 'node:url'
 import ini from 'ini'
+
+const __dirname = new URL('.', import.meta.url).pathname
 
 const getCredentials = async provider => {
   let credentials
