@@ -37,9 +37,11 @@ type Config = {
  * @example
  * ```js
  * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  * ```
@@ -357,6 +359,9 @@ type WriteFunction = {
  *
  * @example
  * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ *
  * const config = {
  *   type: 's3',
  *   path: 'bucket-3d8e8dd/path/to/data'
@@ -364,6 +369,7 @@ type WriteFunction = {
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  *
@@ -430,6 +436,9 @@ type StorageInterface = {
  *
  * @example
  * ```js
+ * const S3 = require('@aws-sdk/client-s3')
+ * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ *
  * const config = {
  *   type: 's3',
  *   path: 'bucket-3d8e8dd/path/to/data'
@@ -437,6 +446,7 @@ type StorageInterface = {
  *
  * const dependencies = {
  *   client: S3,
+ *   clientPresign: S3Presign,
  *   clientInstance: new S3.S3Client({ region: 'eu-central-1' })
  * }
  *
