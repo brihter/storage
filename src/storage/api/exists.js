@@ -12,6 +12,4 @@ const existsApi = ({ provider, util }) => {
   }
 }
 
-module.exports = {
-  existsApi
-}
+export { existsApi }

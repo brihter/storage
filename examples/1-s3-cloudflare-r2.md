@@ -10,8 +10,10 @@ npm i @brighter/storage
 ## Example
 
 ```js
-const S3 = require('@aws-sdk/client-s3')
-const { Storage } = require('@brighter/storage')
+import S3 from '@aws-sdk/client-s3'
+import S3Presign from '@aws-sdk/s3-request-presigner'
+
+import { Storage } from '@brighter/storage'
 
 const config = {
   type: 's3',
@@ -24,6 +26,7 @@ const CF_SECRET_ACCESS_KEY = ''
 
 const dependencies = {
   client: S3,
+  clientPresign: S3Presign,
   clientInstance: new S3.S3Client({
     region: 'auto',
     endpoint: `https://${CF_ACCOUNT_ID}.r2.cloudflarestorage.com`,

@@ -32,6 +32,4 @@ const listApi = ({ provider, util, exists }) => {
   }
 }
 
-module.exports = {
-  listApi
-}
+export { listApi }

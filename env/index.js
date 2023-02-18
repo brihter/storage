@@ -1,12 +1,15 @@
-const homedir = require('os').homedir()
-const { readFile } = require('fs').promises
-const ini = require('ini')
+import { homedir } from 'node:os'
+import { readFile } from 'node:fs/promises'
+import { URL } from 'node:url'
+import ini from 'ini'
+
+const __dirname = new URL('.', import.meta.url).pathname
 
 const getCredentials = async provider => {
   let credentials
 
   try {
-    credentials = await readFile(`${homedir}/.${provider}/credentials`, {
+    credentials = await readFile(`${homedir()}/.${provider}/credentials`, {
       encoding: 'ascii'
     })
   } catch (err) {
@@ -79,6 +82,4 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   return cfg
 }
 
-module.exports = {
-  loadConfig
-}
+export { loadConfig }

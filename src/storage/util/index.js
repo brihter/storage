@@ -1,7 +1,7 @@
-const { Path } = require('./path.js')
-const { data } = require('./data.js')
-const { url } = require('./url.js')
-const { promise } = require('./promise.js')
+import { Path } from './path.js'
+import { data } from './data.js'
+import { url } from './url.js'
+import { promise } from './promise.js'
 
 const Util = ({ config }) => {
   const path = Path({ config })
@@ -14,6 +14,4 @@ const Util = ({ config }) => {
   }
 }
 
-module.exports = {
-  Util
-}
+export { Util }

@@ -1,24 +1,21 @@
-const { parse, join } = require('path')
-const crypto = require('crypto')
-const mime = require('mime-types')
-const { promise } = require('../util/promise.js')
+import { parse, join } from 'node:path'
+import { createHash } from 'node:crypto'
+import { lookup } from 'mime-types'
+import { promise } from '../util/promise.js'
 
 // prettier-ignore
-const {
+import {
   writeFile,
   mkdir,
   readFile,
   access,
   readdir,
-  rm, stat : fsStat,
+  rm,
+  stat as fsStat,
   copyFile
-} = require('fs').promises
+} from 'node:fs/promises'
 
 const impl = (config, dependencies) => {
-  const getEndpoint = async () => {
-    return ''
-  }
-
   const read = async path => {
     let file
     try {
@@ -32,11 +29,11 @@ const impl = (config, dependencies) => {
   }
 
   const stat = async path => {
-    const md5 = string => crypto.createHash('md5').update(string).digest('hex')
+    const md5 = string => createHash('md5').update(string).digest('hex')
 
     const format = result => ({
       file: path,
-      contentType: mime.lookup(path) || 'application/octet-stream',
+      contentType: lookup(path) || 'application/octet-stream',
       size: result.size,
       modified: result.mtime,
       etag: md5(path + result.mtime.toString())
@@ -159,7 +156,9 @@ const impl = (config, dependencies) => {
   }
 }
 
-module.exports = {
+const localProvider = {
   type: 'local',
   impl
 }
+
+export { localProvider }

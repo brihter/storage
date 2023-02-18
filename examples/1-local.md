@@ -9,7 +9,7 @@ npm i @brighter/storage
 ## Example
 
 ```js
-const { Storage } = require('@brighter/storage')
+import { Storage } from '@brighter/storage'
 
 const storage = Storage({
   type: 'local',

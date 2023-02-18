@@ -1,8 +1,8 @@
-const mime = require('mime-types')
-const {
-  url: { url2parts }
-} = require('../util/url.js')
-const { join } = require('path')
+import { lookup } from 'mime-types'
+import { join } from 'node:path'
+import { url } from '../util/url.js'
+
+const { url2parts } = url
 
 const stream2Buffer = stream =>
   new Promise((resolve, reject) => {
@@ -89,7 +89,7 @@ const impl = (config, dependencies) => {
         Bucket,
         Key,
         Body: buffer,
-        ContentType: mime.lookup(Key) || 'application/octet-stream'
+        ContentType: lookup(Key) || 'application/octet-stream'
       })
     )
   }
@@ -197,7 +197,9 @@ const impl = (config, dependencies) => {
   }
 }
 
-module.exports = {
+const s3provider = {
   type: 's3',
   impl
 }
+
+export { s3provider }

@@ -1,4 +1,4 @@
-const iconv = require('iconv-lite')
+import iconv from 'iconv-lite'
 
 const writeApi = ({ provider, util }) => {
   // prettier-ignore
@@ -32,6 +32,4 @@ const writeApi = ({ provider, util }) => {
   }
 }
 
-module.exports = {
-  writeApi
-}
+export { writeApi }

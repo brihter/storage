@@ -1,4 +1,4 @@
-const { join } = require('path')
+import { join } from 'node:path'
 
 const Path = ({ config }) => {
   const validate = (path, variableName = 'path', opts = {}) => {
@@ -81,6 +81,4 @@ const Path = ({ config }) => {
   }
 }
 
-module.exports = {
-  Path
-}
+export { Path }

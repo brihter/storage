@@ -10,10 +10,10 @@ npm i @brighter/storage
 ## Example
 
 ```js
-const S3 = require('@aws-sdk/client-s3')
-const S3Presign = require('@aws-sdk/s3-request-presigner')
+import S3 from '@aws-sdk/client-s3'
+import S3Presign from '@aws-sdk/s3-request-presigner'
 
-const { Storage } = require('@brighter/storage')
+import { Storage } from '@brighter/storage'
 
 const config = {
   type: 's3',

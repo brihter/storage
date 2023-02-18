@@ -1,8 +1,8 @@
-const { providers } = require('./providers')
-const { Util } = require('./util')
+import { providers } from './providers/index.js'
+import { Util } from './util/index.js'
 
 // prettier-ignore
-const {
+import {
   copyApi,
   existsApi,
   listApi,
@@ -11,7 +11,7 @@ const {
   statApi,
   writeApi,
   presignApi
-} = require('./api')
+} from './api/index.js'
 
 // prettier-ignore
 const createConfig = (config = {}) => Object.assign({
@@ -60,6 +60,4 @@ const Storage = (config, dependencies) => {
   }
 }
 
-module.exports = {
-  Storage
-}
+export { Storage }

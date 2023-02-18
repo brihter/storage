@@ -20,6 +20,4 @@ const statApi = ({ provider, util }) => {
   }
 }
 
-module.exports = {
-  statApi
-}
+export { statApi }

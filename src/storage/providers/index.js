@@ -1,10 +1,15 @@
-const providerList = [require('./local.js'), require('./s3.js')]
+import { localProvider } from './local.js'
+import { s3provider } from './s3.js'
+
+// prettier-ignore
+const providerList = [
+  localProvider,
+  s3provider
+]
 
 const providers = providerList.reduce((map, provider) => {
   map[provider.type] = provider.impl
   return map
 }, {})
 
-module.exports = {
-  providers
-}
+export { providers }

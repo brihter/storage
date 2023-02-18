@@ -1,5 +1,3 @@
-const { Storage } = require('./src/storage')
+import { Storage } from './src/storage/index.js'
 
-module.exports = {
-  Storage
-}
+export { Storage }

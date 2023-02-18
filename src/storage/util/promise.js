@@ -36,6 +36,4 @@ const promise = {
   map
 }
 
-module.exports = {
-  promise
-}
+export { promise }

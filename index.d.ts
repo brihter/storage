@@ -36,8 +36,8 @@ type Config = {
  *
  * @example
  * ```js
- * const S3 = require('@aws-sdk/client-s3')
- * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ * import S3 from '@aws-sdk/client-s3'
+ * import S3Presign from '@aws-sdk/s3-request-presigner'
  *
  * const dependencies = {
  *   client: S3,
@@ -359,8 +359,8 @@ type WriteFunction = {
  *
  * @example
  * ```js
- * const S3 = require('@aws-sdk/client-s3')
- * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ * import S3 from '@aws-sdk/client-s3'
+ * import S3Presign from '@aws-sdk/s3-request-presigner'
  *
  * const config = {
  *   type: 's3',
@@ -436,8 +436,8 @@ type StorageInterface = {
  *
  * @example
  * ```js
- * const S3 = require('@aws-sdk/client-s3')
- * const S3Presign = require('@aws-sdk/s3-request-presigner')
+ * import S3 from '@aws-sdk/client-s3'
+ * import S3Presign from '@aws-sdk/s3-request-presigner'
  *
  * const config = {
  *   type: 's3',

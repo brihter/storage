@@ -17,6 +17,4 @@ const presignApi = ({ provider, util }) => {
   }
 }
 
-module.exports = {
-  presignApi
-}
+export { presignApi }
