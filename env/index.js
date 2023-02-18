@@ -1,12 +1,12 @@
-const homedir = import S3 from '@aws-sdk/client-s3'os').homedir()
-const { readFile } = import S3 from '@aws-sdk/client-s3'fs').promises
-const ini = import S3 from '@aws-sdk/client-s3'ini')
+import { homedir } from 'node:os'
+import { readFile } from 'node:fs/promises'
+import ini from 'ini'
 
 const getCredentials = async provider => {
   let credentials
 
   try {
-    credentials = await readFile(`${homedir}/.${provider}/credentials`, {
+    credentials = await readFile(`${homedir()}/.${provider}/credentials`, {
       encoding: 'ascii'
     })
   } catch (err) {
@@ -79,6 +79,4 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   return cfg
 }
 
-export {
-  loadConfig
-}
+export { loadConfig }
