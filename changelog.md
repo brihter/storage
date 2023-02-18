@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.0
+
+- `v1.3.0` Converted to an ECMAScript module.
+
+This release converts the library to an ECMAScript module.
+
 ## v1.2.0
 
 - `v1.2.0` Added presigned URLs.
