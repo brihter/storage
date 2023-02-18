@@ -1,6 +1,6 @@
-const chai = import S3 from '@aws-sdk/client-s3'chai')
-const sinon = import S3 from '@aws-sdk/client-s3'sinon')
-const sinonChai = import S3 from '@aws-sdk/client-s3'sinon-chai')
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
 
 chai.use(sinonChai)
 

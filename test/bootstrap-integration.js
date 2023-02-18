@@ -1,12 +1,12 @@
-const chai = import S3 from '@aws-sdk/client-s3'chai')
-const sinon = import S3 from '@aws-sdk/client-s3'sinon')
-const sinonChai = import S3 from '@aws-sdk/client-s3'sinon-chai')
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
 
 import S3 from '@aws-sdk/client-s3'
 import S3Presign from '@aws-sdk/s3-request-presigner'
 
-const { Storage } = import S3 from '@aws-sdk/client-s3'../src/storage/storage.js')
-const { loadConfig } = import S3 from '@aws-sdk/client-s3'../env')
+import { Storage } from '../index.js'
+import { loadConfig } from '../env/index.js'
 
 const createOne = async (runId, type) => {
   const cfg = await loadConfig()
