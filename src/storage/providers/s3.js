@@ -176,22 +176,9 @@ const impl = (config, dependencies) => {
   }
 
   const presign = async (path, opts) => {
-    const [region, credentials] = await Promise.all([
-      s3.config.region(),
-      s3.config.credentials()
-    ])
-
-    // const signer = new SignatureV4({
-    //   applyChecksum: false,
-    //   credentials,
-    //   region,
-    //   service: 's3',
-    //   //sha256: Sha256
-    // })
-
-    //console.log(signer)
-
-    return ''
+    const { Bucket, Key } = url2parts(path)
+    const command = new GetObjectCommand({ Bucket, Key })
+    return await dependencies.clientPresign.getSignedUrl(s3, command, opts)
   }
 
   return {
