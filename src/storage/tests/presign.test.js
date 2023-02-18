@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-describe.only('Storage().presign()', () => {
+describe('Storage().presign()', () => {
   let providers
   before(() => (providers = global._storage.listProviders()))
   it('run', () => providers.forEach(run))
