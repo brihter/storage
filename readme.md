@@ -127,7 +127,6 @@ See [StatFunction](docs/StatFunction.md) for more information.
 
 ## Roadmap
 
-- `v1.4.0` Create the `@brighter/storage-s3` package that comes prebundled with required dependencies.
 - `v2.0.0` Azure Blob Storage implementation.
 - `v3.0.0` Google Storage implementation.
 
