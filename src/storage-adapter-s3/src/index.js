@@ -1,3 +1,7 @@
+// TODO create index.d.ts
+// TODO generate docs
+// TODO improve readme
+
 import S3 from '@aws-sdk/client-s3'
 import S3Presign from '@aws-sdk/s3-request-presigner'
 

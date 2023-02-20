@@ -2,6 +2,7 @@
 
 ## v1.4.0
 
+- Restructured the project into packages.
 - Implemented the `@brighter/storage-adapter-s3` storage adapter.
 
 This release introduces adapters that come prebundled with required storage dependecies. This removes the complexity of manually the dependencies.

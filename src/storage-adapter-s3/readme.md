@@ -1,6 +1,6 @@
 # @brighter/storage-adapter-s3
 
-`@brighter/storage-adapter-s3` is a `@brighter/storage` adapter that comes prebundled with required S3 dependencies.
+`@brighter/storage-adapter-s3` is a storage adapter that comes prebundled with required S3 dependencies.
 
 ## Quick Start
 
@@ -15,13 +15,16 @@ Usage:
 ```js
 import { createStorage } from '@brighter/storage-adapter-s3'
 
-const storage = createStorage({
+const config = {
   path: 'my-bucket'
-}, {
+}
+
+const clientConfig = {
   region: 'eu-central-1'
-})
+}
 
 const main = async () => {
+  const storage = createStorage(config, clientConfig)
   await storage.write('msg', 'hi')
   const msg = await storage.read('msg')
   console.log(msg)
