@@ -4,6 +4,4 @@ path_current=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
 path_root="$path_current/.."
 
 cd $path_root
-npx tsc
-
-node dist/index.js ../../../src/storage/src/index.d.ts ../../../src/storage/docs
+node ../dts2md/dist/index.js src/index.d.ts docs
