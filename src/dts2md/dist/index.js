@@ -29,9 +29,13 @@ const ts_morph_1 = require("ts-morph");
 const parser_1 = require("./parser");
 const formatter_1 = require("./formatter");
 const FILE_IN = process.argv[2];
+const PATH_OUT = process.argv[3];
+let fileIn = '';
+fileIn = path.join(__dirname, FILE_IN);
+fileIn = path.resolve(fileIn);
 const project = new ts_morph_1.Project();
-project.addSourceFilesAtPaths(FILE_IN);
-const source = project.getSourceFileOrThrow(FILE_IN);
+project.addSourceFilesAtPaths(fileIn);
+const source = project.getSourceFileOrThrow(fileIn);
 const types = (0, parser_1.parse)(source);
 const typesLookup = types.reduce((acc, type) => {
     const types = acc.get(type.name) || [];
@@ -48,21 +52,23 @@ const toFile = (filePath, fileContents) => {
     (0, fs_1.writeFileSync)(filePath, fileContents, { encoding: 'utf8' });
 };
 // generate types
+let dirOut = '';
+dirOut = path.join(__dirname, PATH_OUT);
+dirOut = path.resolve(dirOut);
 Array.from(typesLookup.keys()).forEach(typeName => {
     const typeDefinitions = typesLookup.get(typeName) || [];
     const typeDocumentation = formatter.typeFormatter.format(typeDefinitions);
-    const filePath = path.resolve(`${__dirname}/../../../docs/${typeName}.md`);
-    toFile(filePath, typeDocumentation);
+    let outPath = '';
+    outPath = path.join(dirOut, `${typeName}.md`);
+    outPath = path.resolve(outPath);
+    toFile(outPath, typeDocumentation);
 });
-// generate index
-const storageDefinition = typesLookup.get('Storage') || [];
-const storageInterfaceDefinition = typesLookup.get('StorageInterface') || [];
-const storageInterfaceMethods = storageInterfaceDefinition[0].methods
-    .map(m => m.valueType)
-    .map(methodType => typesLookup.get(methodType));
-const indexDocumentation = [
-    formatter.typeFormatter.format(storageDefinition),
-    formatter.typeFormatter.format(storageInterfaceDefinition)
-].join('\n');
-const filePath = path.resolve(`${__dirname}/../../../docs/README.md`);
-toFile(filePath, indexDocumentation);
+// // generate index
+// const storageDefinition = typesLookup.get('Storage') || []
+// const storageInterfaceDefinition = typesLookup.get('StorageInterface') || []
+// const indexDocumentation = [
+//   formatter.typeFormatter.format(storageDefinition),
+//   formatter.typeFormatter.format(storageInterfaceDefinition)
+// ].join('\n')
+// const filePath = path.resolve(`${__dirname}/../../../docs/README.md`)
+// toFile(filePath, indexDocumentation)

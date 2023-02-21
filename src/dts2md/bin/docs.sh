@@ -6,4 +6,4 @@ path_root="$path_current/.."
 cd $path_root
 npx tsc
 
-#node dist/index.js ../../index.d.ts
+node dist/index.js ../../../src/storage/src/index.d.ts ../../..src/storage/docs

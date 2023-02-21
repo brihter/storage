@@ -9,10 +9,14 @@ import { Formatter } from './formatter'
 const FILE_IN = process.argv[2]
 const PATH_OUT = process.argv[3]
 
-const project = new Project()
-project.addSourceFilesAtPaths(FILE_IN)
+let fileIn = ''
+fileIn = path.join(__dirname, FILE_IN)
+fileIn = path.resolve(fileIn)
 
-const source = project.getSourceFileOrThrow(FILE_IN)
+const project = new Project()
+project.addSourceFilesAtPaths(fileIn)
+
+const source = project.getSourceFileOrThrow(fileIn)
 
 const types = parse(source)
 const typesLookup = types.reduce((acc, type) => {
@@ -32,13 +36,18 @@ const toFile = (filePath: string, fileContents: string) => {
 }
 
 // generate types
-const outDir = path.join(__dirname, PATH_OUT)
+let dirOut = ''
+dirOut = path.join(__dirname, PATH_OUT)
+dirOut = path.resolve(dirOut)
+
 Array.from(typesLookup.keys()).forEach(typeName => {
   const typeDefinitions = typesLookup.get(typeName) || []
   const typeDocumentation = formatter.typeFormatter.format(typeDefinitions)
-  const outPath = path.join(outDir, `${typeName}.md`)
-  //const filePath = path.resolve(`${__dirname}/../../../docs/${typeName}.md`)
-  console.log(outPath)
+
+  let outPath = ''
+  outPath = path.join(dirOut, `${typeName}.md`)
+  outPath = path.resolve(outPath)
+
   toFile(outPath, typeDocumentation)
 })
 
