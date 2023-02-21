@@ -1,4 +1,3 @@
-// TODO fix tests
 // TODO create index.d.ts
 // TODO generate docs
 // TODO improve readme
