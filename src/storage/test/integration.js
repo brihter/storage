@@ -5,7 +5,7 @@ import sinonChai from 'sinon-chai'
 import S3 from '@aws-sdk/client-s3'
 import S3Presign from '@aws-sdk/s3-request-presigner'
 
-import { Storage } from '../index.js'
+import { Storage } from '../src/index.js'
 import { loadConfig } from '../env/index.js'
 
 const createOne = async (runId, type) => {

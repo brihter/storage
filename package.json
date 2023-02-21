@@ -4,6 +4,7 @@
   "description": "storage",
   "type": "module",
   "scripts": {
+    "build": "./bin/build.sh",
     "format": "./bin/format.sh",
     "test": "./bin/test.sh",
     "release": "./bin/release.sh"
