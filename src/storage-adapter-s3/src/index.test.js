@@ -1,4 +1,4 @@
-import { loadConfig } from '../../env/index.js'
+import { loadConfig } from '../env/index.js'
 import { createStorage } from './index.js'
 
 describe('@brighter/storage-adapter-s3', () => {
