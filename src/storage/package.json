@@ -5,9 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "format": "./bin/format.sh",
-    "test": "./bin/test.sh",
-    "release": "./bin/release.sh"
+    "test": "./bin/test.sh"
   },
   "repository": {
     "type": "git",
@@ -24,10 +22,8 @@
     "@aws-sdk/s3-request-presigner": "^3.272.0",
     "axios": "^1.3.3",
     "chai": "^4.3.7",
-    "esbuild": "^0.17.3",
     "ini": "^3.0.1",
     "mocha": "^10.2.0",
-    "nodemon": "^2.0.20",
     "sinon": "^15.0.1",
     "sinon-chai": "^3.7.0"
   },

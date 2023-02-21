@@ -1,4 +1,5 @@
 import { homedir } from 'node:os'
+import { join } from 'node:path'
 import { readFile } from 'node:fs/promises'
 import { URL } from 'node:url'
 import ini from 'ini'
@@ -73,7 +74,7 @@ const r2 = async cfg => {
 
 const loadConfig = async (environment = process.env.NODE_ENV) => {
   let cfg
-  cfg = await readFile(`${__dirname}/${environment}.json`, {
+  cfg = await readFile(join(__dirname, `../../../env/${environment}.json`), {
     encoding: 'ascii'
   })
   cfg = JSON.parse(cfg)

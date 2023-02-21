@@ -1,7 +1,8 @@
 {
   "name": "storage",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "storage",
+  "type": "module",
   "scripts": {
     "format": "./bin/format.sh",
     "test": "./bin/test.sh",
