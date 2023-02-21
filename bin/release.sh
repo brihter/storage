@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO read and set the version on the main package.json then use that version in all other published packages
+
 args_version_next=$1
 
 parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)

@@ -7,8 +7,6 @@
   "scripts": {
     "format": "./bin/format.sh",
     "test": "./bin/test.sh",
-    "test-unit": "./bin/test-unit.sh",
-    "test-integration": "./bin/test-integration.sh",
     "release": "./bin/release.sh"
   },
   "repository": {
@@ -30,16 +28,8 @@
     "ini": "^3.0.1",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
-    "prettier": "^2.8.3",
     "sinon": "^15.0.1",
     "sinon-chai": "^3.7.0"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "arrowParens": "avoid"
   },
   "dependencies": {
     "iconv-lite": "^0.6.3",

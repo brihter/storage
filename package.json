@@ -1,9 +1,10 @@
 {
-  "name": "@brighter/storage",
-  "version": "1.3.0",
-  "description": "A JavaScript object storage library that enables local development.",
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "storage",
   "scripts": {
     "format": "./bin/format.sh",
+    "test": "./bin/test.sh",
     "release": "./bin/release.sh"
   },
   "repository": {
@@ -17,7 +18,7 @@
   },
   "homepage": "https://github.com/brihter/storage#readme",
   "devDependencies": {
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.4"
   },
   "prettier": {
     "trailingComma": "none",

@@ -1,14 +1,13 @@
 #!/bin/bash
 
-parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
+path_current=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
+path_root="$path_current/.."
 
-cd "$parent_path/.."
-npm install
-
-cd "$parent_path/.."
-cd docs/
-npm install
-
-cd "$parent_path/.."
-cd ops/
-npm install
+packages=("/" "/src/dts2md" "/src/storage" "/src/storage-adapter-s3")
+for path_package in "${packages[@]}"
+do
+  path="$path_root$path_package"
+  cd $path
+  pwd
+  npm install
+done
