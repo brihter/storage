@@ -6,7 +6,8 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
-    "test": "./bin/test.sh"
+    "test": "./bin/test.sh",
+    "docs": "./bin/docs.sh"
   },
   "repository": {
     "type": "git",

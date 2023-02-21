@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./bin/build.sh",
-    "docs": "./bin/docs.sh"
+    "build": "./bin/build.sh"
   },
   "author": "Bostjan Rihter",
   "license": "MIT",
