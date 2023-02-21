@@ -1,4 +1,4 @@
-import { createStorage } from '@brighter/storage-adapter-s3'
+import { Storage } from '@brighter/storage-adapter-s3'
 
 const CF_ACCOUNT_ID = ''
 const CF_ACCESS_KEY = ''
@@ -18,7 +18,7 @@ const storageProviderConfig = {
 }
 
 const main = async () => {
-  const storage = createStorage(storageConfig, storageProviderConfig)
+  const storage = Storage(storageConfig, storageProviderConfig)
   await storage.write('msg', 'hi')
   const msg = await storage.read('msg')
   console.log(msg)

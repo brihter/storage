@@ -13,7 +13,7 @@ npm i @brighter/storage-adapter-s3
 Usage:
 
 ```js
-import { createStorage } from '@brighter/storage-adapter-s3'
+import { Storage } from '@brighter/storage-adapter-s3'
 
 const config = {
   path: 'my-bucket'
@@ -24,7 +24,7 @@ const clientConfig = {
 }
 
 const main = async () => {
-  const storage = createStorage(config, clientConfig)
+  const storage = Storage(config, clientConfig)
   await storage.write('msg', 'hi')
   const msg = await storage.read('msg')
   console.log(msg)

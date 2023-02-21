@@ -1,5 +1,5 @@
 import { loadConfig } from '../env/index.js'
-import { createStorage } from './index.js'
+import { Storage } from './index.js'
 
 describe('@brighter/storage-adapter-s3', () => {
   let cfg
@@ -9,9 +9,9 @@ describe('@brighter/storage-adapter-s3', () => {
     cfg = config.s3
   })
 
-  describe('createStorage()', () => {
+  describe('Storage()', () => {
     it('should create', async () => {
-      const storage = createStorage(cfg.storage, cfg.storageClient)
+      const storage = Storage(cfg.storage, cfg.storageClient)
 
       expect(storage).to.not.be.undefined
       expect(storage).to.have.keys([
