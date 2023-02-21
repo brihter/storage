@@ -7,6 +7,7 @@ import { parse, TypeInfo } from './parser'
 import { Formatter } from './formatter'
 
 const FILE_IN = process.argv[2]
+const PATH_OUT = process.argv[3]
 
 const project = new Project()
 project.addSourceFilesAtPaths(FILE_IN)
@@ -31,24 +32,24 @@ const toFile = (filePath: string, fileContents: string) => {
 }
 
 // generate types
+const outDir = path.join(__dirname, PATH_OUT)
 Array.from(typesLookup.keys()).forEach(typeName => {
   const typeDefinitions = typesLookup.get(typeName) || []
   const typeDocumentation = formatter.typeFormatter.format(typeDefinitions)
-  const filePath = path.resolve(`${__dirname}/../../../docs/${typeName}.md`)
-  toFile(filePath, typeDocumentation)
+  const outPath = path.join(outDir, `${typeName}.md`)
+  //const filePath = path.resolve(`${__dirname}/../../../docs/${typeName}.md`)
+  console.log(outPath)
+  toFile(outPath, typeDocumentation)
 })
 
-// generate index
-const storageDefinition = typesLookup.get('Storage') || []
-const storageInterfaceDefinition = typesLookup.get('StorageInterface') || []
-const storageInterfaceMethods = storageInterfaceDefinition[0].methods
-  .map(m => m.valueType)
-  .map(methodType => typesLookup.get(methodType))
+// // generate index
+// const storageDefinition = typesLookup.get('Storage') || []
+// const storageInterfaceDefinition = typesLookup.get('StorageInterface') || []
 
-const indexDocumentation = [
-  formatter.typeFormatter.format(storageDefinition),
-  formatter.typeFormatter.format(storageInterfaceDefinition)
-].join('\n')
+// const indexDocumentation = [
+//   formatter.typeFormatter.format(storageDefinition),
+//   formatter.typeFormatter.format(storageInterfaceDefinition)
+// ].join('\n')
 
-const filePath = path.resolve(`${__dirname}/../../../docs/README.md`)
-toFile(filePath, indexDocumentation)
+// const filePath = path.resolve(`${__dirname}/../../../docs/README.md`)
+// toFile(filePath, indexDocumentation)

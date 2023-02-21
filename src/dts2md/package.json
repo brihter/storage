@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
-    "build-watch": "npx tsc --watch",
-    "docs": "node dist/index.js ../../index.d.ts",
-    "docs-watch": "npx nodemon dist/index.js ../../index.d.ts"
+    "build": "./bin/build.sh",
+    "docs": "./bin/docs.sh"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Bostjan Rihter",
+  "license": "MIT",
   "devDependencies": {
     "@microsoft/tsdoc": "^0.14.2",
     "@types/node": "^18.11.18",
