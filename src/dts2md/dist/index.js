@@ -31,8 +31,9 @@ const formatter_1 = require("./formatter");
 const FILE_IN = process.argv[2];
 const PATH_OUT = process.argv[3];
 let fileIn = '';
-fileIn = path.join(__dirname, FILE_IN);
+fileIn = path.join(process.cwd(), FILE_IN);
 fileIn = path.resolve(fileIn);
+console.log(fileIn);
 const project = new ts_morph_1.Project();
 project.addSourceFilesAtPaths(fileIn);
 const source = project.getSourceFileOrThrow(fileIn);
@@ -53,7 +54,7 @@ const toFile = (filePath, fileContents) => {
 };
 // generate types
 let dirOut = '';
-dirOut = path.join(__dirname, PATH_OUT);
+dirOut = path.join(process.cwd(), PATH_OUT);
 dirOut = path.resolve(dirOut);
 Array.from(typesLookup.keys()).forEach(typeName => {
     const typeDefinitions = typesLookup.get(typeName) || [];

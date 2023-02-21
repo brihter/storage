@@ -10,7 +10,7 @@ const FILE_IN = process.argv[2]
 const PATH_OUT = process.argv[3]
 
 let fileIn = ''
-fileIn = path.join(__dirname, FILE_IN)
+fileIn = path.join(process.cwd(), FILE_IN)
 fileIn = path.resolve(fileIn)
 
 const project = new Project()
@@ -37,7 +37,7 @@ const toFile = (filePath: string, fileContents: string) => {
 
 // generate types
 let dirOut = ''
-dirOut = path.join(__dirname, PATH_OUT)
+dirOut = path.join(process.cwd(), PATH_OUT)
 dirOut = path.resolve(dirOut)
 
 Array.from(typesLookup.keys()).forEach(typeName => {
