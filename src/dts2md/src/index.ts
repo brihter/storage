@@ -17,25 +17,38 @@ type Args = {
   output: string
 }
 
-const args = process.argv.reduce((acc, arg) => {
-  if (arg.startsWith('--root')) acc.root = resolvePath(arg.split('=')[1])
-  if (arg.startsWith('--project')) acc.project = resolvePath(arg.split('=')[1])
-  if (arg.startsWith('--output')) acc.output = resolvePath(arg.split('=')[1])
-  return acc
-}, {} as Args)
+const args = process.argv.reduce(
+  (acc, arg) => {
+    if (arg.startsWith('--root')) acc.root = resolvePath(arg.split('=')[1])
+    if (arg.startsWith('--project'))
+      acc.project = resolvePath(arg.split('=')[1])
+    if (arg.startsWith('--output')) acc.output = resolvePath(arg.split('=')[1])
+    return acc
+  },
+  {
+    root: '',
+    project: '',
+    output: ''
+  } as Args
+)
 
 const project = new Project()
-
-project.addSourceFilesAtPaths([args.root, args.project])
+project.addSourceFilesAtPaths([args.root])
+if (args.project.length > 0) {
+  project.addSourceFilesAtPaths([args.project])
+}
 
 let typesRoot = parse(project.getSourceFileOrThrow(args.root))
-let typesProject = parse(project.getSourceFileOrThrow(args.project))
+let typesProject = [] as Array<TypeInfo>
 
-// override root types with types defined in the project
-typesProject.forEach(type => {
-  const name = type.name
-  typesRoot = typesRoot.filter(t => t.name !== name)
-})
+if (args.project.length > 0) {
+  typesProject = parse(project.getSourceFileOrThrow(args.project))
+  // override root types with types defined in the project
+  typesProject.forEach(type => {
+    const name = type.name
+    typesRoot = typesRoot.filter(t => t.name !== name)
+  })
+}
 
 const types = [...typesRoot, ...typesProject]
 

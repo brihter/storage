@@ -41,16 +41,26 @@ const args = process.argv.reduce((acc, arg) => {
     if (arg.startsWith('--output'))
         acc.output = resolvePath(arg.split('=')[1]);
     return acc;
-}, {});
-const project = new ts_morph_1.Project();
-project.addSourceFilesAtPaths([args.root, args.project]);
-let typesRoot = (0, parser_1.parse)(project.getSourceFileOrThrow(args.root));
-let typesProject = (0, parser_1.parse)(project.getSourceFileOrThrow(args.project));
-// override root types with types defined in the project
-typesProject.forEach(type => {
-    const name = type.name;
-    typesRoot = typesRoot.filter(t => t.name !== name);
+}, {
+    root: '',
+    project: '',
+    output: ''
 });
+const project = new ts_morph_1.Project();
+project.addSourceFilesAtPaths([args.root]);
+if (args.project.length > 0) {
+    project.addSourceFilesAtPaths([args.project]);
+}
+let typesRoot = (0, parser_1.parse)(project.getSourceFileOrThrow(args.root));
+let typesProject = [];
+if (args.project.length > 0) {
+    typesProject = (0, parser_1.parse)(project.getSourceFileOrThrow(args.project));
+    // override root types with types defined in the project
+    typesProject.forEach(type => {
+        const name = type.name;
+        typesRoot = typesRoot.filter(t => t.name !== name);
+    });
+}
 const types = [...typesRoot, ...typesProject];
 const typesLookup = types.reduce((acc, type) => {
     const types = acc.get(type.name) || [];
