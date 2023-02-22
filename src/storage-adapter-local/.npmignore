@@ -1,0 +1,12 @@
+# env
+node_modules/
+
+# project
+bin/
+docs/
+env/
+demo/
+src/**/*.test.js
+test/
+readme.md
+changelog.md

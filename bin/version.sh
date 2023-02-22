@@ -9,7 +9,7 @@ path_root="$path_current/.."
 cat <<< $(jq '.version="'"$version_next"'"' package.json) > package.json
 
 # packages
-packages=("/src/storage" "/src/storage-adapter-s3")
+packages=("/src/storage" "/src/storage-adapter-s3" "/src/storage-adapter-local")
 for path_package in "${packages[@]}"
 do
   path="$path_root$path_package"
