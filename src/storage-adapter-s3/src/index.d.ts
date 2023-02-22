@@ -1,3 +1,4 @@
+import type { S3ClientConfig } from '@aws-sdk/client-s3'
 import type { Config, StorageInterface } from '@brighter/storage'
 
 /**
@@ -18,4 +19,7 @@ import type { Config, StorageInterface } from '@brighter/storage'
  * const storage = Storage(config, clientConfig)
  * ```
  */
-export function Storage(config: Config, clientConfig: any): StorageInterface
+export function Storage(
+  config: Config,
+  clientConfig: S3ClientConfig
+): StorageInterface
