@@ -1,0 +1,45 @@
+{
+  "name": "@brighter/storage-adapter-local",
+  "version": "1.4.2",
+  "description": "This is a local adapter for the @brighter/storage object storage library.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "test": "./bin/test.sh",
+    "docs": "./bin/docs.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brihter/storage.git"
+  },
+  "author": "Bostjan Rihter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brihter/storage/issues"
+  },
+  "homepage": "https://github.com/brihter/storage#readme",
+  "dependencies": {
+    "@brighter/storage": "*"
+  },
+  "devDependencies": {
+    "axios": "^1.3.3",
+    "chai": "^4.3.7",
+    "ini": "^3.0.1",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "sinon": "^15.0.1",
+    "sinon-chai": "^3.7.0"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "amazon",
+    "s3",
+    "aws",
+    "aws-s3",
+    "cloudflare",
+    "cloudflare-r2",
+    "r2"
+  ]
+}

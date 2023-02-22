@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.5.0
+
+- Implemented the `@brighter/storage-adapter-local` storage adapter.
+
+This release introduces the local storage adapter.
+
+## v1.4.2
+
+- Fixed dependency syncronization.
+
+This is a maintenence release that fixes dependency syncronization.
+
 ## v1.4.1
 
 - Automatic update of `@brighter/storage` dependencies in `@brighter/storage-adapter-s3` to the current version.
