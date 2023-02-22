@@ -1,6 +1,11 @@
 # @brighter/storage-adapter-s3
 
-`@brighter/storage-adapter-s3` is a storage adapter that comes prebundled with required S3 dependencies.
+This is a storage adapter for `@brighter/storage` that comes bundled with required S3 dependencies.
+
+For more information:
+
+- see the [demos](demo/) or
+- dive straight into the [documentation](docs/Storage.md).
 
 ## Quick Start
 

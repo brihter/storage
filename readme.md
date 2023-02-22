@@ -127,21 +127,6 @@ See [StatFunction](docs/StatFunction.md) for more information.
 
 ## Roadmap
 
-- `v1.4.0` Tests should be bootstrapped 
-- `v1.4.0` Storage package.json
-- `v1.4.0` S3 adapter create
-- `v1.4.0` S3 types
-- `v1.4.0` S3 adapter readme
-- `v1.4.0` S3 adapter examples
-- `v1.4.0` local adapter create
-- `v1.4.0` local adapter types
-- `v1.4.0` local adapter readme
-- `v1.4.0` local adapter examples
-- `v1.4.0` Make sure install runs on all packages
-- `v1.4.0` Make sure test runs on all packages
-- `v1.4.0` Unify versioning for all packages
-- `v1.4.0` Main readme
-
 - `v2.0.0` Azure Blob Storage implementation.
 - `v3.0.0` Google Storage implementation.
 
