@@ -27,23 +27,25 @@ echo ""
 echo "[*] Release (tag)     : $version_next_tag"
 echo "[*] Release (text)    : $version_next_text"
 
-if [[ $(git status --porcelain) ]]; then
-  echo "[x] Error: Git working directory is dirty. Exiting."
-  exit 1
-fi
+# exit 0
 
-git checkout main
-git pull origin main
+# if [[ $(git status --porcelain) ]]; then
+#   echo "[x] Error: Git working directory is dirty. Exiting."
+#   exit 1
+# fi
 
-./bin/build-docs.sh
-./bin/build-version.sh $version_next
+# git checkout main
+# git pull origin main
 
-git add .
-git commit -m "$version_next_text"
-git tag -a "$version_next_tag" -m "$version_next_text"
+#./bin/docs.sh
+./bin/version.sh $version_next
 
-git push origin "$version_next_tag"
-git push origin main
+# git add .
+# git commit -m "$version_next_text"
+# git tag -a "$version_next_tag" -m "$version_next_text"
+
+# git push origin "$version_next_tag"
+# git push origin main
 
 echo ""
 echo "[*] Done"
