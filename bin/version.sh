@@ -10,6 +10,5 @@ for path_package in "${packages[@]}"
 do
   path="$path_root$path_package"
   cd $path
-
-  cat <<< $(jq '.version="'"$version_next"'"' package.json) > package.json
+  ./bin/version.sh $version_next
 done
