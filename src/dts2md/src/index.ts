@@ -1,24 +1,44 @@
 import { mkdirSync, writeFileSync } from 'fs'
 import * as path from 'path'
-
 import { Project } from 'ts-morph'
 
 import { parse, TypeInfo } from './parser'
 import { Formatter } from './formatter'
 
-const FILE_IN = process.argv[2]
-const PATH_OUT = process.argv[3]
+const resolvePath = (input: string) => {
+  let resolved = ''
+  resolved = path.join(process.cwd(), input)
+  return path.resolve(resolved)
+}
 
-let fileIn = ''
-fileIn = path.join(process.cwd(), FILE_IN)
-fileIn = path.resolve(fileIn)
+type Args = {
+  root: string
+  project: string
+  output: string
+}
+
+const args = process.argv.reduce((acc, arg) => {
+  if (arg.startsWith('--root')) acc.root = resolvePath(arg.split('=')[1])
+  if (arg.startsWith('--project')) acc.project = resolvePath(arg.split('=')[1])
+  if (arg.startsWith('--output')) acc.output = resolvePath(arg.split('=')[1])
+  return acc
+}, {} as Args)
 
 const project = new Project()
-project.addSourceFilesAtPaths(fileIn)
 
-const source = project.getSourceFileOrThrow(fileIn)
+project.addSourceFilesAtPaths([args.root, args.project])
 
-const types = parse(source)
+let typesRoot = parse(project.getSourceFileOrThrow(args.root))
+let typesProject = parse(project.getSourceFileOrThrow(args.project))
+
+// override root types with types defined in the project
+typesProject.forEach(type => {
+  const name = type.name
+  typesRoot = typesRoot.filter(t => t.name !== name)
+})
+
+const types = [...typesRoot, ...typesProject]
+
 const typesLookup = types.reduce((acc, type) => {
   const types = acc.get(type.name) || []
   types.push(type)
@@ -36,16 +56,12 @@ const toFile = (filePath: string, fileContents: string) => {
 }
 
 // generate types
-let dirOut = ''
-dirOut = path.join(process.cwd(), PATH_OUT)
-dirOut = path.resolve(dirOut)
-
 Array.from(typesLookup.keys()).forEach(typeName => {
   const typeDefinitions = typesLookup.get(typeName) || []
   const typeDocumentation = formatter.typeFormatter.format(typeDefinitions)
 
   let outPath = ''
-  outPath = path.join(dirOut, `${typeName}.md`)
+  outPath = path.join(args.output, `${typeName}.md`)
   outPath = path.resolve(outPath)
 
   toFile(outPath, typeDocumentation)

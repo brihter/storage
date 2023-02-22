@@ -28,16 +28,30 @@ const path = __importStar(require("path"));
 const ts_morph_1 = require("ts-morph");
 const parser_1 = require("./parser");
 const formatter_1 = require("./formatter");
-const FILE_IN = process.argv[2];
-const PATH_OUT = process.argv[3];
-let fileIn = '';
-fileIn = path.join(process.cwd(), FILE_IN);
-fileIn = path.resolve(fileIn);
-console.log(fileIn);
+const resolvePath = (input) => {
+    let resolved = '';
+    resolved = path.join(process.cwd(), input);
+    return path.resolve(resolved);
+};
+const args = process.argv.reduce((acc, arg) => {
+    if (arg.startsWith('--root'))
+        acc.root = resolvePath(arg.split('=')[1]);
+    if (arg.startsWith('--project'))
+        acc.project = resolvePath(arg.split('=')[1]);
+    if (arg.startsWith('--output'))
+        acc.output = resolvePath(arg.split('=')[1]);
+    return acc;
+}, {});
 const project = new ts_morph_1.Project();
-project.addSourceFilesAtPaths(fileIn);
-const source = project.getSourceFileOrThrow(fileIn);
-const types = (0, parser_1.parse)(source);
+project.addSourceFilesAtPaths([args.root, args.project]);
+let typesRoot = (0, parser_1.parse)(project.getSourceFileOrThrow(args.root));
+let typesProject = (0, parser_1.parse)(project.getSourceFileOrThrow(args.project));
+// override root types with types defined in the project
+typesProject.forEach(type => {
+    const name = type.name;
+    typesRoot = typesRoot.filter(t => t.name !== name);
+});
+const types = [...typesRoot, ...typesProject];
 const typesLookup = types.reduce((acc, type) => {
     const types = acc.get(type.name) || [];
     types.push(type);
@@ -53,14 +67,11 @@ const toFile = (filePath, fileContents) => {
     (0, fs_1.writeFileSync)(filePath, fileContents, { encoding: 'utf8' });
 };
 // generate types
-let dirOut = '';
-dirOut = path.join(process.cwd(), PATH_OUT);
-dirOut = path.resolve(dirOut);
 Array.from(typesLookup.keys()).forEach(typeName => {
     const typeDefinitions = typesLookup.get(typeName) || [];
     const typeDocumentation = formatter.typeFormatter.format(typeDefinitions);
     let outPath = '';
-    outPath = path.join(dirOut, `${typeName}.md`);
+    outPath = path.join(args.output, `${typeName}.md`);
     outPath = path.resolve(outPath);
     toFile(outPath, typeDocumentation);
 });
