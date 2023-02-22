@@ -1,11 +1,6 @@
 # @brighter/storage-adapter-s3
 
-This is a storage adapter for `@brighter/storage` that comes bundled with required S3 dependencies.
-
-For more information:
-
-- see the [demo](demo/) folder or
-- dive straight into the [documentation](docs/Storage.md).
+This is an adapter for `@brighter/storage` object storage library that comes pre-bundled with all the required S3 dependencies.
 
 ## Quick Start
 
@@ -37,3 +32,8 @@ const main = async () => {
 
 main().catch(console.error)
 ```
+
+For more information:
+
+- see the [demo](demo/) folder or
+- dive straight into the [documentation](docs/Storage.md).
