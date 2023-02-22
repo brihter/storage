@@ -40,14 +40,14 @@ main().catch(console.error)
 
 For more information:
 
-- see the [demo](src/storage/demo/) folder or
+- have a look at the [demo](src/storage/demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
 
 ## Why
 
 Why is local development important? Most of today's software talks directly to the cloud, even in local environments. This extends the feedback loop and creates a storage provider dependency.
 
-This library offers a different approach. It introduces a unified storage interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) during development and increases [development velocity](https://arc.codes/docs/en/guides/developer-experience/local-development).
+This library offers a different approach. It introduces a unified storage interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and increases [velocity](https://arc.codes/docs/en/guides/developer-experience/local-development) during development.
 
 ## Roadmap
 

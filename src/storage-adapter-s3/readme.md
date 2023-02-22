@@ -35,5 +35,5 @@ main().catch(console.error)
 
 For more information:
 
-- see the [demo](demo/) folder or
+- have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](docs/Storage.md).
