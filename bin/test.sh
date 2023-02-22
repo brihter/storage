@@ -1,15 +1,14 @@
 #!/bin/bash
 
-./bin/test-unit.sh
-exit_code=$?
+provider=$1
 
-if [ "$exit_code" -ne "0" ]; then
-  exit $exit_code;
-fi
+path_current=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
+path_root="$path_current/.."
 
-./bin/test-integration.sh
-exit_code=$?
-
-if [ "$exit_code" -ne "0" ]; then
-  exit $exit_code;
-fi
+packages=("/src/storage" "/src/storage-adapter-s3")
+for path_package in "${packages[@]}"
+do
+  path="$path_root$path_package"
+  cd $path
+  ./bin/test.sh $provider
+done

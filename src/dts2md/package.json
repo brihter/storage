@@ -1,0 +1,18 @@
+{
+  "name": "dts2md",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./bin/build.sh"
+  },
+  "author": "Bostjan Rihter",
+  "license": "MIT",
+  "devDependencies": {
+    "@microsoft/tsdoc": "^0.14.2",
+    "@types/node": "^18.11.18",
+    "nodemon": "^2.0.20",
+    "ts-morph": "^17.0.1",
+    "typescript": "^4.9.5"
+  }
+}

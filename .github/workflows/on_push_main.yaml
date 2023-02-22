@@ -21,8 +21,15 @@ jobs:
         uses: actions/checkout@v2
       - name: install
         run: ./bin/install.sh
-      - name: publish
+      - name: publish @brighter/storage
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
+          package: ./src/storage/package.json
+      - name: publish @brighter/storage-adapter-s3
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
+          package: ./src/storage-adapter-s3/package.json

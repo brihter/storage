@@ -33,8 +33,8 @@ fi
 git checkout main
 git pull origin main
 
-./bin/build-docs.sh
-./bin/build-version.sh $version_next
+./bin/docs.sh
+./bin/version.sh $version_next
 
 git add .
 git commit -m "$version_next_text"
