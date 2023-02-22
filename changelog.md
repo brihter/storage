@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.4.1
+
+- Automatic update of `@brighter/storage` dependencies in `@brighter/storage-adapter-s3` to the current version.
+
+This release automates version syncronization for `@brighter/storage` dependencies.
+
 ## v1.4.0
 
 - Restructured the project into separate packages.
