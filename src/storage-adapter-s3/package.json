@@ -1,7 +1,7 @@
 {
-  "name": "@brighter/storage",
+  "name": "@brighter/storage-adapter-s3",
   "version": "1.3.0",
-  "description": "A JavaScript object storage library that enables local development.",
+  "description": "This is an adapter for @brighter/storage object storage library that comes pre-bundled with all the required S3 dependencies.",
   "type": "module",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",

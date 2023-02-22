@@ -27,11 +27,9 @@ jobs:
           token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
           package: ./src/storage/package.json
-          dry-run: true
       - name: publish @brighter/storage-adapter-s3
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
           package: ./src/storage-adapter-s3/package.json
-          dry-run: true
