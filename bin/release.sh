@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO read and set the version on the main package.json then use that version in all other published packages
-
 args_version_next=$1
 
 parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
@@ -27,25 +25,23 @@ echo ""
 echo "[*] Release (tag)     : $version_next_tag"
 echo "[*] Release (text)    : $version_next_text"
 
-# exit 0
+if [[ $(git status --porcelain) ]]; then
+  echo "[x] Error: Git working directory is dirty. Exiting."
+  exit 1
+fi
 
-# if [[ $(git status --porcelain) ]]; then
-#   echo "[x] Error: Git working directory is dirty. Exiting."
-#   exit 1
-# fi
+git checkout main
+git pull origin main
 
-# git checkout main
-# git pull origin main
-
-#./bin/docs.sh
+./bin/docs.sh
 ./bin/version.sh $version_next
 
-# git add .
-# git commit -m "$version_next_text"
-# git tag -a "$version_next_tag" -m "$version_next_text"
+git add .
+git commit -m "$version_next_text"
+git tag -a "$version_next_tag" -m "$version_next_text"
 
-# git push origin "$version_next_tag"
-# git push origin main
+git push origin "$version_next_tag"
+git push origin main
 
 echo ""
 echo "[*] Done"
