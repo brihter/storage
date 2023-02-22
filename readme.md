@@ -1,6 +1,6 @@
 # @brighter/storage
 
-`@brighter/storage` is a JavaScript object storage library that:
+This is a JavaScript object storage library that:
 
 - enables local development,
 - has a simple, concise API,
@@ -17,9 +17,8 @@ A list of supported object storage providers:
 
 For more information:
 
-- see the [examples](examples/README.md),
-- track changes in the [changelog](changelog.md) or
-- dive straight into the [documentation](docs/README.md).
+- see the [demo](demo/) folder or
+- dive straight into the [documentation](docs/Storage.md).
 
 ## Quick Start
 
@@ -47,83 +46,6 @@ const main = async () => {
 
 main().catch(console.error)
 ```
-
-## API overview
-
-The aim of the API is to be simple and concise so that's easy to use and remember.
-
-Reading:
-
-```js
-let data
-data = await storage.read('file')
-data = await storage.read('file', { encoding: 'ascii' })
-data = await storage.read('file.bin', { encoding: 'binary' })
-```
-
-See [ReadFunction](docs/ReadFunction.md) for more information.
-
-Writing:
-
-```js
-await storage.write('file', 'hi')
-await storage.write('file', 'hi', { encoding: 'utf8' })
-await storage.write('file', Buffer.alloc(2), { encoding: 'binary' })
-```
-
-See [WriteFunction](docs/WriteFunction.md) for more information.
-
-Removing:
-
-```js
-await storage.remove('file')
-await storage.remove('dir/', { recursive: true })
-await storage.remove('dir/', { recursive: true, concurrency: 10 })
-```
-
-See [RemoveFunction](docs/RemoveFunction.md) for more information.
-
-Copying:
-
-```js
-await storage.copy('file', 'file_copy')
-await storage.copy('file', 'dir/')
-await storage.copy('dir/', 'dir_copy/')
-await storage.copy('dir/', 'dir_copy/', { concurrency: 10 })
-```
-
-See [CopyFunction](docs/CopyFunction.md) for more information.
-
-Listing:
-
-```js
-let data
-data = await storage.list('/')
-data = await storage.list('/', { recursive: true })
-data = await storage.list('/', { recursive: true, absolute: true })
-data = await storage.list('/', { recursive: true, absolute: true, concurrency: 10 })
-```
-
-See [ListFunction](docs/ListFunction.md) for more information.
-
-Existence:
-
-```js
-let data
-data = await storage.exists('file')
-data = await storage.exists('dir/')
-```
-
-See [ExistsFunction](docs/ExistsFunction.md) for more information.
-
-File Information:
-
-```js
-let data
-data = await storage.stat('file')
-```
-
-See [StatFunction](docs/StatFunction.md) for more information.
 
 ## Roadmap
 

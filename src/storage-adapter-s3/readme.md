@@ -4,7 +4,7 @@ This is a storage adapter for `@brighter/storage` that comes bundled with requir
 
 For more information:
 
-- see the [demos](demo/) or
+- see the [demo](demo/) folder or
 - dive straight into the [documentation](docs/Storage.md).
 
 ## Quick Start
