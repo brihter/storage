@@ -1,6 +1,7 @@
-import { Storage } from '@brighter/storage-adapter-local'
+import { Storage } from '@brighter/storage'
 
 const storage = Storage({
+  type: 'local',
   path: '/tmp/storage'
 })
 

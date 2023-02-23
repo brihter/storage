@@ -24,15 +24,16 @@ It's API is easy to use and remember. It removes away the complexity of manually
 Installation, using npm:
 
 ```
-npm i @brighter/storage-adapter-local
+npm i @brighter/storage
 ```
 
 Usage:
 
 ```js
-import { Storage } from '@brighter/storage-adapter-local'
+import { Storage } from '@brighter/storage'
 
 const storage = Storage({
+  type: 'local',
   path: '/tmp/storage'
 })
 
@@ -52,7 +53,7 @@ For more information:
 
 ## Providers
 
-List of supported object storage providers:
+Instead of manually installing and injecting required storage provider dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with all the required dependencies:
 
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
