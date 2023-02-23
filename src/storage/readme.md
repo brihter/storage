@@ -3,7 +3,7 @@
 This is the core object storage library used by the following adapters:
 
 * [@brighter/storage-adapter-local](../storage-adapter-local/) and
-* [@brighter/storage-adapter-s3](../storage-adapter-s3/)
+* [@brighter/storage-adapter-s3](../storage-adapter-s3/).
 
 ## Quick Start
 

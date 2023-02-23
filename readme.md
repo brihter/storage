@@ -2,12 +2,7 @@
 
 An opinonated JavaScript object storage library that makes interacting with cloud object storage providers ([AWS S3](https://aws.amazon.com/s3/), [Cloudflare R2](https://www.cloudflare.com/products/r2/), ...) a breeze.
 
-Some of it's finest moments:
-
-- local development,
-- simple, concise API,
-- well documented and
-- tested against real infrastructure.
+It enables local development and has a simple, concise API that's easy to use and remember.
 
 ## Why
 
@@ -41,10 +36,10 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-A list of supported object storage providers:
+List of supported object storage providers:
 
-- `local` and
-- any `s3` compatible provider (AWS S3, Cloudflare R2, ...).
+* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/).
 
 For more information:
 
