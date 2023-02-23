@@ -1,9 +1,13 @@
 # @brighter/storage
 
-This is the core object storage library used by the following adapters:
+This is the core object storage library.
+
+Most likely you'll want to use one of the following storage adapters that come pre-bundled with required dependencies:
 
 * [@brighter/storage-adapter-local](../storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](../storage-adapter-s3/).
+
+If you wish to manually inject the dependecnies, please continue.
 
 ## Quick Start
 
