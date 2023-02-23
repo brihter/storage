@@ -34,15 +34,17 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-List of supported object storage providers:
-
-* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
-* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
-
 For more information:
 
 - have a look at the [demo](src/storage/demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
+
+## Providers
+
+List of supported object storage providers:
+
+* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
 ## Roadmap
 
