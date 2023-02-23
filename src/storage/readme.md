@@ -1,15 +1,9 @@
 # @brighter/storage
 
-This is a JavaScript object storage library that:
+This is the core object storage library used by the following adapters:
 
-- enables local development,
-- has a simple, concise API,
-- is well documented and tested against real infrastructure.
-
-A list of supported object storage providers:
-
-- `local` and
-- any `s3` compatible provider (AWS S3, Cloudflare R2, ...).
+* [@brighter/storage-adapter-local](../storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](../storage-adapter-s3/)
 
 ## Quick Start
 
