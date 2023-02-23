@@ -1,4 +1,4 @@
-import type { S3ConfigClient } from '@aws-sdk/client-s3'
+import type { S3ClientConfig } from '@aws-sdk/client-s3'
 import type { StorageInterface } from '@brighter/storage'
 
 /**
@@ -34,7 +34,7 @@ type Config = {
  * Creates the storage.
  *
  * @param config Storage configuration.
- * @param configClient Storage client configuration. See: [S3ConfigClient](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).
+ * @param configClient Storage client configuration. See: [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).
  *
  * @example
  * ```js
@@ -51,5 +51,5 @@ type Config = {
  */
 export function Storage(
   config: Config,
-  configClient: S3ConfigClient
+  configClient: S3ClientConfig
 ): StorageInterface

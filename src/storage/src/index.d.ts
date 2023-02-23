@@ -374,17 +374,6 @@ type WriteFunction = {
  * }
  *
  * const storage = Storage(config, dependencies)
- *
- * await storage.write('file', 'hi')
- * await storage.copy('file', 'file-copy')
- * await storage.remove('file-copy')
- *
- * let data
- * data = await storage.stat('file')
- * data = await storage.exists('file')
- * data = await storage.list('/', { recursive: true })
- * data = await storage.read('file')
- * data = await storage.presign('file')
  * ```
  */
 type StorageInterface = {

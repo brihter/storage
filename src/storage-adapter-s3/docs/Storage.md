@@ -9,22 +9,22 @@ Creates the storage.
 
 Constructors:
 
-- [Storage(config, configClient)](#storageconfig-config-configclient-s3configclient)
+- [Storage(config, configClient)](#storageconfig-config-configclient-s3clientconfig)
 
 
 
 
 ## Constructors
 
-- `Storage(config: Config, configClient: S3ConfigClient): StorageInterface`
+- `Storage(config: Config, configClient: S3ClientConfig): StorageInterface`
 
 
-#### Storage(config: Config, configClient: S3ConfigClient)
+#### Storage(config: Config, configClient: S3ClientConfig)
 
 Parameters:
 
 - `config: Config` - Storage configuration.
-- `configClient: S3ConfigClient` - Storage client configuration. See: [S3ConfigClient](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).
+- `configClient: S3ClientConfig` - Storage client configuration. See: [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).
 
 See: [Config](Config.md)
 
