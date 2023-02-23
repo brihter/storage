@@ -5,8 +5,9 @@ A cloud agnostic JavaScript object storage library that's built with simplicity 
 It offers:
 
 - a unified storage interface (for seamless switching between providers),
-- a local storage provider implementation (enabling local development) and
-- a simple, concise API.
+- a [local storage provider](src/storage-adapter-local/readme.md) implementation (enabling local development),
+- a simple, concise [API](src/storage/docs/StorageInterface.md) that's tested against real infrastructure and
+- comprehensive [documentation](src/storage/docs/Storage.md).
 
 ## Why
 
