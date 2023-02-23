@@ -4,6 +4,7 @@
 
 - Improved documentation for `@brighter/storage-adapter-local`.
 - Improved documentation for `@brighter/storage-adapter-s3`.
+- Improved project README.
 
 This is a maintenance release.
 
