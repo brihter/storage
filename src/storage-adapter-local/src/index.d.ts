@@ -8,7 +8,7 @@ import type { StorageInterface } from '@brighter/storage'
  * const config = {
  *   path: '/tmp/storage',
  *   encoding: 'utf8',
- *   concurrenct: 32
+ *   concurrency: 32
  * }
  * ```
  */

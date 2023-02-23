@@ -55,6 +55,6 @@ The number of max concurrent tasks running. Optional, default is `32`.
 const config = {
   path: '/tmp/storage',
   encoding: 'utf8',
-  concurrenct: 32
+  concurrency: 32
 }
 ```

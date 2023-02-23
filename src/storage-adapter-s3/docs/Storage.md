@@ -23,8 +23,8 @@ Constructors:
 
 Parameters:
 
-- `config: Config`
-- `clientConfig: S3ClientConfig`
+- `config: Config` - Storage configuration.
+- `clientConfig: S3ClientConfig` - Storage client configuration. For more information see https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html.
 
 See: [Config](Config.md)
 

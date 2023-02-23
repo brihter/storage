@@ -3,7 +3,7 @@ import S3Presign from '@aws-sdk/s3-request-presigner'
 
 import { Storage as StorageCore } from '@brighter/storage'
 
-const Storage = (config, clientConfig) => {
+const Storage = (config, configClient) => {
   return StorageCore(
     {
       ...config,
@@ -12,7 +12,7 @@ const Storage = (config, clientConfig) => {
     {
       client: S3,
       clientPresign: S3Presign,
-      clientInstance: new S3.S3Client(clientConfig)
+      clientInstance: new S3.S3Client(configClient)
     }
   )
 }
