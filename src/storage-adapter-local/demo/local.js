@@ -1,7 +1,7 @@
 import { Storage } from '@brighter/storage-adapter-local'
 
 const config = {
-  path: 'my-bucket'
+  path: '/tmp/storage'
 }
 
 const main = async () => {
