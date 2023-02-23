@@ -1,6 +1,6 @@
 # @brighter/storage-adapter-local
 
-This is a local object storage adapter for `@brighter/storage` library.
+This is a local object storage adapter for the `@brighter/storage` library.
 
 ## Quick Start
 
