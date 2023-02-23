@@ -7,6 +7,11 @@ List of supported object storage providers:
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
+For more information:
+
+- have a look at the [demo](src/storage/demo/) folder or
+- dive straight into the [documentation](src/storage/docs/Storage.md).
+
 ## Why
 
 Most of today's software talks directly to the cloud, even in local environments. This extends the feedback loop and creates a storage provider dependency.
@@ -38,11 +43,6 @@ const main = async () => {
 
 main().catch(console.error)
 ```
-
-For more information:
-
-- have a look at the [demo](src/storage/demo/) folder or
-- dive straight into the [documentation](src/storage/docs/Storage.md).
 
 ## Roadmap
 
