@@ -2,15 +2,13 @@
 
 A cloud agnostic JavaScript object storage library that's built with simplicity and local development in mind.
 
+It introduces a unified storage interface, a local storage provider and a simple, concise API that's easy to use and remember. It removes away the complexity of manually passing around continuation tokens, presigning requests, promise throttling and dealing with various different content encodings.
+
 ## Why
 
 Most of today's software talks directly to the cloud, even in local environments. This extends the feedback loop and creates a storage provider dependency.
 
-This library offers a different approach.
-
-It introduces a unified storage interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and increases [velocity](https://arc.codes/docs/en/guides/developer-experience/local-development) during development.
-
-Additionally, it introduces a simple, concise API that's easy to use and remember. It removes away the complexity of manually passing around continuation tokens, presigning requests, promise throttling and dealing with content encodings.
+This library offers a different approach. By introducing a unified storage interface it enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/). A local storage provider implementation [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and increases [velocity](https://arc.codes/docs/en/guides/developer-experience/local-development) during development.
 
 ## Quick Start
 
