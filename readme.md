@@ -2,7 +2,13 @@
 
 A cloud agnostic JavaScript object storage library that's built with simplicity and local development in mind.
 
-It introduces a unified storage interface, a local storage provider and a simple, concise API that's easy to use and remember. It removes away the complexity of manually passing around continuation tokens, presigning requests, promise throttling and dealing with various different content encodings.
+It offers:
+
+- a unified storage interface,
+- a local storage provider and
+- a simple, concise API that's easy to use and remember.
+
+It removes away the complexity of manually passing around continuation tokens, presigning requests, promise throttling and dealing with various different content encodings.
 
 ## Why
 
