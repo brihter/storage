@@ -50,6 +50,35 @@ List of supported object storage providers:
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
+## API
+
+API overview:
+
+```js
+import { Storage } from '@brighter/storage-adapter-local'
+
+const storage = Storage({
+  path: '/tmp/storage'
+})
+
+const main = async () => {
+  await storage.write('file', 'hello')
+
+  const file = await storage.read('file')
+  const exists = await storage.exists('file')
+  const info = await storage.stat('file')
+  const url = await storage.presign('file')
+  
+  await storage.copy('file', 'file2')
+  await storage.remove('file2')
+
+  const items = await storage.list('/')
+  await storage.remove('file')
+}
+
+main().catch(console.error)
+```
+
 ## Roadmap
 
 - `v2.0.0` Azure Blob Storage implementation.
