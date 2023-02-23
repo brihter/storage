@@ -1,6 +1,6 @@
 # @brighter/storage-adapter-local
 
-This is a local adapter for the `@brighter/storage` object storage library.
+This is a local object storage adapter for `@brighter/storage` library.
 
 ## Quick Start
 
@@ -15,12 +15,11 @@ Usage:
 ```js
 import { Storage } from '@brighter/storage-adapter-local'
 
-const config = {
+const storage = Storage({
   path: '/tmp/storage'
-}
+})
 
 const main = async () => {
-  const storage = Storage(config)
   await storage.write('msg', 'hi')
   const msg = await storage.read('msg')
   console.log(msg)
