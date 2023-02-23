@@ -7,7 +7,7 @@ Most likely you'll want to use one of the following storage adapters that come p
 * [@brighter/storage-adapter-local](../storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](../storage-adapter-s3/).
 
-If you wish to manually inject the dependecnies, please continue.
+If you wish to manually inject the dependencies, please continue.
 
 ## Quick Start
 
