@@ -1,8 +1,11 @@
 # @brighter/storage
 
-An opinonated JavaScript object storage library that makes interacting with cloud object storage providers ([AWS S3](https://aws.amazon.com/s3/), [Cloudflare R2](https://www.cloudflare.com/products/r2/), ...) a breeze.
+A cloud agnostic JavaScript object storage library that's built with simplicity and local development in mind.
 
-It enables local development and has a simple, concise API that's easy to use and remember.
+List of supported object storage providers:
+
+* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
 ## Why
 
@@ -35,11 +38,6 @@ const main = async () => {
 
 main().catch(console.error)
 ```
-
-List of supported object storage providers:
-
-* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
-* [@brighter/storage-adapter-s3](src/storage-adapter-s3/).
 
 For more information:
 
