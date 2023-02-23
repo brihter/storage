@@ -38,11 +38,6 @@ const main = async () => {
 main().catch(console.error)
 ```
 
-For more information:
-
-- have a look at the [demo](demo/) folder or
-- dive straight into the [documentation](src/storage/docs/Storage.md).
-
 ## Providers
 
 List of supported object storage providers:
@@ -78,6 +73,11 @@ const main = async () => {
 
 main().catch(console.error)
 ```
+
+For more information:
+
+- have a look at the [demo](demo/) folder or
+- dive straight into the [documentation](src/storage/docs/Storage.md).
 
 ## Roadmap
 
