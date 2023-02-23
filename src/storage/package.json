@@ -1,6 +1,6 @@
 {
   "name": "@brighter/storage",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A JavaScript object storage library that enables local development.",
   "type": "module",
   "main": "./src/index.js",
