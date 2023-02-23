@@ -10,7 +10,7 @@ This library offers a different approach.
 
 It introduces a unified storage interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and increases [velocity](https://arc.codes/docs/en/guides/developer-experience/local-development) during development.
 
-Additionally, it introduces a simple, concise API that's easy to use and remember. It removes the complexity of dealing with continuation tokens, concurrency and content encoding.
+Additionally, it introduces a simple, concise API that's easy to use and remember. It removes away the complexity of manually passing around continuation tokens, promise throttling and dealing with content encodings.
 
 ## Quick Start
 
