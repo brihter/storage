@@ -4,8 +4,8 @@ A cloud agnostic JavaScript object storage library that's built with simplicity 
 
 It offers:
 
-- a unified storage interface,
-- a local storage provider implementation and
+- a unified storage interface (for seamless switching between providers),
+- a local storage provider implementation (enabling local development) and
 - a simple, concise API that's easy to use and remember.
 
 ## Why
