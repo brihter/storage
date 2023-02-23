@@ -34,10 +34,6 @@ type Config = {
  *
  * @example
  * ```js
- * const config = {
- *   path: '/tmp/storage'
- * }
- *
  * const storage = Storage({
  *   path: '/tmp/storage'
  * })
