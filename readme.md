@@ -57,7 +57,7 @@ const storage = Storage({
 })
 
 const main = async () => {
-  await storage.write('file', 'hi')
+  await storage.write('file', 'contents')
 
   const file = await storage.read('file')
   const fileExists = await storage.exists('file')
