@@ -36,10 +36,6 @@ See: [StorageInterface](StorageInterface.md)
 ## Examples
 
 ```js
-const config = {
-  path: '/tmp/storage'
-}
-
 const storage = Storage({
   path: '/tmp/storage'
 })
