@@ -36,7 +36,7 @@ main().catch(console.error)
 
 For more information:
 
-- have a look at the [demo](src/storage/demo/) folder or
+- have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
 
 ## Providers
