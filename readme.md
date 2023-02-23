@@ -57,18 +57,18 @@ const storage = Storage({
 })
 
 const main = async () => {
-  await storage.write('file', 'hello')
+  await storage.write('file', 'hi')
 
   const file = await storage.read('file')
-  const exists = await storage.exists('file')
-  const info = await storage.stat('file')
-  const url = await storage.presign('file')
+  const fileExists = await storage.exists('file')
+  const fileInfo = await storage.stat('file')
+  const fileURL = await storage.presign('file')
   
-  await storage.copy('file', 'file2')
-  await storage.remove('file2')
+  await storage.copy('file', 'file-copy')
+  await storage.remove('file')
+  await storage.remove('file-copy')
 
   const items = await storage.list('/')
-  await storage.remove('file')
 }
 
 main().catch(console.error)
