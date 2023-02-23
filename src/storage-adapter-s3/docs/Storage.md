@@ -9,22 +9,22 @@ Creates the storage.
 
 Constructors:
 
-- [Storage(config, clientConfig)](#storageconfig-config-clientconfig-s3clientconfig)
+- [Storage(config, configClient)](#storageconfig-config-configclient-s3configclient)
 
 
 
 
 ## Constructors
 
-- `Storage(config: Config, clientConfig: S3ClientConfig): StorageInterface`
+- `Storage(config: Config, configClient: S3ConfigClient): StorageInterface`
 
 
-#### Storage(config: Config, clientConfig: S3ClientConfig)
+#### Storage(config: Config, configClient: S3ConfigClient)
 
 Parameters:
 
 - `config: Config` - Storage configuration.
-- `clientConfig: S3ClientConfig` - Storage client configuration. For more information see https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html.
+- `configClient: S3ConfigClient` - Storage client configuration. See: [S3ConfigClient](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html).
 
 See: [Config](Config.md)
 
@@ -37,15 +37,13 @@ See: [StorageInterface](StorageInterface.md)
 ## Examples
 
 ```js
-import { Storage } from '@brighter/storage-adapter-s3'
-
 const config = {
   path: 'my-bucket/path/to/data'
 }
 
-const clientConfig = {
+const configClient = {
   region: 'eu-central-1'
 }
 
-const storage = Storage(config, clientConfig)
+const storage = Storage(config, configClient)
 ```
