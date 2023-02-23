@@ -38,46 +38,17 @@ const main = async () => {
 main().catch(console.error)
 ```
 
+For more information:
+
+- have a look at the [demo](demo/) folder or
+- dive straight into the [documentation](src/storage/docs/Storage.md).
+
 ## Providers
 
 List of supported object storage providers:
 
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
-
-## API
-
-API overview:
-
-```js
-import { Storage } from '@brighter/storage-adapter-local'
-
-const storage = Storage({
-  path: '/tmp/storage'
-})
-
-const main = async () => {
-  await storage.write('file', 'contents')
-
-  const file = await storage.read('file')
-  const fileExists = await storage.exists('file')
-  const fileInfo = await storage.stat('file')
-  const fileURL = await storage.presign('file')
-  
-  await storage.copy('file', 'file-copy')
-  await storage.remove('file')
-  await storage.remove('file-copy')
-
-  const items = await storage.list('/')
-}
-
-main().catch(console.error)
-```
-
-For more information:
-
-- have a look at the [demo](demo/) folder or
-- dive straight into the [documentation](src/storage/docs/Storage.md).
 
 ## Roadmap
 
