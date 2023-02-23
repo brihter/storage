@@ -36,11 +36,11 @@ See: [StorageInterface](StorageInterface.md)
 ## Examples
 
 ```js
-import { Storage } from '@brighter/storage-adapter-local'
-
 const config = {
-  path: '/tmp/storage/data'
+  path: '/tmp/storage'
 }
 
-const storage = Storage(config)
+const storage = Storage({
+  path: '/tmp/storage'
+})
 ```
