@@ -46,17 +46,15 @@ const main = async () => {
 main().catch(console.error)
 ```
 
+Instead of manually installing and injecting dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with all the required dependencies:
+
+* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
+
 For more information:
 
 - have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
-
-## Providers
-
-Instead of manually installing and injecting required storage provider dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with all the required dependencies:
-
-* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
-* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
 ## Roadmap
 
