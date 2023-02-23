@@ -4,11 +4,11 @@ const CF_ACCOUNT_ID = ''
 const CF_ACCESS_KEY = ''
 const CF_SECRET_ACCESS_KEY = ''
 
-const storageConfig = {
+const config = {
   path: 'my-bucket'
 }
 
-const storageProviderConfig = {
+const configClient = {
   region: 'auto',
   endpoint: `https://${CF_ACCOUNT_ID}.r2.cloudflarestorage.com`,
   credentials: {
@@ -17,8 +17,9 @@ const storageProviderConfig = {
   }
 }
 
+const storage = Storage(config, configClient)
+
 const main = async () => {
-  const storage = Storage(storageConfig, storageProviderConfig)
   await storage.write('msg', 'hi')
   const msg = await storage.read('msg')
   console.log(msg)

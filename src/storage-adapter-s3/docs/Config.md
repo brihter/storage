@@ -10,7 +10,6 @@ Storage configuration.
 
 Properties:
 
-- [type](#type-string)
 - [path](#path-string)
 - [encoding](#encoding-string)
 - [concurrency](#concurrency-number)
@@ -19,24 +18,14 @@ Properties:
 
 ## Properties
 
-- `type: string`
 - `path: string`
 - `encoding: string`
 - `concurrency: number`
 
 
-#### type: string
-
-Storage type. For example `local`.
-
-
-
-
-
-
 #### path: string
 
-Storage root path. For example `/tmp/storage`.
+Storage root path. For example `my-bucket/path/to/data`.
 
 
 
@@ -64,7 +53,8 @@ The number of max concurrent tasks running. Optional, default is `32`.
 
 ```js
 const config = {
-  type: 'local',
-  path: '/tmp/storage'
+  path: 'my-bucket/path/to/data',
+  encoding: 'utf8',
+  concurrency: 32
 }
 ```

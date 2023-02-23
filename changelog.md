@@ -1,8 +1,18 @@
 # Changelog
 
+## v1.5.2
+
+- Improved documentation for `@brighter/storage-adapter-local`.
+- Improved documentation for `@brighter/storage-adapter-s3`.
+- Improved project README.
+
+This is a maintenance release.
+
 ## v1.5.1
 
 - Automatically publish the `@brighter/storage-adapter-local` storage adapter to NPM.
+
+This is a maintenance release.
 
 ## v1.5.0
 

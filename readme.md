@@ -1,15 +1,23 @@
 # @brighter/storage
 
-This is a JavaScript object storage library that:
+A cloud agnostic JavaScript object storage library that's built with simplicity and local development in mind.
 
-- enables local development,
-- has a simple, concise API,
-- is well documented and tested against real infrastructure.
+It offers:
 
-A list of supported object storage providers:
+- a unified storage interface (for seamless switching between providers),
+- a [local storage provider](src/storage-adapter-local/readme.md) implementation (enabling local development),
+- a simple, concise [API](src/storage/docs/StorageInterface.md) that's tested against real infrastructure and
+- comprehensive [documentation](src/storage/docs/Storage.md).
 
-- `local` and
-- any `s3` compatible provider (AWS S3, Cloudflare R2, ...).
+## Why
+
+Most of today's software talks directly to the cloud, even in local environments. This [extends the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and creates a [storage provider dependency](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/).
+
+This library takes a different approach.
+
+It introduces a unified storage interface that enables seamless switching between providers and a local storage provider implementation that shortens the feedback loop and maximizes velocity during development.
+
+It's API is easy to use and remember. It removes away the complexity of manually passing around continuation tokens, promise throttling, dealing with various different content encodings and presigning requests.
 
 ## Quick Start
 
@@ -38,16 +46,15 @@ const main = async () => {
 main().catch(console.error)
 ```
 
+Instead of manually installing and injecting the dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with everything required:
+
+* [@brighter/storage-adapter-local](src/storage-adapter-local/) and
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
+
 For more information:
 
-- have a look at the [demo](src/storage/demo/) folder or
+- have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
-
-## Why
-
-Why is local development important? Most of today's software talks directly to the cloud, even in local environments. This extends the feedback loop and creates a storage provider dependency.
-
-This library offers a different approach. It introduces a unified storage interface that enables seamless [switching between providers](https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/) and a local implementation that [shortens the feedback loop](https://twitter.com/kentbeck/status/531964254946328576) and increases [velocity](https://arc.codes/docs/en/guides/developer-experience/local-development) during development.
 
 ## Roadmap
 
