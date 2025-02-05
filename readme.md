@@ -19,11 +19,59 @@ It introduces a unified storage interface that enables seamless switching betwee
 
 It's API is easy to use and remember. It removes away the complexity of manually passing around continuation tokens, promise throttling, dealing with various different content encodings and presigning requests.
 
+## Overview
+
+Here's a short API overview:
+
+```js
+import { Storage } from '@brighter/storage'
+
+const storage = Storage({
+  type: 'local',
+  path: '/tmp/storage'
+})
+
+await storage.read('file')
+await storage.read('file', { encoding: 'ascii' })
+// ...
+
+await storage.write('file', 'hello')
+await storage.write('file', 'Ω', { encoding: 'utf8' })
+// ...
+
+await storage.remove('file')
+await storage.remove('dir/', { recursive: true })
+// ...
+
+await storage.stat('file')
+// ...
+
+await storage.copy('file', 'file_copy')
+await storage.copy('dir/', 'dir_copy/', { concurrency: 10 })
+// ...
+
+await storage.list('/')
+await storage.list('/', { recursive: true })
+// ...
+
+await storage.exists('file')
+await storage.exists('dir/')
+// ...
+
+await storage.presign('file')
+await storage.presign('file', { expiresIn: 3600 })
+// ...
+```
+
+See [StorageInterface]((src/storage/docs/StorageInterface.md)) for more information.
+
 ## Quick Start
+
+*Note: Before installing, Node.js 16 or higher is required.*
 
 Installation, using npm:
 
-```
+```bash
 npm i @brighter/storage
 ```
 
@@ -46,10 +94,37 @@ const main = async () => {
 main().catch(console.error)
 ```
 
+## The Not So Quick Start
+
 Instead of manually installing and injecting the dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with everything required:
 
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
+
+*Note: Before installing, Node.js 16 or higher is required.*
+
+Installation, using npm:
+
+```bash
+npm i @brighter/storage-adapter-local
+npm i @brighter/storage-adapter-s3
+```
+
+Usage:
+
+```js
+import { Storage } from '@brighter/storage-adapter-s3'
+
+const storage = Storage({ path: 'my-bucket' }, { region: 'eu-central-1' })
+
+const main = async () => {
+  await storage.write('msg', 'hi')
+  const msg = await storage.read('msg')
+  console.log(msg)
+}
+
+main().catch(console.error)
+```
 
 For more information:
 
