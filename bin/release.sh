@@ -33,6 +33,7 @@ fi
 git checkout main
 git pull origin main
 
+./bin/install.sh
 ./bin/docs.sh
 ./bin/version.sh $version_next
 
