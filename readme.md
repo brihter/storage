@@ -21,80 +21,24 @@ It's API is easy to use and remember. It removes away the complexity of manually
 
 ## Overview
 
-Here's a short API overview:
+Here's a quick API overview:
 
 ```js
-import { Storage } from '@brighter/storage'
-
-const storage = Storage({
-  type: 'local',
-  path: '/tmp/storage'
-})
-
-await storage.read('file')
-await storage.read('file', { encoding: 'ascii' })
-// ...
-
-await storage.write('file', 'hello')
-await storage.write('file', 'Ω', { encoding: 'utf8' })
-// ...
-
-await storage.remove('file')
-await storage.remove('dir/', { recursive: true })
-// ...
-
-await storage.stat('file')
-// ...
-
-await storage.copy('file', 'file_copy')
-await storage.copy('dir/', 'dir_copy/', { concurrency: 10 })
-// ...
-
-await storage.list('/')
-await storage.list('/', { recursive: true })
-// ...
-
-await storage.exists('file')
-await storage.exists('dir/')
-// ...
-
-await storage.presign('file')
-await storage.presign('file', { expiresIn: 3600 })
-// ...
+const main = async (storage) => {
+  await storage.read('info.log')
+  await storage.write('info.log', 'hello')
+  await storage.exists('info.log')
+  await storage.stat('info.log')
+  await storage.remove('info.log')
+  await storage.copy('info.log', 'info.copy.log')
+  await storage.list('/')
+  await storage.presign('info.log')
+}
 ```
 
-See [StorageInterface]((src/storage/docs/StorageInterface.md)) for more information.
+See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
 
 ## Quick Start
-
-*Note: Before installing, Node.js 16 or higher is required.*
-
-Installation, using npm:
-
-```bash
-npm i @brighter/storage
-```
-
-Usage:
-
-```js
-import { Storage } from '@brighter/storage'
-
-const storage = Storage({
-  type: 'local',
-  path: '/tmp/storage'
-})
-
-const main = async () => {
-  await storage.write('msg', 'hi')
-  const msg = await storage.read('msg')
-  console.log(msg)
-}
-
-main().catch(console.error)
-```
-
-## The Not So Quick Start
 
 Instead of manually installing and injecting the dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with everything required:
 
@@ -130,6 +74,32 @@ For more information:
 
 - have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
+
+## Local Development
+
+Storage can be created so that the code switches between the providers. During local development it makes sense to use the local provider as it speeds up the feedback loop.
+
+Example:
+
+```js
+import { Storage as StorageLocal } from '@brighter/storage-adapter-local'
+import { Storage as StorageS3 } from '@brighter/storage-adapter-s3'
+
+const createStorage = () => {
+  if (process.env.NODE_ENV === 'local') {
+    return StorageLocal({ path: '/tmp/storage' })
+  } else {
+    return StorageS3({ path: 'my-bucket' }, { region: 'eu-central-1' })
+  }
+}
+
+const main = async () => {
+  const storage = createStorage()
+  await storage.read('info.log')
+}
+
+main().catch(console.error)
+```
 
 ## Roadmap
 
