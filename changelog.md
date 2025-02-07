@@ -1,5 +1,38 @@
 # Changelog
 
+## v1.5.7
+
+- Improved documentation.
+
+This is a maintenance release.
+
+## v1.5.6
+
+- Updated dependencies for `@brighter/storage-adapter-local`.
+- Updated dependencies for `@brighter/storage-adapter-s3`.
+- Updated dependencies for `@brighter/storage`.
+- Improved documentation.
+
+This is a maintenance release.
+
+## v1.5.5
+
+- Improved documentation.
+
+This is a maintenance release.
+
+## v1.5.4
+
+- Improved documentation.
+
+This is a maintenance release.
+
+## v1.5.3
+
+- Improved documentation.
+
+This is a maintenance release.
+
 ## v1.5.2
 
 - Improved documentation for `@brighter/storage-adapter-local`.
