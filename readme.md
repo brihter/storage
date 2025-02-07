@@ -77,9 +77,7 @@ See [StorageInterface](src/storage/docs/StorageInterface.md) for more informatio
 
 ## Local Development
 
-Storage can be created so that the code switches between the providers. During local development it makes sense to use the local provider as it speeds up the feedback loop.
-
-Example:
+Storage can be created so that the code automatically switches between the providers depending on the environment. This way, during local development, the local provider is used as it speeds up the feedback loop.
 
 ```js
 import { Storage as StorageLocal } from '@brighter/storage-adapter-local'
