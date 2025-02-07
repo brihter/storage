@@ -99,6 +99,20 @@ const main = async () => {
 main().catch(console.error)
 ```
 
+## Compatibility
+
+The library is actively tested against the following Node.js versions:
+
+- 16.x
+- 18.x
+- 20.x
+- 22.x
+
+The library is actively tested against the following cloud object storage providers:
+
+- AWS S3
+- Cloudflare R2
+
 ## Roadmap
 
 - `v2.0.0` Azure Blob Storage implementation.
