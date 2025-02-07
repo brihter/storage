@@ -19,25 +19,6 @@ It introduces a unified storage interface that enables seamless switching betwee
 
 It's API is easy to use and remember. It removes away the complexity of manually passing around continuation tokens, promise throttling, dealing with various different content encodings and presigning requests.
 
-## Overview
-
-Here's a quick API overview:
-
-```js
-const main = async (storage) => {
-  await storage.read('info.log')
-  await storage.write('info.log', 'hello')
-  await storage.exists('info.log')
-  await storage.stat('info.log')
-  await storage.remove('info.log')
-  await storage.copy('info.log', 'info.copy.log')
-  await storage.list('/')
-  await storage.presign('info.log')
-}
-```
-
-See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
-
 ## Quick Start
 
 Instead of manually installing and injecting the dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with everything required:
@@ -74,6 +55,25 @@ For more information:
 
 - have a look at the [demo](demo/) folder or
 - dive straight into the [documentation](src/storage/docs/Storage.md).
+
+## API
+
+Here's a quick API overview:
+
+```js
+const main = async (storage) => {
+  await storage.read('info.log')
+  await storage.write('info.log', 'hello')
+  await storage.exists('info.log')
+  await storage.stat('info.log')
+  await storage.remove('info.log')
+  await storage.copy('info.log', 'info.copy.log')
+  await storage.list('/')
+  await storage.presign('info.log')
+}
+```
+
+See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
 
 ## Local Development
 
