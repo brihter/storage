@@ -76,7 +76,7 @@ See [StorageInterface](src/storage/docs/StorageInterface.md) for more informatio
 
 ## Reading From Storage
 
-To retrieve data from object storage, use the asynchronous `read()` function, providing the file path of the desired object as the first argument and optionally specifying an encoding like `ascii` or `binary` in the second argument.
+To retrieve data from object storage, use the `read()` function, providing the file path of the desired object as the first argument and optionally specifying an encoding like `ascii` or `binary` in the second argument.
 
 ```js
 let data = await storage.read('file')
@@ -88,7 +88,7 @@ See the [ReadFunction](src/storage/docs/ReadFunction.md) for more information.
 
 ## Writing To Storage
 
-To write data to object storage, use the asynchronous `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
+To write data to object storage, use the `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
 
 ```js
 await storage.write('msg.txt', 'hello')
@@ -99,7 +99,7 @@ See the [WriteFunction](src/storage/docs/WriteFunction.md) for more information.
 
 ## Removing From Storage
 
-To delete objects from storage, use the asynchronous `remove()` function, providing the file or directory path to be deleted as the first argument. For directory removal, include the option `{ recursive: true }` in the second argument. Additionally, add the concurrency option, such as `{ concurrency: 10 }`, to control the parallelism.
+To delete objects from storage, use the `remove()` function, providing the file or directory path to be deleted as the first argument. For directory removal, include the option `{ recursive: true }` in the second argument. Additionally, add the concurrency option, such as `{ concurrency: 10 }`, to control the parallelism.
 
 ```js
 await storage.remove('file')
@@ -108,6 +108,19 @@ await storage.remove('dir/', { recursive: true, concurrency: 10 })
 ```
 
 See the [RemoveFunction](src/storage/docs/RemoveFunction.md) for more information.
+
+## Listing Objects
+
+To retrieve a list of objects within a specified path, use the `list()` function. The function requires the directory path as the first argument. Optional configuration can be provided as the second argument in an options object. It can include parameters such as `recursive` to enable listing of subdirectories, `absolute` to return absolute paths, and `concurrency` to adjust the parallelism of the listing operation.
+
+```js
+let data = await storage.list('/')
+let data = await storage.list('/', { recursive: true })
+let data = await storage.list('/', { recursive: true, absolute: true })
+let data = await storage.list('/', { recursive: true, absolute: true, concurrency: 10 })
+```
+
+See the [ListFunction](src/storage/docs/ListFunction.md) for more information.
 
 ## Presigning URLs
 
@@ -153,8 +166,9 @@ The library is actively tested against the following Node.js versions:
 - 20.x
 - 22.x
 
-The library is actively tested against the following cloud object storage providers:
+The library is actively tested against the following object storage providers:
 
+- Local
 - AWS S3
 - Cloudflare R2
 
