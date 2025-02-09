@@ -122,6 +122,17 @@ let data = await storage.list('/', { recursive: true, absolute: true, concurrenc
 
 See the [ListFunction](src/storage/docs/ListFunction.md) for more information.
 
+## Copying Objects
+
+To copy objects within object storage, use the `copy()` function. This function takes two arguments: the source `path` to copy from and the destination `path` to copy to. It recursively copies files and directories from the source to the destination.
+
+```js
+await storage.copy('file', 'file_copy')
+await storage.copy('dir/', 'dir_copy/')
+```
+
+See the [CopyFunction](src/storage/docs/CopyFunction.md) for more information.
+
 ## Presigning URLs
 
 To create a shareable link, use the `presign()` function. This generates a pre-signed URL for a specific file path. By default, these URLs are valid for a limited time, but you can customize the expiration using the `expiresIn` option to control how long the URL remains active. This is particularly useful when you need to grant temporary access to users for file operations without requiring them to authenticate through your application.
@@ -143,6 +154,16 @@ let data = await storage.exists('dir/')
 ```
 
 See the [ExistsFunction](src/storage/docs/ExistsFunction.md) for more information.
+
+## Retrieving Object Metadata
+
+To retrieve metadata for an object in object storage, use the `stat()` function. This function takes the path to the object and returns an object containing metadata about the object.
+
+```js
+let data = await storage.stat('file')
+```
+
+See the [StatFunction](src/storage/docs/StatFunction.md) for more information.
 
 ## Local Development
 
