@@ -62,19 +62,28 @@ For more information:
 Here's a quick API overview:
 
 ```js
-const main = async (storage) => {
-  await storage.read('info.log')
-  await storage.write('info.log', 'hello')
-  await storage.exists('info.log')
-  await storage.stat('info.log')
-  await storage.remove('info.log')
-  await storage.copy('info.log', 'info.copy.log')
-  await storage.list('/')
-  await storage.presign('info.log')
-}
+await storage.read('info.log')
+await storage.write('info.log', 'hello')
+await storage.exists('info.log')
+await storage.stat('info.log')
+await storage.remove('info.log')
+await storage.copy('info.log', 'info.copy.log')
+await storage.list('/')
+await storage.presign('info.log')
 ```
 
 See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
+
+## Writing To Storage
+
+To write data to object storage, utilize the asynchronous `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
+
+```js
+await storage.write('msg.txt', 'hello')
+await storage.write('msg.txt', 'Ω', { encoding: 'utf8' })
+await storage.write('msg.txt', Buffer.alloc(4), { encoding: 'binary' })
+```
+See the [WriteFunction](src/storage/docs/WriteFunction.md) for more information.
 
 ## Local Development
 
