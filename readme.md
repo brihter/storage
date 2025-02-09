@@ -133,6 +133,17 @@ let data = await storage.presign('file', { expiresIn: 3600 })
 
 See the [PreSignFunction](src/storage/docs/PreSignFunction.md) for more information.
 
+## Verifying Object Existence
+
+To determine if an object exists at a specific path within object storage, use the `exists()` function. This function takes the path to the object as its sole argument and returns a Promise that resolves to a boolean value, indicating the presence (`true`) or absence (`false`) of an object at the specified location.
+
+```js
+let data = await storage.exists('file')
+let data = await storage.exists('dir/')
+```
+
+See the [ExistsFunction](src/storage/docs/ExistsFunction.md) for more information.
+
 ## Local Development
 
 Storage can be created so that the code automatically switches between the providers depending on the environment.
