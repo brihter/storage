@@ -4,8 +4,9 @@ A cloud agnostic JavaScript object storage library that's built with simplicity 
 
 It offers:
 
-- a unified storage interface (for seamless switching between providers),
+- a unified [storage interface](src/storage/docs/StorageInterface.md) (for seamless switching between providers),
 - a [local storage provider](src/storage-adapter-local/readme.md) implementation (enabling local development),
+- an [S3 compatible storage provider](src/storage-adapter-s3/readme.md) (supporting AWS S3, Cloudflare R2, ...),
 - a simple, concise [API](src/storage/docs/StorageInterface.md) that's tested against real infrastructure and
 - comprehensive [documentation](src/storage/docs/Storage.md).
 
@@ -43,8 +44,8 @@ import { Storage } from '@brighter/storage-adapter-s3'
 const storage = Storage({ path: 'my-bucket' }, { region: 'eu-central-1' })
 
 const main = async () => {
-  await storage.write('msg', 'hi')
-  const msg = await storage.read('msg')
+  await storage.write('info.log', 'hello')
+  const msg = await storage.read('info.log')
   console.log(msg)
 }
 
