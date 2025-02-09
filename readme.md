@@ -64,9 +64,9 @@ Here's a quick API overview:
 ```js
 await storage.read('info.log')
 await storage.write('info.log', 'hello')
+await storage.remove('info.log')
 await storage.exists('info.log')
 await storage.stat('info.log')
-await storage.remove('info.log')
 await storage.copy('info.log', 'info.copy.log')
 await storage.list('/')
 await storage.presign('info.log')
@@ -96,6 +96,18 @@ await storage.write('msg.txt', 'Ω', { encoding: 'utf8' })
 await storage.write('msg.txt', Buffer.alloc(4), { encoding: 'binary' })
 ```
 See the [WriteFunction](src/storage/docs/WriteFunction.md) for more information.
+
+## Removing From Storage
+
+To delete objects from storage, use the asynchronous `remove()` function, providing the file or directory path to be deleted as the first argument. For directory removal, include the option `{ recursive: true }` in the second argument. Additionally, add the concurrency option, such as `{ concurrency: 10 }`, to control the parallelism.
+
+```js
+await storage.remove('file')
+await storage.remove('dir/', { recursive: true })
+await storage.remove('dir/', { recursive: true, concurrency: 10 })
+```
+
+See the [RemoveFunction](src/storage/docs/RemoveFunction.md) for more information.
 
 ## Local Development
 
