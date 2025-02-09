@@ -109,6 +109,17 @@ await storage.remove('dir/', { recursive: true, concurrency: 10 })
 
 See the [RemoveFunction](src/storage/docs/RemoveFunction.md) for more information.
 
+## Presigning URLs
+
+To create a shareable link, use the `presign()` function. This generates a pre-signed URL for a specific file path. By default, these URLs are valid for a limited time, but you can customize the expiration using the `expiresIn` option to control how long the URL remains active. This is particularly useful when you need to grant temporary access to users for file operations without requiring them to authenticate through your application.
+
+```js
+let data = await storage.presign('file')
+let data = await storage.presign('file', { expiresIn: 3600 })
+```
+
+See the [PreSignFunction](src/storage/docs/PreSignFunction.md) for more information.
+
 ## Local Development
 
 Storage can be created so that the code automatically switches between the providers depending on the environment. This way, during local development, the local provider is used as it speeds up the feedback loop.
