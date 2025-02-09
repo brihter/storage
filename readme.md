@@ -122,7 +122,7 @@ See the [PreSignFunction](src/storage/docs/PreSignFunction.md) for more informat
 
 ## Local Development
 
-Storage can be created so that the code automatically switches between the providers depending on the environment. This way, during local development, the local provider is used as it speeds up the feedback loop.
+Storage can be created so that the code automatically switches between the providers depending on the environment.
 
 ```js
 import { Storage as StorageLocal } from '@brighter/storage-adapter-local'
