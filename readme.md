@@ -74,9 +74,21 @@ await storage.presign('info.log')
 
 See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
 
+## Reading From Storage
+
+To retrieve data from object storage, use the asynchronous `read()` function, providing the file path of the desired object as the first argument and optionally specifying an encoding like `ascii` or `binary` in the second argument.
+
+```js
+let data = await storage.read('file')
+let data = await storage.read('file', { encoding: 'ascii' })
+let data = await storage.read('image.bin', { encoding: 'binary' })
+```
+
+See the [ReadFunction](src/storage/docs/ReadFunction.md) for more information.
+
 ## Writing To Storage
 
-To write data to object storage, utilize the asynchronous `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
+To write data to object storage, use the asynchronous `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
 
 ```js
 await storage.write('msg.txt', 'hello')
