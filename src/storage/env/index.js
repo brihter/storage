@@ -91,15 +91,9 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
 
   // filter
   Object.keys(cfg).forEach(provider => {
-    if (ctx.specifiedProviders.length > 0 && !ctx.specifiedProviders.includes(provider)) {
-      delete cfg[provider]
-      return
-    }
-    
-    if (
-      ctx.specifiedTypes.length > 0 &&
-      (!cfg[provider].storage || !ctx.specifiedTypes.includes(cfg[provider].storage.type))
-    ) {
+    const providerMatches = ctx.specifiedProviders.length === 0 || ctx.specifiedProviders.includes(provider)
+    const typeMatches = ctx.specifiedTypes.length === 0 || (cfg[provider].storage && ctx.specifiedTypes.includes(cfg[provider].storage.type))
+    if (!providerMatches || !typeMatches) {
       delete cfg[provider]
     }
   })

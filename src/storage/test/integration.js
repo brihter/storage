@@ -32,6 +32,7 @@ const createOne = async (runId, type) => {
 
 const createProviders = async runId => {
   const cfg = await loadConfig()
+  console.log(cfg)
 
   let providerList = Object.keys(cfg)
   providerList = await Promise.all(
