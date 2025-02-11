@@ -1,6 +1,7 @@
 #!/bin/bash
 
-provider=$1
+type=$1
+provider=$2
 
 path_current=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
 path_root="$path_current/.."
@@ -37,6 +38,7 @@ npx mocha \
   --timeout 30000 \
   --reporter spec \
   "src/**/*.test.js" \
+  $type \
   $provider
 
 exit_code=$?

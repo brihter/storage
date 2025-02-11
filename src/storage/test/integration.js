@@ -53,20 +53,9 @@ before(async () => {
   const runId = Math.floor(new Date().getTime() / 1000)
   const storageProviders = await createProviders(runId)
 
-  const specifiedProviders = process.argv
-    .filter(p => p.startsWith('--provider'))
-    .map(p => p.split('=')[1])
-
   global._storage = {
     runId,
-    listProviders: () => {
-      const list = Object.keys(storageProviders)
-      if (specifiedProviders.length === 0) {
-        return list
-      }
-
-      return list.filter(i => specifiedProviders.includes(i))
-    },
+    listProviders: () => Object.keys(storageProviders),
     getStorage: provider => storageProviders[provider]
   }
 })

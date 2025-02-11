@@ -5,10 +5,11 @@ jobs:
     if: github.event.pull_request.user.login == 'brihter'
     env:
       NODE_ENV: test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         node: [ '16.x', '18.x', '20.x', '22.x' ]
+        provider: [ 'aws', 'cloudflare' ]
     name: build
     steps:
       - name: environment
@@ -19,8 +20,10 @@ jobs:
         uses: actions/checkout@v2
       - name: install
         run: ./bin/install.sh
-      - name: test
-        run: ./bin/test.sh
+      - name: test, type=local
+        run: npm run test -- --type=local --provider=local
+      - name: test, type=s3
+        run: npm run test -- --type=s3 --provider=${{ matrix.provider }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

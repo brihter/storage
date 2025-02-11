@@ -1,6 +1,11 @@
 #!/bin/bash
 
-provider=$1
+type=$1
+provider=$2
+
+if [[ "$type" != *s3* ]]; then
+  exit 0
+fi
 
 path_current=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
 path_root="$path_current/.."
@@ -16,7 +21,9 @@ NODE_ENV=test \
   --bail \
   --timeout 1000 \
   --reporter spec \
-  "**/*.unit.test.js"
+  "**/*.unit.test.js" \
+  $type \
+  $provider
 
 exit_code=$?
 if [ "$exit_code" -ne "0" ]; then
@@ -37,6 +44,7 @@ npx mocha \
   --timeout 30000 \
   --reporter spec \
   "src/**/*.test.js" \
+  $type \
   $provider
 
 exit_code=$?
