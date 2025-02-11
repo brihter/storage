@@ -37,7 +37,11 @@ const getCredentials = async provider => {
   return credentials
 }
 
-const s3 = async cfg => {
+const s3 = async (cfg, ctx) => {
+  if (!ctx.specifiedTypes.includes('s3')) {
+    return cfg
+  }
+
   if (!cfg.s3) {
     return cfg
   }
@@ -54,7 +58,11 @@ const s3 = async cfg => {
   return cfg
 }
 
-const r2 = async cfg => {
+const r2 = async (cfg, ctx) => {
+  if (!ctx.specifiedTypes.includes('s3')) {
+    return cfg
+  }
+
   if (!cfg.r2) {
     return cfg
   }
@@ -73,13 +81,23 @@ const r2 = async cfg => {
 }
 
 const loadConfig = async (environment = process.env.NODE_ENV) => {
-  let cfg
+  let ctx = {}
+  ctx.specifiedTypes = process.argv.filter(p => p.startsWith('--type')).map(p => p.split('=')[1])
+
+  let cfg = {}
   cfg = await readFile(join(__dirname, `../../../env/${environment}.json`), {
     encoding: 'ascii'
   })
+
   cfg = JSON.parse(cfg)
-  cfg = await s3(cfg)
-  cfg = await r2(cfg)
+
+  // filter by type
+  cfg = Object.fromEntries(
+    Object.entries(cfg).filter(([key]) => ctx.specifiedTypes.includes(key))
+  )
+
+  cfg = await s3(cfg, ctx)
+  cfg = await r2(cfg, ctx)
   return cfg
 }
 
