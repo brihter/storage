@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.8
+
+- CI pipeline test parallelization.
+
+This release reworks the CI pipeline, so that adding and testing against new infrastructure providers is easier and faster. This is a maintenance release.
+
 ## v1.5.7
 
 - Improved documentation.
