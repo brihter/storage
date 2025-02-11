@@ -2,6 +2,7 @@
 
 ## v1.5.8
 
+- Move CI to Ubuntu 22.04 LTS.
 - CI pipeline test parallelization.
 
 This release reworks the CI pipeline, so that adding and testing against new infrastructure providers is easier and faster. This is a maintenance release.
