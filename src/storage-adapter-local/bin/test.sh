@@ -3,7 +3,7 @@
 type=$1
 provider=$2
 
-if [[ "$type" != *s3* ]]; then
+if [[ "$type" != *local* ]]; then
   exit 0
 fi
 
