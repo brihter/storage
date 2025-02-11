@@ -5,7 +5,7 @@ jobs:
     if: github.event.pull_request.user.login == 'brihter'
     env:
       NODE_ENV: test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         node: [ '16.x', '18.x', '20.x', '22.x' ]
