@@ -5,7 +5,7 @@
       "path": "/tmp/storage"
     }
   },
-  "s3": {
+  "aws": {
     "storage": {
       "type": "s3",
       "path": "conjure-storage-test-3d8e8dd"
@@ -15,7 +15,7 @@
       "signatureVersion": "v4"
     }
   },
-  "r2": {
+  "cloudflare": {
     "storage": {
       "type": "s3",
       "path": "conjure-storage-test-4x1a7ff"

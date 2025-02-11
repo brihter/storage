@@ -37,12 +37,12 @@ const getCredentials = async provider => {
   return credentials
 }
 
-const s3 = async (cfg, ctx) => {
+const aws = async (cfg, ctx) => {
   if (!ctx.specifiedTypes.includes('s3')) {
     return cfg
   }
 
-  if (!cfg.s3) {
+  if (!cfg.aws) {
     return cfg
   }
 
@@ -50,7 +50,7 @@ const s3 = async (cfg, ctx) => {
   credentials = await getCredentials('aws')
   credentials = credentials[process.env.AWS_PROFILE]
 
-  cfg.s3.storageClient.credentials = {
+  cfg.aws.storageClient.credentials = {
     accessKeyId: credentials.aws_access_key_id,
     secretAccessKey: credentials.aws_secret_access_key
   }
@@ -58,12 +58,12 @@ const s3 = async (cfg, ctx) => {
   return cfg
 }
 
-const r2 = async (cfg, ctx) => {
+const cloudflare = async (cfg, ctx) => {
   if (!ctx.specifiedTypes.includes('s3')) {
     return cfg
   }
 
-  if (!cfg.r2) {
+  if (!cfg.cloudflare) {
     return cfg
   }
 
@@ -71,8 +71,8 @@ const r2 = async (cfg, ctx) => {
   credentials = await getCredentials('cloudflare')
   credentials = credentials[process.env.CF_PROFILE]
 
-  cfg.r2.storageClient.endpoint = `https://${credentials.cf_account_id}.r2.cloudflarestorage.com`
-  cfg.r2.storageClient.credentials = {
+  cfg.cloudflare.storageClient.endpoint = `https://${credentials.cf_account_id}.r2.cloudflarestorage.com`
+  cfg.cloudflare.storageClient.credentials = {
     accessKeyId: credentials.cf_access_key_id,
     secretAccessKey: credentials.cf_secret_access_key
   }
@@ -83,21 +83,31 @@ const r2 = async (cfg, ctx) => {
 const loadConfig = async (environment = process.env.NODE_ENV) => {
   let ctx = {}
   ctx.specifiedTypes = process.argv.filter(p => p.startsWith('--type')).map(p => p.split('=')[1])
+  ctx.specifiedProviders = process.argv.filter(p => p.startsWith('--provider')).map(p => p.split('=')[1])
 
   let cfg = {}
-  cfg = await readFile(join(__dirname, `../../../env/${environment}.json`), {
-    encoding: 'ascii'
-  })
-
+  cfg = await readFile(join(__dirname, `../../../env/${environment}.json`), { encoding: 'ascii' })
   cfg = JSON.parse(cfg)
 
-  // filter by type
-  cfg = Object.fromEntries(
-    Object.entries(cfg).filter(([key]) => ctx.specifiedTypes.includes(key))
-  )
+  // filter
+  Object.keys(cfg).forEach(provider => {
+    if (ctx.specifiedProviders.length > 0 && !ctx.specifiedProviders.includes(provider)) {
+      delete cfg[provider]
+      return
+    }
+    
+    if (
+      ctx.specifiedTypes.length > 0 &&
+      (!cfg[provider].storage || !ctx.specifiedTypes.includes(cfg[provider].storage.type))
+    ) {
+      delete cfg[provider]
+    }
+  })
 
-  cfg = await s3(cfg, ctx)
-  cfg = await r2(cfg, ctx)
+  // enrich
+  cfg = await aws(cfg, ctx)
+  cfg = await cloudflare(cfg, ctx)
+
   return cfg
 }
 

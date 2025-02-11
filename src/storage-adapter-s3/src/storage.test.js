@@ -6,7 +6,7 @@ describe('@brighter/storage-adapter-s3', () => {
 
   before(async () => {
     const config = await loadConfig()
-    cfg = config.s3
+    cfg = config[Object.keys(config)[0]]
   })
 
   describe('Storage()', () => {

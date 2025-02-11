@@ -21,7 +21,9 @@ NODE_ENV=test \
   --bail \
   --timeout 1000 \
   --reporter spec \
-  "**/*.unit.test.js"
+  "**/*.unit.test.js" \
+  $type \
+  $provider
 
 exit_code=$?
 if [ "$exit_code" -ne "0" ]; then
