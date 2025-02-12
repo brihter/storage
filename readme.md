@@ -27,7 +27,7 @@ Instead of manually installing and injecting the dependencies, you'll most likel
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
-*Note: Before installing, Node.js 16 or higher is required.*
+*Note: Before installing, Node.js 18 or higher is required.*
 
 Installation, using npm:
 
@@ -191,18 +191,12 @@ main().catch(console.error)
 
 ## Compatibility
 
-The library is actively tested against the following Node.js versions:
-
-- 16.x
-- 18.x
-- 20.x
-- 22.x
-
 The library is actively tested against the following object storage providers:
 
-- Local
-- AWS S3
-- Cloudflare R2
+- Local Provider
+- [AWS S3](https://aws.amazon.com/s3/)
+- [Cloudflare R2](https://www.cloudflare.com/developer-platform/products/r2/)
+- [Hetzner Object Storage](https://www.hetzner.com/storage/object-storage/)
 
 ## Roadmap
 

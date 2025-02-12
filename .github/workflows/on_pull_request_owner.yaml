@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node: [ '16.x', '18.x', '20.x', '22.x' ]
-        provider: [ 'aws', 'cloudflare' ]
+        node: [ '18.x' ]
+        provider: [ 'aws', 'cloudflare', 'hetzner' ]
     name: build
     steps:
       - name: environment
@@ -30,3 +30,5 @@ jobs:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_ACCESS_KEY_ID: ${{ secrets.CF_ACCESS_KEY_ID }}
           CF_SECRET_ACCESS_KEY: ${{ secrets.CF_SECRET_ACCESS_KEY }}
+          HETZNER_ACCESS_KEY_ID: ${{ secrets.HETZNER_ACCESS_KEY_ID }}
+          HETZNER_SECRET_ACCESS_KEY: ${{ secrets.HETZNER_SECRET_ACCESS_KEY }}

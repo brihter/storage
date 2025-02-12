@@ -1,11 +1,25 @@
 # Changelog
 
-## v1.5.8
+## v1.6.0
+
+- New provider: [Hetzner's Object Storage](https://www.hetzner.com/storage/object-storage/).
+- New demo: [adapter-s3-hetzner.js](https://github.com/brihter/storage/blob/main/demo/adapter-s3-hetzner.js).
+- Drop support for Node.js 16.
+
+This release ensures integration tests are ran against Hetzner's Object Storage implementation and drops Node.js 16 support.
+
+## v1.5.9
 
 - Move CI to Ubuntu 22.04 LTS.
 - CI pipeline test parallelization.
 
 This release reworks the CI pipeline, so that adding and testing against new infrastructure providers is easier and faster. This is a maintenance release.
+
+## v1.5.8
+
+- Improved documentation.
+
+This is a maintenance release.
 
 ## v1.5.7
 

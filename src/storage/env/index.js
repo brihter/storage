@@ -23,6 +23,7 @@ const getCredentials = async provider => {
     let prefix = ''
     if (provider === 'aws') prefix = 'aws'
     if (provider === 'cloudflare') prefix = 'cf'
+    if (provider === 'hetzner') prefix = 'hetzner'
     credentials = {
       [process.env[`${prefix.toUpperCase()}_PROFILE`]]: {
         [`${prefix}_account_id`]:
@@ -80,6 +81,28 @@ const cloudflare = async (cfg, ctx) => {
   return cfg
 }
 
+const hetzner = async (cfg, ctx) => {
+  if (!ctx.specifiedTypes.includes('s3')) {
+    return cfg
+  }
+
+  if (!cfg.hetzner) {
+    return cfg
+  }
+
+  let credentials
+  credentials = await getCredentials('hetzner')
+  credentials = credentials[process.env.HETZNER_PROFILE]
+
+  cfg.hetzner.storageClient.endpoint = `https://${cfg.hetzner.storageClient.region}.your-objectstorage.com`
+  cfg.hetzner.storageClient.credentials = {
+    accessKeyId: credentials.hetzner_access_key_id,
+    secretAccessKey: credentials.hetzner_secret_access_key
+  }
+
+  return cfg
+}
+
 const loadConfig = async (environment = process.env.NODE_ENV) => {
   let ctx = {}
   ctx.specifiedTypes = process.argv.filter(p => p.startsWith('--type')).map(p => p.split('=')[1])
@@ -101,6 +124,7 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   // enrich
   cfg = await aws(cfg, ctx)
   cfg = await cloudflare(cfg, ctx)
+  cfg = await hetzner(cfg, ctx)
 
   return cfg
 }
