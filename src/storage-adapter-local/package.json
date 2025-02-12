@@ -1,6 +1,6 @@
 {
   "name": "@brighter/storage-adapter-local",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "description": "This is a local adapter for the @brighter/storage object storage library.",
   "type": "module",
   "main": "./src/index.js",
