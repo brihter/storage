@@ -24,6 +24,7 @@ const getCredentials = async provider => {
     if (provider === 'aws') prefix = 'aws'
     if (provider === 'cloudflare') prefix = 'cf'
     if (provider === 'hetzner') prefix = 'hetzner'
+    if (provider === 'backblaze') prefix = 'backblaze'
     credentials = {
       [process.env[`${prefix.toUpperCase()}_PROFILE`]]: {
         [`${prefix}_account_id`]:
