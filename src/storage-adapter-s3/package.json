@@ -36,12 +36,12 @@
   "keywords": [
     "javascript",
     "node",
+    "object storage",
     "amazon",
-    "s3",
     "aws",
-    "aws-s3",
+    "s3",
     "cloudflare",
-    "cloudflare-r2",
-    "r2"
+    "r2",
+    "hetzner"
   ]
 }

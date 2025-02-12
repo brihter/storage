@@ -24,5 +24,15 @@
       "region": "auto",
       "signatureVersion": "v4"
     }
+  },
+  "hetzner": {
+    "storage": {
+      "type": "s3",
+      "path": "conjure-storage-test-1a2f2cc"
+    },
+    "storageClient": {
+      "region": "fsn1",
+      "signatureVersion": "v4"
+    }
   }
 }

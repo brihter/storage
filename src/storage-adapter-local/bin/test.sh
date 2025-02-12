@@ -30,6 +30,7 @@ fi
 
 # integration tests
 
+HETZNER_PROFILE=conjure-usr-ops \
 CF_PROFILE=conjure-usr-ops \
 AWS_PROFILE=conjure-usr-ops \
 AWS_NODEJS_CONNECTION_REUSE_ENABLED=1 \
