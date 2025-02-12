@@ -193,10 +193,10 @@ main().catch(console.error)
 
 The library is actively tested against the following object storage providers:
 
-- Local
-- AWS S3
-- Cloudflare R2
-- Hetzner Object Storage
+- Local Provider
+- [AWS S3](https://aws.amazon.com/s3/)
+- [Cloudflare R2](https://www.cloudflare.com/developer-platform/products/r2/)
+- [Hetzner Object Storage](https://www.hetzner.com/storage/object-storage/)
 
 ## Roadmap
 
