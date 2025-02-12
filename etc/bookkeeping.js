@@ -108,7 +108,7 @@ const expenses = [
   { provider: 'AWS', desc: 'AWS S3 Billing', amount: 0.28, date: new Date('2023-02-01'), period: 'monthly' },
   { provider: 'Cloudflare', desc: 'Cloudflare R2 Billing', amount: 0.0, date: new Date('2023-02-01'), period: 'monthly' },
   { provider: 'Hetzner', desc: 'Hetzner Object Storage Billing', amount: 5.99, date: new Date('2025-02-12'), period: 'monthly' },
-  { provider: 'Backblaze', desc: 'Backblaze B@ Billing', amount: 0.0, date: new Date('2023-02-12'), period: 'monthly' },
+  { provider: 'Backblaze', desc: 'Backblaze B2 Billing', amount: 0.0, date: new Date('2025-02-12'), period: 'monthly' },
 ]
 
 generateBookkeeping(income, expenses)
