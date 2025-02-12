@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 
 const formatDate = date => date.toISOString().split('T')[0]
+
 const formatAmount = (amount, isExpense = false) => {
   const value = Math.abs(amount).toFixed(2)
   return isExpense ? `-$${value}` : `+$${value}`
@@ -85,16 +86,18 @@ const generateBookkeeping = async (income, expenses) => {
   const content = [
     '# Bookkeeping',
     '\n## Overview',
-    `\nTotal Income: ${formatAmount(totalIncome)}`,
-    `\nTotal Expenses: ${formatAmount(totalExpenses, true)}`,
-    `\nBalance: ${formatAmount(balance, balance < 0)}`,
+    '\n| Category | Amount |',
+    '| --- | --- |',
+    `| Income | ${formatAmount(totalIncome)} |`,
+    `| Expenses | ${formatAmount(totalExpenses, true)} |`,
+    `| Balance | ${formatAmount(balance, balance < 0)} |`,
     generateBreakdown(allTransactions, 'provider', 'By Provider'),
     generateBreakdown(allTransactions, item => formatDate(item.date).slice(0, 4), 'By Year'),
     '\n## Transactions',
     generateTransactionTable(allTransactions)
   ].join('\n')
 
-  await fs.writeFile('bookkeeping.md', content, 'utf-8')
+  await fs.writeFile('./bookkeeping.md', content, 'utf-8')
 }
 
 const income = [
