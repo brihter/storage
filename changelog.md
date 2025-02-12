@@ -1,11 +1,21 @@
 # Changelog
 
-## v1.5.8
+## v1.6.0
+
+- Ensuring compatibility with [Hetzner's Object Storage](https://www.hetzner.com/storage/object-storage/)
+
+## v1.5.9
 
 - Move CI to Ubuntu 22.04 LTS.
 - CI pipeline test parallelization.
 
 This release reworks the CI pipeline, so that adding and testing against new infrastructure providers is easier and faster. This is a maintenance release.
+
+## v1.5.8
+
+- Improved documentation.
+
+This is a maintenance release.
 
 ## v1.5.7
 
