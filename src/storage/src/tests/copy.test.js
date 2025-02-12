@@ -153,9 +153,7 @@ const run = provider => {
       it('should copy, folder to folder #2', async () => {
         await storage.copy('sub/', 'sub-copy/nested/')
         const list1 = await storage.list('sub/', { recursive: true })
-        const list2 = await storage.list('sub-copy/nested/', {
-          recursive: true
-        })
+        const list2 = await storage.list('sub-copy/nested/', { recursive: true })
         expect(list1).to.eql(list2)
       })
     })
