@@ -26,8 +26,8 @@ jobs:
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add bookkeeping.md
-            git commit -m "chore: update bookkeeping for $(date +'%B %Y')"
+            git commit -m "$(date +'%B %Y') bookkeeping."
             git push
           else
-            echo "No changes to commit"
+            echo "no changes"
           fi
