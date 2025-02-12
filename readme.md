@@ -27,7 +27,7 @@ Instead of manually installing and injecting the dependencies, you'll most likel
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
 * [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
 
-*Note: Before installing, Node.js 16 or higher is required.*
+*Note: Before installing, Node.js 18 or higher is required.*
 
 Installation, using npm:
 
