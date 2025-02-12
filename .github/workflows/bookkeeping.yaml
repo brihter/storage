@@ -1,0 +1,33 @@
+name: Bookkeeping
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # run at 00:00 on the first day of every month
+  workflow_dispatch:     # allow manual triggering
+jobs:
+  update-bookkeeping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: install dependencies
+        run: npm ci
+      - name: generate bookkeeping
+        run: node etc/bookkeeping.js
+      - name: configure git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: commit and push if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add bookkeeping.md
+            git commit -m "$(date +'%B %Y') bookkeeping."
+            git push
+          else
+            echo "no changes"
+          fi

@@ -198,6 +198,14 @@ The library is actively tested against the following object storage providers:
 - [Cloudflare R2](https://www.cloudflare.com/developer-platform/products/r2/)
 - [Hetzner Object Storage](https://www.hetzner.com/storage/object-storage/)
 
+## Sponsors
+
+`@brighter/storage` is an MIT-licensed open source project with its ongoing development made possible by the support of the following sponsors:
+
+- [Hetzner](https://www.hetzner.com/)
+
+If you'd like to join them, please consider [sponsoring the development](https://github.com/sponsors/brihter). You can view detailed spending reports and financial transparency under [bookkeeping](bookkeeping.md).
+
 ## Roadmap
 
 - `v2.0.0` Azure Blob Storage implementation.
