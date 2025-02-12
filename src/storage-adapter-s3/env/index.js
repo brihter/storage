@@ -116,8 +116,6 @@ const backblaze = async (cfg, ctx) => {
   credentials = await getCredentials('backblaze')
   credentials = credentials[process.env.BACKBLAZE_PROFILE]
 
-  cfg.backblaze.storageClient.forcePathStyle = true
-  cfg.backblaze.storageClient.checksumAlgorithm = undefined
   cfg.backblaze.storageClient.endpoint = `https://s3.${cfg.backblaze.storageClient.region}.backblazeb2.com`
   cfg.backblaze.storageClient.credentials = {
     accessKeyId: credentials.backblaze_access_key_id,
