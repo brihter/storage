@@ -12,7 +12,11 @@ const Storage = (config, configClient) => {
     {
       client: S3,
       clientPresign: S3Presign,
-      clientInstance: new S3.S3Client(configClient)
+      clientInstance: new S3.S3Client({
+        ...configClient,
+        requestChecksumCalculation: 'WHEN_REQUIRED',
+        responseChecksumValidation: 'WHEN_REQUIRED'
+      })
     }
   )
 }
