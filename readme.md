@@ -193,7 +193,6 @@ main().catch(console.error)
 
 The library is actively tested against the following Node.js versions:
 
-- 16.x
 - 18.x
 - 20.x
 - 22.x
@@ -203,6 +202,7 @@ The library is actively tested against the following object storage providers:
 - Local
 - AWS S3
 - Cloudflare R2
+- Hetzner Object Storage
 
 ## Roadmap
 

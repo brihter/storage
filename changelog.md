@@ -2,7 +2,11 @@
 
 ## v1.6.0
 
-- Ensuring compatibility with [Hetzner's Object Storage](https://www.hetzner.com/storage/object-storage/)
+- New provider: [Hetzner's Object Storage](https://www.hetzner.com/storage/object-storage/).
+- New demo: [adapter-s3-hetzner.js](https://github.com/brihter/storage/blob/main/demo/adapter-s3-hetzner.js).
+- Drop support for Node.js 16.
+
+This release ensures integration tests are ran against Hetzner's Object Storage implementation and drops Node.js 16 support.
 
 ## v1.5.9
 
