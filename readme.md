@@ -6,7 +6,7 @@ It offers:
 
 - a unified [storage interface](src/storage/docs/StorageInterface.md) (for seamless switching between providers),
 - a [local storage provider](src/storage-adapter-local/readme.md) implementation (enabling local development),
-- an [S3 compatible storage provider](src/storage-adapter-s3/readme.md) (supporting AWS S3, Cloudflare R2, ...),
+- an [S3 compatible storage provider](src/storage-adapter-s3/readme.md) (AWS S3, Cloudflare R2, Hetzner Object Storage, Backblaze B2, ...),
 - a simple, concise [API](src/storage/docs/StorageInterface.md) that's tested against real infrastructure and
 - comprehensive [documentation](src/storage/docs/Storage.md).
 
@@ -25,7 +25,7 @@ It's API is easy to use and remember. It removes away the complexity of manually
 Instead of manually installing and injecting the dependencies, you'll most likely want to use one of the following storage adapters that come pre-bundled with everything required:
 
 * [@brighter/storage-adapter-local](src/storage-adapter-local/) and
-* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, DigitalOcean Spaces, ...).
+* [@brighter/storage-adapter-s3](src/storage-adapter-s3/) (AWS S3, Cloudflare R2, Hetzner Object Storage, Backblaze B2, ...).
 
 *Note: Before installing, Node.js 18 or higher is required.*
 
@@ -197,6 +197,7 @@ The library is actively tested against the following object storage providers:
 - [AWS S3](https://aws.amazon.com/s3/)
 - [Cloudflare R2](https://www.cloudflare.com/developer-platform/products/r2/)
 - [Hetzner Object Storage](https://www.hetzner.com/storage/object-storage/)
+- [Backblaze B2](https://www.backblaze.com/cloud-storage)
 
 ## Sponsors
 

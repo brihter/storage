@@ -20,7 +20,11 @@ const createOne = async (runId, type) => {
     dependencies = {
       client: S3,
       clientPresign: S3Presign,
-      clientInstance: new S3.S3Client(cfgByType.storageClient)
+      clientInstance: new S3.S3Client({
+        ...cfgByType.storageClient,
+        requestChecksumCalculation: 'WHEN_REQUIRED',
+        responseChecksumValidation: 'WHEN_REQUIRED'
+      })
     }
   }
 

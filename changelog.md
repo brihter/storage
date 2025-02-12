@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.6.1
+
+- New provider: [Backblaze B2](https://www.backblaze.com/cloud-storage).
+- New demo: [adapter-s3-backblaze.js](https://github.com/brihter/storage/blob/main/demo/adapter-s3-backblaze.js).
+
+This release ensures integration tests are ran against Backblaze's B2 implementation.
+
 ## v1.6.0
 
 - New provider: [Hetzner's Object Storage](https://www.hetzner.com/storage/object-storage/).

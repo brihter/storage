@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node: [ '18.x' ]
-        provider: [ 'aws', 'cloudflare', 'hetzner' ]
+        provider: [ 'aws', 'cloudflare', 'hetzner', 'backblaze' ]
     name: build
     steps:
       - name: environment
@@ -32,3 +32,5 @@ jobs:
           CF_SECRET_ACCESS_KEY: ${{ secrets.CF_SECRET_ACCESS_KEY }}
           HETZNER_ACCESS_KEY_ID: ${{ secrets.HETZNER_ACCESS_KEY_ID }}
           HETZNER_SECRET_ACCESS_KEY: ${{ secrets.HETZNER_SECRET_ACCESS_KEY }}
+          BACKBLAZE_ACCESS_KEY_ID: ${{ secrets.BACKBLAZE_ACCESS_KEY_ID }}
+          BACKBLAZE_SECRET_ACCESS_KEY: ${{ secrets.BACKBLAZE_SECRET_ACCESS_KEY }}

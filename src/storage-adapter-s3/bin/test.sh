@@ -32,6 +32,7 @@ fi
 
 # integration tests
 
+BACKBLAZE_PROFILE=conjure-usr-ops \
 HETZNER_PROFILE=conjure-usr-ops \
 CF_PROFILE=conjure-usr-ops \
 AWS_PROFILE=conjure-usr-ops \

@@ -14,6 +14,7 @@
 | --- | --- |
 | Hetzner | +$54.01 |
 | Cloudflare | +$0.00 |
+| Backblaze | +$0.00 |
 | AWS | -$7.00 |
 
 ## By Year
@@ -28,6 +29,7 @@
 | Date | Description | Amount | Provider |
 | --- | --- | --- | --- |
 | 2025-02-12 | Hetzner Object Storage Billing | -$5.99 | Hetzner |
+| 2025-02-12 | Backblaze B2 Billing | +$0.00 | Backblaze |
 | 2025-02-10 | Hetzner Cloud Credits | +$60.00 | Hetzner |
 | 2025-02-01 | AWS S3 Billing | -$0.28 | AWS |
 | 2025-02-01 | Cloudflare R2 Billing | +$0.00 | Cloudflare |
