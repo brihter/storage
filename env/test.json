@@ -34,5 +34,15 @@
       "region": "fsn1",
       "signatureVersion": "v4"
     }
+  },
+  "backblaze": {
+    "storage": {
+      "type": "s3",
+      "path": "conjure-storage-test-331eafd"
+    },
+    "storageClient": {
+      "region": "eu-central-003",
+      "signatureVersion": "v4"
+    }
   }
 }

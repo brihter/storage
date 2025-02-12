@@ -103,6 +103,30 @@ const hetzner = async (cfg, ctx) => {
   return cfg
 }
 
+const backblaze = async (cfg, ctx) => {
+  if (!ctx.specifiedTypes.includes('s3')) {
+    return cfg
+  }
+
+  if (!cfg.backblaze) {
+    return cfg
+  }
+
+  let credentials
+  credentials = await getCredentials('backblaze')
+  credentials = credentials[process.env.BACKBLAZE_PROFILE]
+
+  cfg.backblaze.storageClient.forcePathStyle = true
+  cfg.backblaze.storageClient.checksumAlgorithm = undefined
+  cfg.backblaze.storageClient.endpoint = `https://s3.${cfg.backblaze.storageClient.region}.backblazeb2.com`
+  cfg.backblaze.storageClient.credentials = {
+    accessKeyId: credentials.backblaze_access_key_id,
+    secretAccessKey: credentials.backblaze_secret_access_key
+  }
+
+  return cfg
+}
+
 const loadConfig = async (environment = process.env.NODE_ENV) => {
   let ctx = {}
   ctx.specifiedTypes = process.argv.filter(p => p.startsWith('--type')).map(p => p.split('=')[1])
@@ -125,6 +149,7 @@ const loadConfig = async (environment = process.env.NODE_ENV) => {
   cfg = await aws(cfg, ctx)
   cfg = await cloudflare(cfg, ctx)
   cfg = await hetzner(cfg, ctx)
+  cfg = await backblaze(cfg, ctx)
 
   return cfg
 }

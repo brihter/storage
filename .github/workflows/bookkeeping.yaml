@@ -1,4 +1,4 @@
-name: Bookkeeping
+name: bookkeeping
 on:
   schedule:
     - cron: '0 0 1 * *'  # run at 00:00 on the first day of every month

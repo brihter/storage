@@ -7,3 +7,5 @@ exports.bucket_aws = bucketAWS.id
 exports.bucket_cf = 'conjure-storage-test-4x1a7ff'
 
 exports.bucket_hetzner = 'conjure-storage-test-1a2f2cc'
+
+exports.bucket_backblaze = 'conjure-storage-test-331eafd'
