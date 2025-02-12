@@ -204,7 +204,7 @@ The library is actively tested against the following object storage providers:
 
 - [Hetzner](https://www.hetzner.com/)
 
-If you'd like to join them, please consider [sponsoring the development](https://github.com/sponsors/brihter).
+If you'd like to join them, please consider [sponsoring the development](https://github.com/sponsors/brihter). You can view detailed spending reports and financial transparency under [bookkeeping](bookkeeping.md).
 
 ## Roadmap
 
