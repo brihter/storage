@@ -191,12 +191,6 @@ main().catch(console.error)
 
 ## Compatibility
 
-The library is actively tested against the following Node.js versions:
-
-- 18.x
-- 20.x
-- 22.x
-
 The library is actively tested against the following object storage providers:
 
 - Local
