@@ -21,7 +21,7 @@ type Config = {
   path: string
 
   /**
-   * File encoding. Optional, default is `utf8`.
+   * File encoding. Optional, default is `utf8`. See [list of supported encodings](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).
    */
   encoding?: string
 
@@ -191,7 +191,7 @@ type PreSignFunction = {
  */
 type ReadFunctionOpts = {
   /**
-   * File encoding. Optional, default is `utf8`.
+   * File encoding. Optional, default is `utf8`. See [list of supported encodings](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).
    */
   encoding?: string
 }
@@ -324,7 +324,7 @@ type StatFunction = {
  */
 type WriteFunctionOpts = {
   /**
-   * File encoding. Optional, default is `utf8`.
+   * File encoding. Optional, default is `utf8`. See [list of supported encodings](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).
    */
   encoding?: string
 }

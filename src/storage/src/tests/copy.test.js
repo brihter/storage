@@ -12,7 +12,7 @@ const run = provider => {
       storage = global._storage.getStorage(provider)
       await storage.remove('/')
       await Promise.all([
-        storage.write('msg.txt', 'hi'),
+        storage.write('file', 'hi'),
         storage.write('sub/one', 'hi'),
         storage.write('sub/sub/one', 'hi')
       ])
@@ -73,7 +73,7 @@ const run = provider => {
 
       it(`should throw when pathFrom is out of scope`, async () => {
         const err = await storage
-          .copy('../../msg.txt', 'msg_copy.txt')
+          .copy('../../file', 'msg_copy.txt')
           .catch(err => err)
 
         expect(err).to.be.an('error')
@@ -83,7 +83,7 @@ const run = provider => {
 
       it(`should throw when pathTo is out of scope`, async () => {
         const err = await storage
-          .copy('msg.txt', '../../msg_copy.txt')
+          .copy('file', '../../msg_copy.txt')
           .catch(err => err)
 
         expect(err).to.be.an('error')
@@ -100,7 +100,7 @@ const run = provider => {
       })
 
       it(`should throw when 'pathFrom' is a directory and 'pathTo' a file`, async () => {
-        const err = await storage.copy('nope/', 'msg.txt').catch(err => err)
+        const err = await storage.copy('nope/', 'file').catch(err => err)
         expect(err).to.be.an('error')
         expect(err.message).to.eql(
           `Unable to copy, 'pathFrom' is a directory and 'pathTo' a file`
@@ -108,32 +108,32 @@ const run = provider => {
       })
 
       it('should copy, file to file', async () => {
-        await storage.copy('msg.txt', 'msg_copy.txt')
+        await storage.copy('file', 'msg_copy.txt')
         const result = await storage.read('msg_copy.txt')
         expect(result).to.eql('hi')
       })
 
       it('should resolve and copy, file to file #1', async () => {
-        await storage.copy('foo/../msg.txt', 'msg_copy1.txt')
+        await storage.copy('foo/../file', 'msg_copy1.txt')
         const result = await storage.read('msg_copy1.txt')
         expect(result).to.eql('hi')
       })
 
       it('should resolve and copy, file to file #2', async () => {
-        await storage.copy('msg.txt', 'foo/../msg_copy2.txt')
+        await storage.copy('file', 'foo/../msg_copy2.txt')
         const result = await storage.read('msg_copy2.txt')
         expect(result).to.eql('hi')
       })
 
       it('should copy, file to file inside a subfolder', async () => {
-        await storage.copy('msg.txt', 'copy/msg_copy.txt')
+        await storage.copy('file', 'copy/msg_copy.txt')
         const result = await storage.read('copy/msg_copy.txt')
         expect(result).to.eql('hi')
       })
 
       it('should copy, file to folder #1', async () => {
-        await storage.copy('msg.txt', 'copy/')
-        const result = await storage.read('copy/msg.txt')
+        await storage.copy('file', 'copy/')
+        const result = await storage.read('copy/file')
         expect(result).to.eql('hi')
       })
 
@@ -160,7 +160,7 @@ const run = provider => {
 
     describe('output', () => {
       it('should return undefined', async () => {
-        const result = await storage.copy('msg.txt', 'msg_copy.txt')
+        const result = await storage.copy('file', 'msg_copy.txt')
         expect(result).to.be.undefined
       })
     })
