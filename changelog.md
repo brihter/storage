@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.6.2
+
+- Improved documentation.
+- Backblaze demo fix.
+
+This is a maintenance release.
+
 ## v1.6.1
 
 - New provider: [Backblaze B2](https://www.backblaze.com/cloud-storage).
