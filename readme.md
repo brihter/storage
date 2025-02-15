@@ -44,8 +44,8 @@ import { Storage } from '@brighter/storage-adapter-s3'
 const storage = Storage({ path: 'my-bucket' }, { region: 'eu-central-1' })
 
 const main = async () => {
-  await storage.write('info.log', 'hello')
-  const msg = await storage.read('info.log')
+  await storage.write('file', 'hello')
+  const msg = await storage.read('file')
   console.log(msg)
 }
 
@@ -62,14 +62,14 @@ For more information:
 Here's a quick API overview:
 
 ```js
-await storage.read('info.log')
-await storage.write('info.log', 'hello')
-await storage.remove('info.log')
-await storage.exists('info.log')
-await storage.stat('info.log')
-await storage.copy('info.log', 'info.copy.log')
-await storage.list('/')
-await storage.presign('info.log')
+await storage.read(file)
+await storage.write(file, fileContents)
+await storage.remove(fileOrDir)
+await storage.exists(fileOrDir)
+await storage.stat(file)
+await storage.copy(fileOrDir, fileOrDir)
+await storage.list(dir)
+await storage.presign(file)
 ```
 
 See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
@@ -91,9 +91,9 @@ See the [ReadFunction](src/storage/docs/ReadFunction.md) for more information.
 To write data to object storage, use the `write()` function, specifying the desired file path as the first argument, the content to write (which can be a `string` or a `Buffer`) as the second, and optionally an encoding option like `utf8` or `binary` in the third argument.
 
 ```js
-await storage.write('msg.txt', 'hello')
-await storage.write('msg.txt', 'Ω', { encoding: 'utf8' })
-await storage.write('msg.txt', Buffer.alloc(4), { encoding: 'binary' })
+await storage.write('file', 'hello')
+await storage.write('file', 'Ω', { encoding: 'utf8' })
+await storage.write('file', Buffer.alloc(4), { encoding: 'binary' })
 ```
 See the [WriteFunction](src/storage/docs/WriteFunction.md) for more information.
 
@@ -183,7 +183,7 @@ const createStorage = () => {
 
 const main = async () => {
   const storage = createStorage()
-  await storage.read('info.log')
+  await storage.read('file')
 }
 
 main().catch(console.error)

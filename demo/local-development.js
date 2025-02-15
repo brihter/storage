@@ -11,7 +11,7 @@ const createStorage = () => {
 
 const main = async () => {
   const storage = createStorage()
-  await storage.read('info.log')
+  await storage.read('file')
 }
 
 main().catch(console.error)

@@ -16,8 +16,8 @@ const storage = Storage({
 })
 
 const main = async () => {
-  await storage.write('info.log', 'hi')
-  const msg = await storage.read('info.log')
+  await storage.write('file', 'hi')
+  const msg = await storage.read('file')
   console.log(msg)
 }
 
