@@ -4,8 +4,8 @@ const formatDate = date => date.toISOString().split('T')[0]
 
 const formatAmount = (amount, isExpense = false) => {
   const value = Math.abs(amount).toFixed(2)
-  if (amount === 0) return `${value}`
-  return isExpense ? `-${value}` : `+${value}`
+  if (amount === 0) return `$${value}`
+  return isExpense ? `-$${value}` : `+$${value}`
 }
 
 const calculateProration = (startDate, amount) => {
@@ -20,11 +20,11 @@ const calculateProration = (startDate, amount) => {
 const generateTransactions = (records, type = 'expense') => {
   const now = new Date()
   const isExpense = type === 'expense'
-  
+
   return records.flatMap(record => {
     const transactions = []
     const { date, period, amount, desc, provider } = record
-    
+
     if (period === 'once') {
       return [{
         ...record,
@@ -34,36 +34,40 @@ const generateTransactions = (records, type = 'expense') => {
 
     const startDate = new Date(date)
     let currentDate = new Date(startDate)
-    
+
     if (startDate.getDate() !== 1) {
-      const proratedAmount = calculateProration(startDate, amount)
-      transactions.push({
-        date: new Date(startDate),
-        amount: isExpense ? -proratedAmount : proratedAmount,
-        desc: `${desc} (Prorated ${startDate.getDate()}-${new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate()})`,
-        provider,
-        period
-      })
-      
-      currentDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1)
+      const firstOfNextMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1);
+
+      if (firstOfNextMonth <= now) {
+        const proratedAmount = calculateProration(startDate, amount)
+        transactions.push({
+          date: firstOfNextMonth,
+          amount: isExpense ? -proratedAmount : proratedAmount,
+          desc: `${desc} (Prorated ${formatDate(startDate).slice(0, 7)})`,
+          provider,
+          period
+        })
+      }
+      currentDate = new Date(startDate.getFullYear(), startDate.getMonth() + 2, 1)
+    } else {
+        currentDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1);
     }
 
-    while (currentDate <= now) {
-      const billingDate = new Date(currentDate)
-      const usagePeriod = new Date(currentDate)
-      usagePeriod.setMonth(usagePeriod.getMonth() - 1)
-      
-      transactions.push({
-        date: billingDate,
-        amount: isExpense ? -amount : amount,
-        desc: `${desc} (${formatDate(usagePeriod).slice(0, 7)})`,
-        provider,
-        period
-      })
-      
-      currentDate.setMonth(currentDate.getMonth() + 1)
-    }
-    
+      while (currentDate <= now) {
+          const billingDate = new Date(currentDate);
+          const usagePeriod = new Date(currentDate);
+          usagePeriod.setMonth(usagePeriod.getMonth() - 1);
+          transactions.push({
+              date: billingDate,
+              amount: isExpense ? -amount : amount,
+              desc: `${desc} (${formatDate(usagePeriod).slice(0, 7)})`,
+              provider,
+              period
+          });
+
+          currentDate.setMonth(currentDate.getMonth() + 1);
+      }
+
     return transactions
   })
 }
