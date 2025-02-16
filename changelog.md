@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.6.3
+
+- Improved documentation.
+- Added projections to bookkeeping.
+
+This is a maintenance release.
+
 ## v1.6.2
 
 - Improved documentation.
