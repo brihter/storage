@@ -2,96 +2,94 @@
 
 ## Overview
 
-| Category | Amount |
-| --- | --- |
-| Income | $60.00 |
-| Expenses | -$6.72 |
-| Balance | $53.28 |
-| Monthly Income (Projected) | $5.00 |
-| Monthly Expenses (Projected) | -$6.89 |
+| income | expenses | balance |
+| --- | --- | --- |
+| +$60.00 | -$6.72 | +$53.28 |
 
-## Runway Projection
+## Projection (Next 12 Months)
 
-| Month | Starting Balance | Income | Expenses | Net Change | Ending Balance |
+| month | starting balance | income | expenses | net change | ending balance |
 | --- | --- | --- | --- | --- | --- |
-| 2025-01 | $53.28 | $5.00 | -$6.89 | $1.89 | $51.39 |
-| 2025-02 | $51.39 | $5.00 | -$6.89 | $1.89 | $49.50 |
-| 2025-03 | $49.50 | $5.00 | -$6.89 | $1.89 | $47.61 |
-| 2025-04 | $47.61 | $5.00 | -$6.89 | $1.89 | $45.72 |
-| 2025-05 | $45.72 | $5.00 | -$6.89 | $1.89 | $43.83 |
-| 2025-06 | $43.83 | $5.00 | -$6.89 | $1.89 | $41.93 |
-| 2025-07 | $41.93 | $5.00 | -$6.89 | $1.89 | $40.04 |
-| 2025-08 | $40.04 | $5.00 | -$6.89 | $1.89 | $38.15 |
-| 2025-09 | $38.15 | $5.00 | -$6.89 | $1.89 | $36.26 |
-| 2025-10 | $36.26 | $5.00 | -$6.89 | $1.89 | $34.37 |
-| 2025-11 | $34.37 | $5.00 | -$6.89 | $1.89 | $32.48 |
-| 2025-12 | $32.48 | $5.00 | -$6.89 | $1.89 | $30.59 |
+| 2025-03 | +$53.28 | $0.00 | -$0.28 | -$0.28 | +$53.00 |
+| 2025-04 | +$53.00 | $0.00 | -$6.27 | -$6.27 | +$46.73 |
+| 2025-05 | +$46.73 | $0.00 | -$6.27 | -$6.27 | +$40.46 |
+| 2025-06 | +$40.46 | $0.00 | -$6.27 | -$6.27 | +$34.19 |
+| 2025-07 | +$34.19 | $0.00 | -$6.27 | -$6.27 | +$27.92 |
+| 2025-08 | +$27.92 | $0.00 | -$6.27 | -$6.27 | +$21.65 |
+| 2025-09 | +$21.65 | $0.00 | -$6.27 | -$6.27 | +$15.38 |
+| 2025-10 | +$15.38 | $0.00 | -$6.27 | -$6.27 | +$9.11 |
+| 2025-11 | +$9.11 | $0.00 | -$6.27 | -$6.27 | +$2.84 |
+| 2025-12 | +$2.84 | $0.00 | -$6.27 | -$6.27 | -$3.43 |
+| 2026-01 | -$3.43 | $0.00 | -$6.27 | -$6.27 | -$9.70 |
+| 2026-02 | -$9.70 | $0.00 | -$6.27 | -$6.27 | -$15.97 |
 
-## By Provider
+## Breakdown by Provider
 
-| By Provider | Total |
+| provider | total |
 | --- | --- |
-| Hetzner | $60.00 |
-| Cloudflare | $0.00 |
+| Hetzner | +$60.00 |
 | AWS | -$6.72 |
+| Cloudflare | $0.00 |
+| Backblaze | $0.00 |
 
-## By Year
+## Breakdown by Year
 
-| By Year | Total |
+| year | total |
 | --- | --- |
-| 2025 | $59.72 |
+| 2023 | -$2.80 |
 | 2024 | -$3.36 |
-| 2023 | -$3.08 |
+| 2025 | +$59.44 |
 
 ## Transactions
-| Date | Description | Amount | Provider |
+
+| date | description | amount | provider |
 | --- | --- | --- | --- |
-| 2025-02-10 | Hetzner Cloud Credits | $60.00 | Hetzner |
-| 2025-01-31 | AWS S3 Billing (2024-12) | -$0.28 | AWS |
-| 2025-01-31 | Cloudflare R2 Billing (2024-12) | $0.00 | Cloudflare |
-| 2024-12-31 | AWS S3 Billing (2024-11) | -$0.28 | AWS |
-| 2024-12-31 | Cloudflare R2 Billing (2024-11) | $0.00 | Cloudflare |
-| 2024-11-30 | AWS S3 Billing (2024-10) | -$0.28 | AWS |
-| 2024-11-30 | Cloudflare R2 Billing (2024-10) | $0.00 | Cloudflare |
-| 2024-10-31 | AWS S3 Billing (2024-09) | -$0.28 | AWS |
-| 2024-10-31 | Cloudflare R2 Billing (2024-09) | $0.00 | Cloudflare |
-| 2024-09-30 | AWS S3 Billing (2024-08) | -$0.28 | AWS |
-| 2024-09-30 | Cloudflare R2 Billing (2024-08) | $0.00 | Cloudflare |
-| 2024-08-31 | AWS S3 Billing (2024-07) | -$0.28 | AWS |
-| 2024-08-31 | Cloudflare R2 Billing (2024-07) | $0.00 | Cloudflare |
-| 2024-07-31 | AWS S3 Billing (2024-06) | -$0.28 | AWS |
-| 2024-07-31 | Cloudflare R2 Billing (2024-06) | $0.00 | Cloudflare |
-| 2024-06-30 | AWS S3 Billing (2024-05) | -$0.28 | AWS |
-| 2024-06-30 | Cloudflare R2 Billing (2024-05) | $0.00 | Cloudflare |
-| 2024-05-31 | AWS S3 Billing (2024-04) | -$0.28 | AWS |
-| 2024-05-31 | Cloudflare R2 Billing (2024-04) | $0.00 | Cloudflare |
-| 2024-04-30 | AWS S3 Billing (2024-03) | -$0.28 | AWS |
-| 2024-04-30 | Cloudflare R2 Billing (2024-03) | $0.00 | Cloudflare |
-| 2024-03-31 | AWS S3 Billing (2024-02) | -$0.28 | AWS |
-| 2024-03-31 | Cloudflare R2 Billing (2024-02) | $0.00 | Cloudflare |
-| 2024-02-29 | AWS S3 Billing (2024-01) | -$0.28 | AWS |
-| 2024-02-29 | Cloudflare R2 Billing (2024-01) | $0.00 | Cloudflare |
-| 2024-01-31 | AWS S3 Billing (2023-12) | -$0.28 | AWS |
-| 2024-01-31 | Cloudflare R2 Billing (2023-12) | $0.00 | Cloudflare |
-| 2023-12-31 | AWS S3 Billing (2023-11) | -$0.28 | AWS |
-| 2023-12-31 | Cloudflare R2 Billing (2023-11) | $0.00 | Cloudflare |
-| 2023-11-30 | AWS S3 Billing (2023-10) | -$0.28 | AWS |
-| 2023-11-30 | Cloudflare R2 Billing (2023-10) | $0.00 | Cloudflare |
-| 2023-10-31 | AWS S3 Billing (2023-09) | -$0.28 | AWS |
-| 2023-10-31 | Cloudflare R2 Billing (2023-09) | $0.00 | Cloudflare |
-| 2023-09-30 | AWS S3 Billing (2023-08) | -$0.28 | AWS |
-| 2023-09-30 | Cloudflare R2 Billing (2023-08) | $0.00 | Cloudflare |
-| 2023-08-31 | AWS S3 Billing (2023-07) | -$0.28 | AWS |
-| 2023-08-31 | Cloudflare R2 Billing (2023-07) | $0.00 | Cloudflare |
-| 2023-07-31 | AWS S3 Billing (2023-06) | -$0.28 | AWS |
-| 2023-07-31 | Cloudflare R2 Billing (2023-06) | $0.00 | Cloudflare |
-| 2023-06-30 | AWS S3 Billing (2023-05) | -$0.28 | AWS |
-| 2023-06-30 | Cloudflare R2 Billing (2023-05) | $0.00 | Cloudflare |
-| 2023-05-31 | AWS S3 Billing (2023-04) | -$0.28 | AWS |
-| 2023-05-31 | Cloudflare R2 Billing (2023-04) | $0.00 | Cloudflare |
-| 2023-04-30 | AWS S3 Billing (2023-03) | -$0.28 | AWS |
-| 2023-04-30 | Cloudflare R2 Billing (2023-03) | $0.00 | Cloudflare |
-| 2023-03-31 | AWS S3 Billing (2023-02) | -$0.28 | AWS |
-| 2023-03-31 | Cloudflare R2 Billing (2023-02) | $0.00 | Cloudflare |
-| 2023-02-28 | AWS S3 Billing (2023-01) | -$0.28 | AWS |
-| 2023-02-28 | Cloudflare R2 Billing (2023-01) | $0.00 | Cloudflare |
+| 2025-02-10 | Hetzner Cloud Credits | +$60.00 | Hetzner |
+| 2025-02-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2025-02-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2025-01-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2025-01-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-12-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-12-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-11-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-11-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-10-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-10-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-09-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-09-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-08-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-08-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-07-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-07-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-06-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-06-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-05-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-05-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-04-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-04-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-03-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-03-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-02-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-02-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2024-01-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2024-01-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-12-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-12-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-11-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-11-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-10-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-10-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-09-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-09-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-08-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-08-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-07-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-07-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-06-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-06-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-05-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-05-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-04-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-04-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
+| 2023-03-01 | AWS S3 Billing | -$0.28 | AWS |
+| 2023-03-01 | Cloudflare R2 Billing | $0.00 | Cloudflare |
