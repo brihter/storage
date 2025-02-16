@@ -4,7 +4,17 @@ const formatDate = date => date.toISOString().split('T')[0]
 
 const formatAmount = (amount, isExpense = false) => {
   const value = Math.abs(amount).toFixed(2)
-  return isExpense ? `-$${value}` : `+$${value}`
+  if (amount === 0) return `${value}`
+  return isExpense ? `-${value}` : `+${value}`
+}
+
+const calculateProration = (startDate, amount) => {
+  const date = new Date(startDate)
+  const year = date.getFullYear()
+  const month = date.getMonth()
+  const lastDayOfMonth = new Date(year, month + 1, 0).getDate()
+  const remainingDays = lastDayOfMonth - date.getDate() + 1
+  return (amount * remainingDays) / lastDayOfMonth
 }
 
 const generateTransactions = (records, type = 'expense') => {
@@ -22,15 +32,35 @@ const generateTransactions = (records, type = 'expense') => {
       }]
     }
 
-    let currentDate = new Date(date)
-    while (currentDate <= now) {
+    const startDate = new Date(date)
+    let currentDate = new Date(startDate)
+    
+    if (startDate.getDate() !== 1) {
+      const proratedAmount = calculateProration(startDate, amount)
       transactions.push({
-        date: new Date(currentDate),
-        amount: isExpense ? -amount : amount,
-        desc,
+        date: new Date(startDate),
+        amount: isExpense ? -proratedAmount : proratedAmount,
+        desc: `${desc} (Prorated ${startDate.getDate()}-${new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate()})`,
         provider,
         period
       })
+      
+      currentDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1)
+    }
+
+    while (currentDate <= now) {
+      const billingDate = new Date(currentDate)
+      const usagePeriod = new Date(currentDate)
+      usagePeriod.setMonth(usagePeriod.getMonth() - 1)
+      
+      transactions.push({
+        date: billingDate,
+        amount: isExpense ? -amount : amount,
+        desc: `${desc} (${formatDate(usagePeriod).slice(0, 7)})`,
+        provider,
+        period
+      })
+      
       currentDate.setMonth(currentDate.getMonth() + 1)
     }
     

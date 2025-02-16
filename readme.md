@@ -62,14 +62,14 @@ For more information:
 Here's a quick API overview:
 
 ```js
-await storage.read(file)
-await storage.write(file, fileContents)
-await storage.remove(fileOrDir)
+await storage.read(file, options)
+await storage.write(file, stringOrBuffer, options)
+await storage.remove(fileOrDir, options)
+await storage.list(dir, options)
+await storage.copy(fileOrDir, fileOrDir)
+await storage.presign(file, options)
 await storage.exists(fileOrDir)
 await storage.stat(file)
-await storage.copy(fileOrDir, fileOrDir)
-await storage.list(dir)
-await storage.presign(file)
 ```
 
 See [StorageInterface](src/storage/docs/StorageInterface.md) for more information.
