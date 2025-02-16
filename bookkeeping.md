@@ -4,15 +4,15 @@
 
 | Category | Amount |
 | --- | --- |
-| Income | +$60.00 |
+| Income | $60.00 |
 | Expenses | -$6.72 |
-| Balance | +$53.28 |
+| Balance | $53.28 |
 
 ## By Provider
 
 | By Provider | Total |
 | --- | --- |
-| Hetzner | +$60.00 |
+| Hetzner | $60.00 |
 | Cloudflare | $0.00 |
 | AWS | -$6.72 |
 
@@ -20,14 +20,14 @@
 
 | By Year | Total |
 | --- | --- |
-| 2025 | +$59.72 |
+| 2025 | $59.72 |
 | 2024 | -$3.36 |
 | 2023 | -$3.08 |
 
 ## Transactions
 | Date | Description | Amount | Provider |
 | --- | --- | --- | --- |
-| 2025-02-10 | Hetzner Cloud Credits | +$60.00 | Hetzner |
+| 2025-02-10 | Hetzner Cloud Credits | $60.00 | Hetzner |
 | 2025-01-31 | AWS S3 Billing (2024-12) | -$0.28 | AWS |
 | 2025-01-31 | Cloudflare R2 Billing (2024-12) | $0.00 | Cloudflare |
 | 2024-12-31 | AWS S3 Billing (2024-11) | -$0.28 | AWS |
