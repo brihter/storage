@@ -2,13 +2,13 @@
 
 ## Overview
 
-| income | expenses | balance |
+| Income | Expenses | Balance |
 | --- | --- | --- |
 | +$60.00 | -$6.72 | +$53.28 |
 
 ## Projection (Next 12 Months)
 
-| month | starting balance | income | expenses | net change | ending balance |
+| Month | Starting balance | Income | Expenses | Net Change | Ending Balance |
 | --- | --- | --- | --- | --- | --- |
 | 2025-03 | +$53.28 | $0.00 | -$0.28 | -$0.28 | +$53.00 |
 | 2025-04 | +$53.00 | $0.00 | -$6.27 | -$6.27 | +$46.73 |
@@ -23,16 +23,16 @@
 | 2026-01 | -$3.43 | $0.00 | -$6.27 | -$6.27 | -$9.70 |
 | 2026-02 | -$9.70 | $0.00 | -$6.27 | -$6.27 | -$15.97 |
 
-## Breakdown by Provider
+## By Provider
 
-| provider | total |
+| Provider | Total |
 | --- | --- |
 | Hetzner | +$60.00 |
 | AWS | -$6.72 |
 | Cloudflare | $0.00 |
 | Backblaze | $0.00 |
 
-## Breakdown by Year
+## By Year
 
 | year | total |
 | --- | --- |
@@ -42,7 +42,7 @@
 
 ## Transactions
 
-| date | description | amount | provider |
+| Date | Description | Amount | Provider |
 | --- | --- | --- | --- |
 | 2025-02-10 | Hetzner Cloud Credits | +$60.00 | Hetzner |
 | 2025-02-01 | AWS S3 Billing | -$0.28 | AWS |

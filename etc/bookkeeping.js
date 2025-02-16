@@ -129,7 +129,7 @@ const generateBookkeeping = (income = [], expenses = []) => {
     .reduce((acc, t) => acc + t.amount, 0)
   const balance = totalIncome + totalExpenses
 
-  const overviewTable = `| income | expenses | balance |
+  const overviewTable = `| Income | Expenses | Balance |
 | --- | --- | --- |
 | ${toMoney(totalIncome)} | ${toMoney(totalExpenses)} | ${toMoney(balance)} |`
 
@@ -140,7 +140,7 @@ const generateBookkeeping = (income = [], expenses = []) => {
       .reduce((acc, t) => acc + t.amount, 0)
     return { provider: p, total: sum }
   })
-  const breakdownByProvider = `| provider | total |
+  const breakdownByProvider = `| Provider | Total |
 | --- | --- |
 ${providerTotals.map(pt => `| ${pt.provider} | ${pt.total === 0 ? `$0.00` : toMoney(pt.total)} |`).join('\n')}`
 
@@ -155,7 +155,7 @@ ${providerTotals.map(pt => `| ${pt.provider} | ${pt.total === 0 ? `$0.00` : toMo
 | --- | --- |
 ${yearRows.map(r => `| ${r.year} | ${r.total === 0 ? `$0.00` : toMoney(r.total)} |`).join('\n')}`
 
-  const transactionTable = `| date | description | amount | provider |
+  const transactionTable = `| Date | Description | Amount | Provider |
 | --- | --- | --- | --- |
 ${transactions.map(t => `| ${formatDate(t.date)} | ${t.desc} | ${t.amount === 0 ? '$0.00' : toMoney(t.amount)} | ${t.provider} |`).join('\n')}`
 
@@ -204,7 +204,7 @@ ${transactions.map(t => `| ${formatDate(t.date)} | ${t.desc} | ${t.amount === 0 
     runningBalance = endBal
   }
 
-  const projectionTable = `| month | starting balance | income | expenses | net change | ending balance |
+  const projectionTable = `| Month | Starting balance | Income | Expenses | Net Change | Ending Balance |
 | --- | --- | --- | --- | --- | --- |
 ${next12Months.map(row => {
   const sb = toMoney(row.startBal)
@@ -221,9 +221,9 @@ ${next12Months.map(row => {
     overviewTable,
     '## Projection (Next 12 Months)',
     projectionTable,
-    '## Breakdown by Provider',
+    '## By Provider',
     breakdownByProvider,
-    '## Breakdown by Year',
+    '## By Year',
     breakdownByYear,
     '## Transactions',
     transactionTable
